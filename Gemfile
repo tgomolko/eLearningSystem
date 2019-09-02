@@ -32,6 +32,7 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem 'bulma-rails'
 gem "pundit"
+gem 'aasm'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
