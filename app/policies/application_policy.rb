@@ -50,6 +50,5 @@ class ApplicationPolicy
           scope.all
       end
     end
-
   end
 end
