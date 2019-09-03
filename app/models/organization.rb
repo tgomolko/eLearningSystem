@@ -5,7 +5,7 @@ class Organization < ApplicationRecord
   validates :company_name, length: { maximum: 100 }, presence: true
 
   aasm do
-    state :pending,
+    state :pending
     state :approved, initial: true
     state :rejected 
 
