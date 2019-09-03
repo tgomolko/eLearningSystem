@@ -11,7 +11,6 @@ class Organization < ApplicationRecord
 
     event :approve do
       transitions from: [:pending, :rejected], to: :approved
-
     end
 
     event :reject do

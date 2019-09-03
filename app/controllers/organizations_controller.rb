@@ -63,35 +63,35 @@ class OrganizationsController < ApplicationController
   end
 
   def approve
+    approve_service = OrganizationApproveService.new(@organization)
     respond_to do |format|
-      if @organization.approved?
-        format.html { redirect_to admin_pending_org_path, alert: "Organization is already approved" }
+      if approve_service.approve_organization
+        format.html { redirect_to admin_pending_org_path, notice: "Organization was successfully approved!" }
       else
-        @organization.approve!
-        format.html { redirect_to admin_pending_org_path, notice: "Organization was successfully approved" }
+        format.html { redirect_to admin_pending_org_path, alert: "Organization is already approved" }
       end
     end
   end
 
   def reject 
+    approve_service = OrganizationApproveService.new(@organization)
     respond_to do |format|
-      if @organization.rejected?
-        format.html { redirect_to admin_pending_org_path, alert: "Organization is already rejected" }
-      else
-        @organization.reject!
+      if approve_service.reject_organization
         format.html { redirect_to admin_pending_org_path, notice: "Organization was successfully rejected" }
+      else
+        format.html { redirect_to admin_pending_org_path, alert: "Organization is already rejected" }
       end
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_organization
-      @organization = Organization.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_organization
+    @organization = Organization.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def organization_params
-      params.require(:organization).permit(:company_name, :description, :user_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def organization_params
+    params.require(:organization).permit(:company_name, :description, :user_id)
+  end
 end
