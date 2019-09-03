@@ -2,15 +2,22 @@
   <div class="navbar-item">
     <div class="field is-grouped">
       <% if user_signed_in? %>
+
         <p class="control">
           <%= link_to current_user.name, edit_user_registration_path, class: "button is-info" %>
         </p>
         <p class="control">
           <%= link_to "Create Organization", new_organization_path, class: "button is-success is-rounded" %>
         </p>
+        <% if current_user.admin? %>
+          <p class="control" >
+            <%= link_to "Dashboard", users_dashboard_path, class: "button is-danger is-rounded" %>
+          </p>
+        <% end %>
         <p>
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"button is-primary" %>
-        </p>
+          <p class="control">
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"button is-primary" %>
+          </p>
       <% else %>
         <p class="control">
           <%= link_to 'Sign In', new_user_session_path, class: "button is-primary" %>
