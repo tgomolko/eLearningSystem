@@ -11,7 +11,7 @@
         </p>
         <% if current_user.admin? %>
           <p class="control" >
-            <%= link_to "Dashboard", users_dashboard_path, class: "button is-danger is-rounded" %>
+            <%= link_to "Dashboard", admin_dashboard_path, class: "button is-danger is-rounded" %>
           </p>
         <% end %>
         <p>

@@ -1,5 +1,5 @@
 class OrganizationsController < ApplicationController
-  before_action :set_organization, only: [:show, :edit, :update, :destroy]
+  before_action :set_organization, only: [:show, :edit, :update, :destroy, :approve, :reject]
   before_action :authenticate_user!
 
   # GET /organizations
@@ -59,6 +59,28 @@ class OrganizationsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to organizations_url, notice: 'Organization was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def approve
+    respond_to do |format|
+      if @organization.approved?
+        format.html { redirect_to admin_pending_org_path, alert: "Organization is already approved" }
+      else
+        @organization.approve!
+        format.html { redirect_to admin_pending_org_path, notice: "Organization was successfully approved" }
+      end
+    end
+  end
+
+  def reject 
+    respond_to do |format|
+      if @organization.rejected?
+        format.html { redirect_to admin_pending_org_path, alert: "Organization is already rejected" }
+      else
+        @organization.reject!
+        format.html { redirect_to admin_pending_org_path, notice: "Organization was successfully rejected" }
+      end
     end
   end
 
