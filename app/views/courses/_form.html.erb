@@ -1,0 +1,34 @@
+<%= simple_form_for @course, html: { multipart: true } do |f| %>
+  <%= f.error_notification %>
+    <div class="field">
+      <div class="control">
+      <%= f.input :title, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, placeholder: "Ruby on Rails" %>
+      </div>
+    </div>
+
+    <div class="control">
+      <label class="label">Course State</label>
+      <div class="control has-icons-left">
+        <span class="select">
+          <%= f.input_field :access_state, collection: Course::ACCESS_STATE, selected: f.object.access_state || 1,  prompt: "Select access state" %>
+        </span>
+        <span class="icon is-small is-left">
+          <i class="fa fa-tag"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <%= f.input :description, input_html: { class: "textarea is-info" }, wrapper: false, label_html: { class: "label" }, placeholder: "Information about company" %>
+      </div>
+    </div>
+     
+    <div class="field">
+      <div class="control">
+        <%= f.input :requirements, input_html: { class: "textarea is-info" }, wrapper: false, label_html: { class: "label" }, placeholder: "Describe basic skills" %>
+      </div>
+    </div>
+
+  <%= f.button :submit, class: "button is-primary is-large is-rounded mv4" %>
+<% end %>

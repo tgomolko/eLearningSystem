@@ -1,0 +1,22 @@
+<div class="columns is-centered">
+  <div class="column is-6">
+    <h1 class="title is-2 center"><%= @course.title %></h1>
+    
+    <% if @course.access_state? %>
+      <h1 class="title is-5"><span class="tag is-primary is-medium">Access
+        <%= @course.access_state %></span>
+        <span class="is-pulled-right">
+          <span class="tag is-info is-medium"><%= @course.aasm_state %></span>
+        </span>
+      </h1>
+    <% end %>
+    <h1 class="title is-3">Description:</h1>
+    <%= @course.description %>
+    <h1 class="title is-3">Requirements:</h1>
+    <%= @course.requirements %>
+
+    <h1 class="subtitle is-5 is-pulled-right">Created by: <%= @course.user.name %> <%= time_ago_in_words(@course.created_at) %> ago</h1></br>
+    <%= link_to 'Edit', edit_course_path(@course), { class: "button is-link is-small"} %> 
+    <%= link_to 'Back', courses_path,{ class: "button is-small is-black"}  %>
+  </div>
+</div>

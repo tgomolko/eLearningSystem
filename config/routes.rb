@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :courses
   resources :organizations do 
     member do
       patch :approve
