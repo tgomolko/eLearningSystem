@@ -7,21 +7,17 @@ class OrganizationApproveService
   end
 
   def approve_organization
-    if @organization.approved? 
-      return false
+    if @organization.approved?
     else
       @organization.approve!
       change_user_role
-      return true 
     end
   end
 
   def reject_organization
-    if @organization.rejected? 
-      return false
+    if @organization.rejected?     
     else
       @organization.reject!
-      return true 
     end
   end
 
@@ -30,6 +26,6 @@ class OrganizationApproveService
   def change_user_role
     user_id = @organization.user_id
     @user = User.find(user_id)
-    @user.update_attributes(role: "org_admin") if @user.role == "user"
+    @user.role == "user" ? @user.update_attributes(role: "org_admin") : true
   end
 end
