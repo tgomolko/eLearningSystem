@@ -1,4 +1,8 @@
 en:
   org_created_successully: "Organization was successfully created."
   org_updated_successully: "Organization was successfully updated."
-  org_destroyed_successully: "Organization was successfully destroyed." 
+  org_destroyed_successully: "Organization was successfully destroyed."
+  org_aproved_successully: "Organization was successfully approved!"
+  org_rejected_successully: "Organization was successfully rejected"
+  org_already_approved: "Organization is already approved"
+  org_already_rejected: "Organization is already rejected"   

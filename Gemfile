@@ -33,6 +33,8 @@ gem 'bootstrap-sass'
 gem 'bulma-rails'
 gem "pundit"
 gem 'aasm'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

@@ -57,14 +57,13 @@ class OrganizationsController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
   def approve
     approve_service = OrganizationApproveService.new(@organization)
     respond_to do |format|
       if approve_service.approve_organization
-        format.html { redirect_to admin_pending_org_path, notice: "Organization was successfully approved!" }
+        format.html { redirect_to admin_pending_org_path, notice: t(:org_aproved_successully) }
       else
-        format.html { redirect_to admin_pending_org_path, alert: "Organization is already approved" }
+        format.html { redirect_to admin_pending_org_path, alert: t(:org_already_approved) }
       end
     end
   end
@@ -73,9 +72,9 @@ class OrganizationsController < ApplicationController
     approve_service = OrganizationApproveService.new(@organization)
     respond_to do |format|
       if approve_service.reject_organization
-        format.html { redirect_to admin_pending_org_path, notice: "Organization was successfully rejected" }
+        format.html { redirect_to admin_pending_org_path, notice: t(:org_rejected_successully) }
       else
-        format.html { redirect_to admin_pending_org_path, alert: "Organization is already rejected" }
+        format.html { redirect_to admin_pending_org_path, alert: t(:org_already_rejected) }
       end
     end
   end
@@ -86,14 +85,6 @@ class OrganizationsController < ApplicationController
     @organization = Organization.find(params[:id])
   end
 
-=======
-  private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_organization
-    @organization = Organization.find(params[:id])
-  end
-
->>>>>>> EL-4Organization
   # Never trust parameters from the scary internet, only allow the white list through.
   def organization_params
     params.require(:organization).permit(:company_name, :description, :user_id)
