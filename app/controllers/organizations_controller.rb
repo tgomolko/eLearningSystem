@@ -10,8 +10,7 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations/1
   # GET /organizations/1.json
-  def show
-  end
+  def show ; end
 
   # GET /organizations/new
   def new
@@ -26,35 +25,28 @@ class OrganizationsController < ApplicationController
   # POST /organizations.json
   def create
     @organization = current_user.organizations.build(organization_params)
-
-    respond_to do |format|
-      if @organization.save
-        format.html { redirect_to @organization, notice: t(:org_created_successully) }
-      else
-        format.html { render :new }
-      end
+    if @organization.save
+      redirect_to @organization, notice: t(:org_created_successully)
+    else
+      render :new 
     end
   end
 
   # PATCH/PUT /organizations/1
   # PATCH/PUT /organizations/1.json
-  def update
-    respond_to do |format|
-      if @organization.update(organization_params)
-        format.html { redirect_to @organization, notice: t(:org_updated_successully) }
-      else
-        format.html { render :edit }
-      end
-    end
+  def update   
+    if @organization.update(organization_params)
+      redirect_to @organization, notice: t(:org_updated_successully)
+    else
+      render :edit
+    end  
   end
 
   # DELETE /organizations/1
   # DELETE /organizations/1.json
   def destroy
     @organization.destroy
-    respond_to do |format|
-      format.html { redirect_to organizations_url, notice: t(:org_destroyed_successully) }
-    end
+    redirect_to organizations_url, notice: t(:org_destroyed_successully)
   end
 
   def approve
