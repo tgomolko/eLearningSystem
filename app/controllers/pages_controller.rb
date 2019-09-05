@@ -7,13 +7,10 @@ class PagesController < ApplicationController
   end
 
   def new
-    #@page = Page.new(course: @course)
     @page = @course.pages.build
-   # binding.pry
   end
 
   def show
-    
   end
 
   def create

@@ -1,6 +1,27 @@
 <div class="columns is-centered">
   <div class="column is-4">
     <h1 class="title is-2">Editing Coures Page</h1>  
+
+     <%= simple_form_for(@page, url: "/courses/#{@course.id}/pages/#{@page.id}", method: :patch) do |f| %>
+       
+        <div class="field">
+          <div class="control">
+          <%= f.input :title, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, placeholder: "iTechArt" %>
+          </div>
+        </div>
+        
+        <div class="field">
+          <div class="control">
+            <%= f.input :content, input_html: { class: "textarea is-info" }, wrapper: false, label_html: { class: "label" }, placeholder: "Information about company" %>
+          </div>
+        </div>
+
+
+        <div class="form-actions">
+          <%= f.button :submit, 'Save changes', class: 'button is-link is-medium is-rounded mv4' %>
+          <%= link_to 'Back', pages_course_path(@course), class: 'btn btn-md btn-secondary' %>
+        </div>
+      <% end %>
     <%#= link_to 'Show', @page, { class: "button is-link is-small"} %>
     <%#= link_to 'Back', pages_path, { class: "button  is-small is-black"} %>
   </div>
