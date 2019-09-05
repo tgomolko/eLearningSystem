@@ -35,6 +35,8 @@ gem "pundit"
 gem 'aasm'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'carrierwave'
+gem 'mini_magick'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

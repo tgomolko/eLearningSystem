@@ -5,6 +5,7 @@ class Course < ApplicationRecord
   
   belongs_to :user
   validates :title, length: { maximum: 100 }, presence: true
+  mount_uploader :image, ImageUploader
 
   aasm do
     state :draft, initial: true

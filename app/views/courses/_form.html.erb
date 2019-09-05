@@ -30,5 +30,23 @@
       </div>
     </div>
 
+
+    <div class="field">
+      <div class="control">
+        <label class="label">Add images</label>
+          <div class="file">
+          <label class="file-label">
+            <%= f.input :image, as: :file, input_html: { class:"file-input course-image" }, label: false, wrapper: false %>
+              <span class="file-cta">
+                <span class="file-icon"><i class="fa fa-upload"></i></span>
+                <span class="file-label">Choose a file…</span>
+              </span>
+          </label>
+          </div>
+        </div>
+      </div>
+      <output id="list"></output>
+    <hr />
+
   <%= f.button :submit, class: "button is-primary is-large is-rounded mv4" %>
 <% end %>
