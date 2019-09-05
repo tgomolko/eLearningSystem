@@ -4,6 +4,7 @@ class Course < ApplicationRecord
   ACCESS_STATE = %w{ Public Private Individual }
   
   belongs_to :user
+  has_many :pages
   validates :title, length: { maximum: 100 }, presence: true
   mount_uploader :image, ImageUploader
 

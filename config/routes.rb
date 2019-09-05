@@ -1,11 +1,23 @@
 Rails.application.routes.draw do
-  resources :courses
+  resources :courses do
+    member do
+      get '/pages', to: 'pages#index'
+      post '/pages', to: 'pages#create'
+      get '/pages/new', to: 'pages#new'
+      get '/pages/:page_id/edit', to: 'pages#edit'
+      get '/pages/:page_id', to: 'pages#show'
+      patch '/pages/:page_id', to: 'pages#update'
+      delete '/pages/:page_id', to: 'pages#destroy'
+    end
+  end
+
   resources :organizations do 
     member do
       patch :approve
       patch :reject 
     end
   end
+  
   devise_for :users, controllers: { registrations: 'registrations' }
   get 'welcome/index'
   root 'welcome#index'
