@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   end
   
   devise_for :users, controllers: { registrations: 'registrations' }
+ 
+  resources :relationships, only: [:create, :destroy]
+
   get 'welcome/index'
   root 'welcome#index'
   get 'admin/dashboard'

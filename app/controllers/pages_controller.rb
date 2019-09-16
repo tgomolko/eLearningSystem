@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   before_action :set_course
+  before_action :authenticate_user!
   
   def index
     @pages = Page.all.where(course_id: @course.id)

@@ -29,6 +29,9 @@
       <a  class="pagination-link" href="/courses/<%= @course.id %>/pages/<%= page.id%>"><%= page.title%></a>
     <% end %>
     </br>
+
+          <%= render 'follow_form' %>
+       
     <%= link_to 'Edit', edit_course_path(@course), { class: "button is-link is-small"} %> 
     <%= link_to 'Back', courses_path,{ class: "button is-small is-black"}  %>
   </div>

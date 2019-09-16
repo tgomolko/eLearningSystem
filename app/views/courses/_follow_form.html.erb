@@ -1,0 +1,7 @@
+<% if user_signed_in?   %>
+  <% if current_user.following?(@course) %>
+    <%= render 'unfollow' %>
+  <% else %>
+    <%= render 'follow' %>
+  <% end %>
+<% end %>
