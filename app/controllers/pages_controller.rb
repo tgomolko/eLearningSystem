@@ -18,18 +18,26 @@ class PagesController < ApplicationController
     if @page.save
       redirect_to course_path(@course), notice: 'Page was successfully created.'
     else
-      render :news
+      render :new
+    end
+  end
+
+  def update
+    if @page.update(page_params)
+      redirect_to edit_course_page_path(@course, @page), notice: 'Page was successfully updated.'
+    else
+      ender :edit 
     end
   end
 
   private
 
   def set_page
-    @page = Page.find(params[:page_id])
+    @page = Page.find(params[:id])
   end
 
   def set_course
-    @course = Course.find(params[:id])
+    @course = Course.find(params[:course_id])
   end
 
   def page_params

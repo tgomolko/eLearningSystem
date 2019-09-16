@@ -1,0 +1,23 @@
+ <div id="radio-form" style="display: none"> 
+  <%= form_tag '/questions/add', method: :post, remote: true, class: 'render-form' do %>
+    <a class="radio-add">add radio</a>
+    <p><%= label_tag 'content'%> <%= text_field_tag :content %></p>
+      <%= hidden_field_tag(:question_type, params["question_type"] = "radio") %>
+      <%= hidden_field_tag(:page_id, @page.id) %>
+      <%= hidden_field_tag(:course_id, @course.id) %>
+    <div id="radio-cont"> </div>
+    <%= submit_tag 'Create radio question', class: 'button is-small is-danger' %>
+  <% end %>
+    
+  <div id="radio-box" style="display: none">
+    <div>  
+      <%= hidden_field_tag "questions[content][]", false, class: "hid-f" %>
+      <%= radio_button_tag "questions[content][]", true, false, class: "rd" %>
+      <p><%= label_tag 'answer'%> <%= text_field_tag "answers[]" %></p>
+    </div>
+  </div>
+   
+  <div id="box3" style="display: none">
+    <%= hidden_field_tag "questions[content][]", false, class: "hid-f" %> 
+  </div>
+</div>

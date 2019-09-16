@@ -55,3 +55,61 @@ document.addEventListener("turbolinks:load", function() {
   }
 
 });
+
+
+setTimeout("$('.notification').fadeOut(3000).slideUp(500)");
+$(document).ready (function () {
+
+$(document).on("click","#add-q", function() {
+  $("#main").append($(".add-from").html());
+});
+
+$(document).on("click","#add-checkbox-form", function() {
+  $("#main").append($("#checkbox-form").html());
+});
+
+$(document).on("click","#add-radio-form", function() {
+  $("#main").append($("#radio-form").html());
+});
+
+$(document).on("click",".hide-q", function() {
+ $(this).parent().hide();
+});
+
+$(document).on ("click", ".checkbox", function () {
+  $("#cont").append($("#box").html());
+});
+
+$(document).on ("click", ".radio-add", function () {
+  $("#radio-cont").append($("#radio-box").html());
+});
+
+
+$(document).on ("click", ".answer", function () {
+  //debugger
+
+  $(this).parent().append($(".add-from").html());
+  $(this).hide();
+  //$(this).find(".answer-field").append($(".add-from").html());
+});
+
+$(document).on('change','.chp', function(e){
+  if (this.checked) {
+    $(this).parent().find('.hid-f').remove();
+  }
+  if (this.checked == false){
+    $('#box1').find('.hid-f').clone().prependTo($(this).parent());
+ }
+});
+
+$(document).on('change','.rd', function(e){
+  var active = $('#radio-cont').find(".active");
+  if (active.length > 0) {
+    active.removeClass("active");
+    $('#box3').find('.hid-f').clone().prependTo(active);
+  } 
+  $(this).parent().addClass("active");
+  $(this).parent().find('.hid-f').remove();
+});
+
+});

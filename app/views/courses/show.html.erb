@@ -7,7 +7,7 @@
         <%= @course.access_state %></span>
 
         <p class="control is-pulled-right" >
-          <%= link_to "Add page to course", pages_new_course_path(@course), class: "button is-success is-rounded" %>
+          <%= link_to "Add page to course", new_course_page_path(@course), class: "button is-success is-rounded" %>
         </p>
         <span class="is-pulled-right">
           <span class="tag is-info is-medium is-custom"><%= @course.aasm_state %></span>

@@ -1,14 +1,10 @@
 Rails.application.routes.draw do
   resources :courses do
     member do
-      get '/pages', to: 'pages#index'
-      post '/pages', to: 'pages#create'
-      get '/pages/new', to: 'pages#new'
-      get '/pages/:page_id/edit', to: 'pages#edit'
-      get '/pages/:page_id', to: 'pages#show'
-      patch '/pages/:page_id', to: 'pages#update'
-      delete '/pages/:page_id', to: 'pages#destroy'
+      patch '/complete', to: 'courses#complete'
     end
+    
+    resources :pages
   end
 
   resources :organizations do 
@@ -24,5 +20,10 @@ Rails.application.routes.draw do
   get 'admin/dashboard'
   get 'admin/pending_org'
   get 'admin/organizations'
+
+  post 'questions/add'
+  post 'user_answers/create'
+
+  #patch '/courses/:id/complete', to: 'courses#complete'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

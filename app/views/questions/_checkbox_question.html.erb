@@ -1,0 +1,25 @@
+<% if question.checkbox? %>
+  <p><%= question.content%></p>
+  <%= form_tag '/user_answers/create', method: :post, remote: true, class: 'render-form' do %>
+    <% question.answers.each do |k,v| %>
+        <div>
+        <%= hidden_field_tag "user[answers][]", false, class: "hid-f" %> 
+        <%= check_box_tag "user[answers][]", true, false, class: "chp" %>
+        <%= k %>
+        <%= hidden_field_tag "answer_keys[]",k %>
+        </div>
+      <% end %>
+    <%= hidden_field_tag(:course_id, @course.id) %>
+    <%= hidden_field_tag(:question_id, question.id) %>
+    <%= hidden_field_tag(:page_id, @page.id) %>
+    <%= hidden_field_tag(:user_id, current_user.id) %>
+    <% if !question.answered? %>
+      <%= submit_tag 'Answer on question', class: 'button is-small is-primary' %>
+    <% else %>
+      <%= submit_tag 'Question answered!',  class: 'button is-small is-info is-dis' %>
+    <% end %>
+  <% end %>
+  <div id="box1" style="display: none">
+    <%= hidden_field_tag "user[answers][]", false, class: "hid-f" %> 
+  </div>
+<% end %>

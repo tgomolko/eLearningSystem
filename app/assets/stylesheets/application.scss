@@ -50,3 +50,23 @@
 .tag.is-info.is-medium.is-custom{
   margin-right: 20px;
 }
+
+#q-text-form{
+  display: none;
+}
+
+#checkbox-from{
+  display: none;
+}
+#q-radio-from{
+  display: none;
+}
+#answer{
+  margin-left: 0px;
+}
+
+.button.is-small.is-info.is-dis{
+  pointer-events: none;
+  cursor: wait;
+  opacity: .5;
+}

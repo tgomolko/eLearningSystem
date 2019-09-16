@@ -1,0 +1,21 @@
+<% if question.textbox? %>
+  <p><%= question.content%></p>
+  <div class="ans"></div>
+  <div class="answer-field">
+    <a class="answer">add answer</a>
+  </div>
+  <div id ="q-text-form" class="add-from"> 
+    <%= form_tag '/user_answers/create', method: :post, remote: true,  class: 'render-form' do %>
+      <p><%= label_tag 'answer'%> <%= text_field_tag :answer %></p>
+      <%= hidden_field_tag(:course_id, @course.id) %>
+      <%= hidden_field_tag(:page_id, @page.id) %>
+      <%= hidden_field_tag(:question_id, question.id) %>
+      <%= hidden_field_tag(:user_id, current_user.id) %> <%#= CHANGE WHEN WILL BE FOLLOW FUNC%>
+      <% if question.answered? %>
+        <%= submit_tag 'Question answered!',  class: 'button is-small is-info is-dis' %>
+      <% else %>
+        <%= submit_tag 'Answer on question', class: 'button is-small is-primary' %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

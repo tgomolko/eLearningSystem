@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_05_105710) do
+ActiveRecord::Schema.define(version: 2019_09_13_093444) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "hstore"
   enable_extension "plpgsql"
 
   create_table "courses", force: :cascade do |t|
@@ -47,6 +48,31 @@ ActiveRecord::Schema.define(version: 2019_09_05_105710) do
     t.index ["course_id"], name: "index_pages_on_course_id"
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.text "content", null: false
+    t.integer "question_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "page_id"
+    t.string "answer"
+    t.hstore "answers"
+    t.boolean "answered", default: false
+    t.index ["page_id"], name: "index_questions_on_page_id"
+  end
+
+  create_table "user_answers", force: :cascade do |t|
+    t.string "answer"
+    t.bigint "user_id"
+    t.bigint "question_id"
+    t.bigint "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.hstore "answers"
+    t.index ["course_id"], name: "index_user_answers_on_course_id"
+    t.index ["question_id"], name: "index_user_answers_on_question_id"
+    t.index ["user_id"], name: "index_user_answers_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -65,4 +91,8 @@ ActiveRecord::Schema.define(version: 2019_09_05_105710) do
   add_foreign_key "courses", "users"
   add_foreign_key "organizations", "users"
   add_foreign_key "pages", "courses"
+  add_foreign_key "questions", "pages"
+  add_foreign_key "user_answers", "courses"
+  add_foreign_key "user_answers", "questions"
+  add_foreign_key "user_answers", "users"
 end
