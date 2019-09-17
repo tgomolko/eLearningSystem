@@ -12,6 +12,7 @@ class PagesController < ApplicationController
   end
 
   def show
+    @pages = @course.pages
   end
 
   def create

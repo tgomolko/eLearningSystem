@@ -11,6 +11,6 @@ class RelationshipsController < ApplicationController
   def destroy
     @course = Relationship.find(params[:id]).followed
     current_user.unfollow(@course)
-    redirect_to @course, alert: "You secessuflly unfollow course"
+    redirect_to @course, alert: "You successfully unfollow course"
   end
 end

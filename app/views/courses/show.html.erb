@@ -18,7 +18,7 @@
     <%= @course.description %>
     <h1 class="title is-3">Requirements:</h1>
     <%= @course.requirements %>
-
+    
     <div class="feature-image is-centered">
       <%= image_tag(@course.image_url(:thumb)) if @course.image_url %>
     </div>
@@ -26,12 +26,11 @@
     <h1 class="subtitle is-5 is-pulled-right">Created by: <%= @course.user.name %> <%= time_ago_in_words(@course.created_at) %> ago</h1></br>
    
     <% @pages.each do |page| %>
-      <a  class="pagination-link" href="/courses/<%= @course.id %>/pages/<%= page.id%>"><%= page.title%></a>
+      <%= link_to page.title, course_page_path(@course, page), class: "pagination-link"%>
     <% end %>
+    
     </br>
-
-          <%= render 'follow_form' %>
-       
+    <%= render 'follow_form' %> 
     <%= link_to 'Edit', edit_course_path(@course), { class: "button is-link is-small"} %> 
     <%= link_to 'Back', courses_path,{ class: "button is-small is-black"}  %>
   </div>

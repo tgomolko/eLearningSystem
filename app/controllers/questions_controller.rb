@@ -20,7 +20,7 @@ class QuestionsController < ApplicationController
     if params[:questions] && params[:answers]
       answers = params[:answers]
       checkbox_values = params[:questions][:content]
-      answers_hash = Hash[answers.zip checkbox_values]
+      Hash[answers.zip checkbox_values]
     else
       Hash.new
     end
