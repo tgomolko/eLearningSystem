@@ -8,10 +8,7 @@ class UserAnswersController < ApplicationController
     @user_answer.answers = user_question_answers_hash
     respond_to do |format|
       if @user_answer.save
-        user_answer_service = UserAnswerService.new(@question)
-        if user_answer_service.set_answered 
-          format.html { redirect_to course_page_path(@course, @page), notice: "You answer was accepted" }
-        end
+        format.html { redirect_to course_page_path(@course, @page), notice: "You answer was accepted" }
       else
        format.html { redirect_to course_page_path(@course, @page), alert: "Something was wrong" } 
       end

@@ -40,7 +40,7 @@ class CoursesController < ApplicationController
     if @course.update(course_params)
       redirect_to @course, notice: 'Course was successfully updated.'
     else
-      ender :edit 
+      render :edit 
     end
   end
 

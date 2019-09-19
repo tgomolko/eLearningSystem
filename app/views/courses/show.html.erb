@@ -24,13 +24,11 @@
     </div>
 
     <h1 class="subtitle is-5 is-pulled-right">Created by: <%= @course.user.name %> <%= time_ago_in_words(@course.created_at) %> ago</h1></br>
-   
-    <% @pages.each do |page| %>
-      <%= link_to page.title, course_page_path(@course, page), class: "pagination-link"%>
-    <% end %>
-    
     </br>
     <%= render 'follow_form' %> 
+    <%#= render 'complete' %>
+    <%= render 'action_buttons'%>
+    </br>
     <%= link_to 'Edit', edit_course_path(@course), { class: "button is-link is-small"} %> 
     <%= link_to 'Back', courses_path,{ class: "button is-small is-black"}  %>
   </div>

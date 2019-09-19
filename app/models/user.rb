@@ -2,6 +2,8 @@ class User < ApplicationRecord
   has_many :organizations
   has_many :courses, dependent: :destroy
   has_many :user_answers, dependent: :destroy
+  has_many :user_pages, dependent: :destroy
+  has_many :user_courses, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :following, through: :relationships, source: :followed 
 

@@ -1,0 +1,19 @@
+<% if all_user_pages_completed? && !check_on_completed(current_user) %>
+  <%= form_tag complete_user_course_path(@course), method: :patch, remote: true,  class: 'render-form' do %>
+    <%= hidden_field_tag(:user_id, current_user.id) %>
+    <%= hidden_field_tag(:course_id, @course.id) %>
+    <%= hidden_field_tag(:completed, true)%>
+    <%= submit_tag "Complete course", class: "button is-success is-rounded is-large is-centered" %>
+  <% end %>
+<% end %>
+<% if course_started?(@course) && !all_user_pages_completed? %>
+  <%= form_tag '/user_pages/continue', method: :post, remote: true,  class: 'render-form' do %>
+    <%= hidden_field_tag(:user_id, current_user.id) %>
+    <%= hidden_field_tag(:course_id, @course.id) %>
+    <%= submit_tag "Continue course", class: "button is-info is-rounded is-large is-centered" %>
+  <% end %>
+<% end %>
+</br>
+<% if check_on_completed(current_user) %>
+  <%= link_to "View Results", result_user_course_path(@course), class: "button is-large is-info is-fullwidth" %>
+<% end%>

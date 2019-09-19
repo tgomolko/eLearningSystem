@@ -84,14 +84,18 @@ $(document).on ("click", ".radio-add", function () {
   $("#radio-cont").append($("#radio-box").html());
 });
 
-
 $(document).on ("click", ".answer", function () {
-  //debugger
-
-  $(this).parent().append($(".add-from").html());
+  $(this).parent().find('.add-from').show();
   $(this).hide();
-  //$(this).find(".answer-field").append($(".add-from").html());
 });
+
+$(document).on ("click", ".hide-answer", function () {
+  $(this).parent().hide();
+  $(this).parent().parent().find('.answer').show()
+});
+
+
+
 
 $(document).on('change','.chp', function(e){
   if (this.checked) {

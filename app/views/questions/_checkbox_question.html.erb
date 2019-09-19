@@ -13,10 +13,10 @@
     <%= hidden_field_tag(:question_id, question.id) %>
     <%= hidden_field_tag(:page_id, @page.id) %>
     <%= hidden_field_tag(:user_id, current_user.id) %>
-    <% if !question.answered? %>
-      <%= submit_tag 'Answer on question', class: 'button is-small is-primary' %>
+    <% if answered?(question) %>
+      <%= submit_tag 'Question answered!', class: 'button is-small is-info is-dis' %>
     <% else %>
-      <%= submit_tag 'Question answered!',  class: 'button is-small is-info is-dis' %>
+      <%= submit_tag 'Answer on question', class: 'button is-small is-primary' %>
     <% end %>
   <% end %>
   <div id="box1" style="display: none">

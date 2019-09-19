@@ -9,15 +9,19 @@
       <%= render 'questions/checkbox_question', question: question %>
       <%= render 'questions/radio_question', question: question %>
     <% end %>
-    
-    <% @pages.each do |page| %>
-      <% if page.id != @page.id %>
-        <%= link_to page.title, course_page_path(@course, page), class: "pagination-link"%>
+    </br>
+      <%= form_tag user_pages_path, method: :post, class: 'render-form' do %>
+        <%= hidden_field_tag(:page_id, @page.id) %>
+        <%= hidden_field_tag(:user_id, current_user.id) %>
+        <%= hidden_field_tag(:course_id, @course.id) %>
+        <% if @page == @last_page %>
+          <%= submit_tag 'Submit last page', class: 'button is-medium is-info is-rounded' %>
+        <% else %>
+          <%= submit_tag 'Next page', class: 'button is-medium is-info is-rounded' %>
+        <% end %> 
       <% end %>
-    <% end %>
-    
      </br>
-    <%= link_to 'Edit', edit_course_page_path(@course, @page) , { class: "button is-link is-small"} %> 
+    <%= link_to 'Edit', edit_course_page_path(@course, @page) , { class: "button is-link is-small"} %>
     <%= link_to 'Back', course_path(@course),{ class: "button  is-small is-black"}  %>
   </div>
 </div>
