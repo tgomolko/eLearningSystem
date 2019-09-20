@@ -7,6 +7,7 @@ class Course < ApplicationRecord
   has_many :pages, dependent: :destroy 
   has_many :user_answers, dependent: :destroy
   has_many :user_courses, dependent: :destroy
+  has_many :course_raiting, dependent: :destroy
   validates :title, length: { maximum: 100 }, presence: true
   mount_uploader :image, ImageUploader
 

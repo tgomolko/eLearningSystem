@@ -4,28 +4,18 @@ class QuestionsController < ApplicationController
   
   def add
     @question = Question.new(question_params)
-    @question.answers = checkbox_question_answers_hash
-    respond_to do |format|
-      if @question.save 
-        format.html { redirect_to edit_course_page_path(@course, @page), notice: "Question was added" }
-      else
-       format.html { redirect_to edit_course_page_path(@course, @page), alert: "Something was wrong(" }
-      end
-    end
-  end
-
-  private 
-  
-  def checkbox_question_answers_hash
-    if params[:questions] && params[:answers]
-      answers = params[:answers]
-      checkbox_values = params[:questions][:content]
-      Hash[answers.zip checkbox_values]
+    
+    question_service = QuestionService.new(@question, params)
+    question_service.set_answers_values
+    if @question.save 
+      redirect_to edit_course_page_path(@course, @page), notice: t(:question_added) 
     else
-      Hash.new
+      redirect_to edit_course_page_path(@course, @page), alert: t(:something_wrong) 
     end
   end
 
+  private
+  
   def question_params
     params.permit(:content, :question_type, :page_id, :answer, :answers)
   end

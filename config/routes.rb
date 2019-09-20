@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     member do
       patch '/complete', to: 'courses#complete'
     end    
-    resources :pages
+    resources :pages, except: :index
   end
 
   resources :organizations do 
@@ -35,6 +35,8 @@ Rails.application.routes.draw do
       get :result
     end 
   end
+
+  resources :course_raitings, only: :create
   #patch '/courses/:id/complete', to: 'courses#complete'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

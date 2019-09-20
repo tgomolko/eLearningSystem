@@ -5,8 +5,14 @@
       <h1 class="title is-2">You results for <%= @course.title %> course</h1>
       <p>Answered correctly <%= @user_course.answered_correctly %></p>
       <p>Course passed on <%= @user_course.result %> %</p>
+      <% if course_has_any_rate?(@course)%>
+         <div class="review-rating" data-score="<%=  course_raiting(@course) %>"></div>
+      <% else %>
+        <h2 class="subtitle is-3">Rate this course</h2>
+        <%= render 'course_raitings/course_raiting_form'%>
+      <% end %>
     </br>
-      <%= link_to 'Back', course_path(@course), { class: "button  is-small is-black"} %>
+      <%= link_to 'Back', course_path(@course), { class: "button is-small is-black"} %>
     </div>
   </div>
 </div>

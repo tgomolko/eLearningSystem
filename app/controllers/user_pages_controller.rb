@@ -12,21 +12,21 @@ class UserPagesController < ApplicationController
         if next_page && @page != last_page
           redirect_to course_page_path(@course, next_page)
         else
-          redirect_to @course, notice: "You passed all pages and answered on all questions"
+          redirect_to @course, notice: t(:passed_all_pages)
         end
       else
-        redirect_to course_page_path(@course, @page), alert: "Something was wrong"
+        redirect_to course_page_path(@course, @page), alert: t(:something_wrong)
       end
     else
-      redirect_to course_page_path(@course, @page), alert: "You should answer all questions!!!"
+      redirect_to course_page_path(@course, @page), alert: t(:should_answer_all_questions)
     end
   end
 
   def continue
     if next_page
-      redirect_to course_page_path(@course, next_page), notice: "Welcome back"
+      redirect_to course_page_path(@course, next_page), notice: t(:welcome_back)
     else
-      redirect_to @course, alert: "Course have already completed"
+      redirect_to @course, alert: t(:course_already_completed)
     end
   end
 

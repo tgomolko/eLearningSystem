@@ -7,13 +7,6 @@ class UserCourseCompleteService
     @true_user_answers = 0
   end
 
-  def count_true_answered_questions
-    return if get_all_questions_of_course.size == 0 #if page doesn't have any question
-    count_true_answers_on_text_questions
-    count_true_answers_on_another_questions
-    @true_user_answers
-  end
-
   def create_user_course
     answered_right = count_true_answered_questions
     if answered_right 
@@ -24,12 +17,19 @@ class UserCourseCompleteService
     end
     @user_course
   end
+  
+  private 
+
+  def count_true_answered_questions
+    return if get_all_questions_of_course.size == 0 #if page doesn't have any question
+    count_true_answers_on_text_questions
+    count_true_answers_on_another_questions
+    @true_user_answers
+  end
 
   def result
     ((@true_user_answers.to_f / get_all_questions_of_course.size) * 100).round(2)
   end
-
-  private 
 
   def get_all_questions_of_course
     all_course_questions = []

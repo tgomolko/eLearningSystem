@@ -1,0 +1,10 @@
+<% if user_rated_course?(@course, current_user) %>
+  <%= form_tag course_raitings_path, method: :post, class: 'render-form' do %> 
+      <%= hidden_field_tag(:user_id, current_user.id) %>
+      <%= hidden_field_tag(:course_id, @course.id) %>
+      <div id = 'rating-form'> 
+        <label class="subtitle is-5">Rate, please</label>
+      </div>
+      <%= submit_tag 'Rate', class: 'button is-small is-info is-rounded', id: "rate-bnt" %>       
+  <% end %>
+<% end %>

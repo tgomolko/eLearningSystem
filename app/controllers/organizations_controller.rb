@@ -26,7 +26,7 @@ class OrganizationsController < ApplicationController
   def create
     @organization = current_user.organizations.build(organization_params)
     if @organization.save
-      redirect_to @organization, notice: t(:org_created_successully)
+      redirect_to @organization, notice: t(:org_created_successfully)
     else
       render :new 
     end
@@ -36,7 +36,7 @@ class OrganizationsController < ApplicationController
   # PATCH/PUT /organizations/1.json
   def update   
     if @organization.update(organization_params)
-      redirect_to @organization, notice: t(:org_updated_successully)
+      redirect_to @organization, notice: t(:org_updated_successfully)
     else
       render :edit
     end  
@@ -46,13 +46,13 @@ class OrganizationsController < ApplicationController
   # DELETE /organizations/1.json
   def destroy
     @organization.destroy
-    redirect_to organizations_url, notice: t(:org_destroyed_successully)
+    redirect_to organizations_url, notice: t(:org_destroyed_successfully)
   end
 
   def approve
     approve_service = OrganizationApproveService.new(@organization)
     if approve_service.approve_organization
-      redirect_to admin_pending_org_path, notice: t(:org_aproved_successully)
+      redirect_to admin_pending_org_path, notice: t(:org_aproved_successfully)
     else
       redirect_to admin_pending_org_path, alert: t(:org_already_approved)
     end
@@ -61,7 +61,7 @@ class OrganizationsController < ApplicationController
   def reject 
     approve_service = OrganizationApproveService.new(@organization)
     if approve_service.reject_organization
-      redirect_to admin_pending_org_path, notice: t(:org_rejected_successully)
+      redirect_to admin_pending_org_path, notice: t(:org_rejected_successfully)
     else
       redirect_to admin_pending_org_path, alert: t(:org_already_rejected)
     end

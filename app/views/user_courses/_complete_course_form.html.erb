@@ -1,0 +1,8 @@
+<% if all_user_pages_completed? && !check_on_completed(current_user) %>
+  <%= form_tag complete_user_course_path(@course), method: :patch, remote: true,  class: 'render-form' do %>
+    <%= hidden_field_tag(:user_id, current_user.id) %>
+    <%= hidden_field_tag(:course_id, @course.id) %>
+    <%= hidden_field_tag(:completed, true)%>
+    <%= submit_tag "Complete course", class: "button is-success is-rounded is-large is-centered" %>
+  <% end %>
+<% end %>

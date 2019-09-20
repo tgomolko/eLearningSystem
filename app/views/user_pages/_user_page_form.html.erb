@@ -1,0 +1,10 @@
+<%= form_tag user_pages_path, method: :post, class: 'render-form' do %>
+  <%= hidden_field_tag(:page_id, @page.id) %>
+  <%= hidden_field_tag(:user_id, current_user.id) %>
+  <%= hidden_field_tag(:course_id, @course.id) %>
+  <% if @page == @last_page %>
+    <%= submit_tag 'Submit last page', class: 'button is-medium is-info is-rounded' %>
+  <% else %>
+    <%= submit_tag 'Next page', class: 'button is-medium is-info is-rounded' %>
+  <% end %> 
+<% end %>

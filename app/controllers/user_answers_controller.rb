@@ -6,12 +6,10 @@ class UserAnswersController < ApplicationController
     @user_answer = UserAnswer.new(user_answer_params)
 
     @user_answer.answers = user_question_answers_hash
-    respond_to do |format|
-      if @user_answer.save
-        format.html { redirect_to course_page_path(@course, @page), notice: "You answer was accepted" }
-      else
-       format.html { redirect_to course_page_path(@course, @page), alert: "Something was wrong" } 
-      end
+    if @user_answer.save
+      redirect_to course_page_path(@course, @page), notice: t(:answer_accepted)
+    else
+      redirect_to course_page_path(@course, @page), alert: t(:something_wrong)
     end
   end
 

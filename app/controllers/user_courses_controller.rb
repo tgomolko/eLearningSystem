@@ -9,9 +9,9 @@ class UserCoursesController < ApplicationController
     user_course_complete_service = UserCourseCompleteService.new(@course, current_user, @user_course)
     @user_course = user_course_complete_service.create_user_course
     if @user_course.save
-      redirect_to @course, notice: "You passed course"
+      redirect_to @course, notice: t(:course_passed)
     else
-      redirect_to @course, alert: "Something was wrong!"
+      redirect_to @course, alert: t(:something_wrong)
     end
   end
 
@@ -29,12 +29,12 @@ class UserCoursesController < ApplicationController
 
   def check_on_completed
     if current_user.user_courses.pluck(:course_id).include?(@course.id)
-      redirect_to @course, alert: "Course have already completed"
+      redirect_to @course, alert: t(:course_already_completed)
     end
   end
 
   def set_user_course
     @course = Course.find(params[:id])
-    @user_course = current_user.user_courses.find(@course.id)
+    @user_course = current_user.user_courses.where(course_id: @course.id).first
   end
 end

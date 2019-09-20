@@ -10,11 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_18_123622) do
+ActiveRecord::Schema.define(version: 2019_09_19_132651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "plpgsql"
+
+  create_table "course_raitings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "course_id"
+    t.integer "rate", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_course_raitings_on_course_id"
+    t.index ["user_id"], name: "index_course_raitings_on_user_id"
+  end
 
   create_table "courses", force: :cascade do |t|
     t.string "title"
@@ -120,6 +130,8 @@ ActiveRecord::Schema.define(version: 2019_09_18_123622) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "course_raitings", "courses"
+  add_foreign_key "course_raitings", "users"
   add_foreign_key "courses", "users"
   add_foreign_key "organizations", "users"
   add_foreign_key "pages", "courses"

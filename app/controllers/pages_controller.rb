@@ -20,7 +20,7 @@ class PagesController < ApplicationController
   def create
     @page = @course.pages.build(page_params)
     if @page.save
-      redirect_to course_path(@course), notice: 'Page was successfully created.'
+      redirect_to course_path(@course), notice: t(:page_created_successully)
     else
       render :new
     end
@@ -28,9 +28,9 @@ class PagesController < ApplicationController
 
   def update
     if @page.update(page_params)
-      redirect_to edit_course_page_path(@course, @page), notice: 'Page was successfully updated.'
+      redirect_to edit_course_page_path(@course, @page), notice: t(:page_updated_successfully)
     else
-      ender :edit 
+      render :edit 
     end
   end
 
@@ -48,20 +48,16 @@ class PagesController < ApplicationController
     params.require(:page).permit(:title, :content, :course_id)
   end
 
-  def all_user_pages_completed?
-    current_user.user_pages.size == @course.pages.size
-  end
-
   def dont_show_completed_page
     user_completed_pages_ids = current_user.user_pages.where(completed: true).pluck(:page_id)
     if user_completed_pages_ids.include?(@page.id)
-      redirect_to @course, alert: "You have already passed that page"
+      redirect_to @course, alert: t(:page_passed)
     end
   end
 
   def dont_show_pages_not_following_course
     unless current_user.following?(@course)
-      redirect_to @course, alert: "Start follow course before"
+      redirect_to @course, alert: t(:start_follow_course)
     end
   end
 end

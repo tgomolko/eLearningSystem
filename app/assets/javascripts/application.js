@@ -16,6 +16,7 @@
 //= require_tree .
 //= require jquery
 //= require jquery_ujs
+//= require jquery.raty
 
 document.addEventListener("turbolinks:load", function() {
 
@@ -56,9 +57,24 @@ document.addEventListener("turbolinks:load", function() {
 
 });
 
+var imgs = $('img');
+var img1 = imgs[0]
 
-setTimeout("$('.notification').fadeOut(3000).slideUp(500)");
 $(document).ready (function () {
+setTimeout("$('.notification').fadeOut(3000).slideUp(500)");
+
+$('#rating-form').raty({
+  path: '/assets/',
+  scoreName: 'rate'
+});
+
+$('.review-rating').raty({
+  readOnly: true,
+  rate: function() {
+  return $(this).attr('data-score');
+  },
+  path: '/assets/'
+});
 
 $(document).on("click","#add-q", function() {
   $("#main").append($(".add-from").html());
@@ -94,9 +110,6 @@ $(document).on ("click", ".hide-answer", function () {
   $(this).parent().parent().find('.answer').show()
 });
 
-
-
-
 $(document).on('change','.chp', function(e){
   if (this.checked) {
     $(this).parent().find('.hid-f').remove();
@@ -116,4 +129,9 @@ $(document).on('change','.rd', function(e){
   $(this).parent().find('.hid-f').remove();
 });
 
+$('#rating-form').find('img').on('click', function() {
+  $('#rate-bnt').show();
 });
+
+});
+
