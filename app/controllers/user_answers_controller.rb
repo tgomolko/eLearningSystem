@@ -5,7 +5,8 @@ class UserAnswersController < ApplicationController
   def create
     @user_answer = UserAnswer.new(user_answer_params)
 
-    @user_answer.answers = user_question_answers_hash
+    user_answer_service = UserAnswerService.new(@user_answer, params)
+    user_answer_service.set_user_answers_values
     if @user_answer.save
       redirect_to course_page_path(@course, @page), notice: t(:answer_accepted)
     else
@@ -17,16 +18,6 @@ class UserAnswersController < ApplicationController
 
   def user_answer_params
     params.permit(:answer, :question_id, :course_id, :user_id, :answers)
-  end
-
-  def user_question_answers_hash
-    if params[:user] && params[:answer_keys]
-      answers = params[:user][:answers]
-      answers_keys = params[:answer_keys]
-      Hash[answers_keys.zip answers]
-    else
-      Hash.new
-    end
   end
 
   def set_question
