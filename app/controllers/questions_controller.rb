@@ -7,6 +7,7 @@ class QuestionsController < ApplicationController
     
     question_service = QuestionService.new(@question, params)
     question_service.set_answers_values
+    binding.pry
     if @question.save 
       redirect_to edit_course_page_path(@course, @page), notice: t(:question_added) 
     else
