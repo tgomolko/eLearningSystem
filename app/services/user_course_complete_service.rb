@@ -12,6 +12,7 @@ class UserCourseCompleteService
     if answered_right 
       @user_course.result = result
       @user_course.answered_correctly = answered_right
+      generate_certificate(@current_user, @course)
     else
       @user_course.result = 0
     end
@@ -28,7 +29,7 @@ class UserCourseCompleteService
   end
 
   def result
-    ((@true_user_answers.to_f / get_all_questions_of_course.size) * 100).round(2)
+    @result = ((@true_user_answers.to_f / get_all_questions_of_course.size) * 100).round(2)
   end
 
   def get_all_questions_of_course
@@ -83,5 +84,11 @@ class UserCourseCompleteService
       end
     end
     @true_user_answers
+  end
+
+  def generate_certificate(user, course)
+    return if @result <= 90
+    certificate_path = TestPdfForm.new(user, course).export()
+    @user_course.certificate_path = certificate_path
   end
 end

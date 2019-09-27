@@ -28,8 +28,9 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = current_user.courses.build(course_params)
+    
     if @course.save
-      redirect_to @course, notice: t(:course_created_successully)
+      redirect_to @course, notice: t(:course_created_successfully)
     else
       render :new
     end
@@ -60,7 +61,9 @@ class CoursesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def course_params
-    params.require(:course).permit(:title, :description, :aasm_state, :user_id, :requirements, :access_state, :image)
+    params.require(:course).permit(:title, :description, :aasm_state, :user_id, 
+                                   :requirements, :access_state, :image, 
+                                   :attachment_pdf)
   end
 
   def course_raiting

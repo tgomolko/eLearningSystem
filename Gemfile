@@ -37,6 +37,10 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'carrierwave'
 gem 'mini_magick'
+gem "paperclip"
+gem 'paperclip-ghostscript'
+gem 'pdftk', '~> 0.0.4'
+gem 'pdf-forms'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

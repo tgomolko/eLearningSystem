@@ -23,7 +23,14 @@
     <div class="feature-image is-centered">
       <%= image_tag(@course.image_url(:thumb)) if @course.image_url %>
     </div>
-
+    <hr/>
+   
+    <% if @course.attachment_pdf_file_name %>
+      <%= link_to @course.attachment_pdf.url do %>
+        <span class=""><i class="fa fa-file-pdf-o" aria-hidden="true"></i></span>
+      <% end %>
+    <% end %>
+   
     <h1 class="subtitle is-5 is-pulled-right">Created by: <%= @course.user.name %> <%= time_ago_in_words(@course.created_at) %> ago</h1></br>
     </br>    
     <%= render 'follow_form' %> 

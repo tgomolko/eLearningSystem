@@ -11,6 +11,12 @@
         <h2 class="subtitle is-3">Rate this course</h2>
         <%= render 'course_raitings/course_raiting_form'%>
       <% end %>
+      <% if @user_course.certificate_path %>
+        You certificate:<%= link_to certificate_url(@user_course.certificate_path) do %>
+          <span class=""><i class="fa fa-file-pdf-o" aria-hidden="true"></i></span>
+        <% end %>
+      <% end %>
+       <hr/>
     </br>
       <%= link_to 'Back', course_path(@course), { class: "button is-small is-black"} %>
     </div>

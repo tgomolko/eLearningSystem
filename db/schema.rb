@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_19_132651) do
+ActiveRecord::Schema.define(version: 2019_09_27_084309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -36,6 +36,10 @@ ActiveRecord::Schema.define(version: 2019_09_19_132651) do
     t.datetime "updated_at", null: false
     t.string "access_state"
     t.string "image"
+    t.string "attachment_pdf_file_name"
+    t.string "attachment_pdf_content_type"
+    t.bigint "attachment_pdf_file_size"
+    t.datetime "attachment_pdf_updated_at"
     t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
@@ -101,6 +105,7 @@ ActiveRecord::Schema.define(version: 2019_09_19_132651) do
     t.integer "answered_correctly", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "certificate_path"
     t.index ["course_id"], name: "index_user_courses_on_course_id"
     t.index ["user_id"], name: "index_user_courses_on_user_id"
   end
