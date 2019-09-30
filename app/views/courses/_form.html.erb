@@ -45,13 +45,19 @@
         </div>
       </div>
       <output id="list"></output>
-    <hr />
-  <label class="file-label">
-    <%= f.input :attachment_pdf, as: :file, input_html: { class:"55" }, label: false, wrapper: false %>
-    <span class="file-cta">
-                <span class="file-icon"><i class="fa fa-upload"></i></span>
-                <span class="file-label">Choose a pdf…</span>
-              </span>
-  </label>
-  <%= f.button :submit, class: "button is-primary is-large is-rounded mv4" %>
+    <hr/>
+     
+    <div class="field">
+      <div class="control">
+        <label class="label">Add Certificate template</label>
+          <div class="file">
+            <label class="file-label">
+              <%= f.input :attachment_pdf, as: :file, input_html: { class: "pdf-btn" }, label: false, wrapper: false %>
+            </label>
+          </div>
+        </label>
+      </div>
+    </div>
+    <hr/>
+  <%= f.button :submit, class: "button is-primary is-large is-rounded is-centered mv4 " %>
 <% end %>
