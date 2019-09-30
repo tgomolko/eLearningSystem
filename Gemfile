@@ -66,6 +66,8 @@ group :development do
   gem 'guard'
   gem 'guard-livereload'
   gem 'pry'
+  gem 'bullet'
+  gem 'ruby-growl'
 end
 
 group :test do
