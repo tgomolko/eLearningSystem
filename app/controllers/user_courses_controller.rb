@@ -1,7 +1,9 @@
 class UserCoursesController < ApplicationController
-  before_action :set_course, :check_on_completed, only: [:complete]
+  before_action :set_course, :completed?, only: [:complete]
   before_action :set_user_course, only: :result
   before_action :authenticate_user!
+  
+  include UserCourseHelper
   
   def complete
     @user_course = UserCourse.new(user_course_params)
@@ -27,10 +29,8 @@ class UserCoursesController < ApplicationController
     params.permit(:user_id, :course_id, :completed, :result, :answered_correctly)
   end
 
-  def check_on_completed
-    if current_user.user_courses.pluck(:course_id).include?(@course.id)
-      redirect_to @course, alert: t(:course_already_completed)
-    end
+  def completed?
+    redirect_to @course, alert: t(:course_already_completed) if check_on_completed(current_user)
   end
 
   def set_user_course

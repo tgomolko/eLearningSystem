@@ -17,6 +17,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.raty
+//= require jquery-ui
 
 document.addEventListener("turbolinks:load", function() {
 
@@ -134,4 +135,3 @@ $('#rating-form').find('img').on('click', function() {
 });
 
 });
-
