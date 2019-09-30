@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
     @pages = @course.pages
-    @course_raiting = course_raiting
+    @course_raiting = CourseRaitingService.new(@course).calculate_course_raiting
   end
 
   # GET /courses/new
@@ -64,13 +64,5 @@ class CoursesController < ApplicationController
     params.require(:course).permit(:title, :description, :aasm_state, :user_id, 
                                    :requirements, :access_state, :image, 
                                    :attachment_pdf)
-  end
-
-  def course_raiting
-    if @course.course_raiting.any?
-      (@course.course_raiting.pluck(:rate).reduce(:+) / @course.course_raiting.pluck(:rate).size.to_f).to_i
-    else
-      return 0
-    end
   end
 end
