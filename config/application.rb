@@ -10,6 +10,7 @@ module ELearningSystem
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    config.autoload_paths += %W(#{config.root}/services)
     config.i18n.default_locale = :en
     config.i18n.available_locales = :en
     # Settings in config/environments/* take precedence over those specified here.

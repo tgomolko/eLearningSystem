@@ -19,9 +19,28 @@
   box-shadow: 0 0 1px 1px rgba(20,23,28,.1),0 3px 1px 0 rgba(20,23,28,.1);
   height: 65px;
 }
-.navbar-end{
-  margin-left: 75%;
-}
+
 .navbar-brand{
   margin-left: 10%;
+}
+.fa.fa-check-circle.fa-2x{
+  margin-right: 10px;
+  margin-top: 2px;
+  color: green;
+}
+
+.fa.fa-close.fa-2x{
+  color: red;
+  margin-top: 2px;
+  margin-right: 10px;
+}
+.fa.fa-pencil.fa-2x{
+  color: blue;
+  margin-top: 2px;
+  margin-right: 10px;
+}
+.fa.fa-trash.fa-2x{
+  color: red;
+  margin-top: 2px;
+  margin-right: 10px;
 }

@@ -5,16 +5,16 @@ class Organization < ApplicationRecord
   validates :company_name, length: { maximum: 100 }, presence: true
 
   aasm do
-    state :pending
-    state :approved, initial: true
+    state :pending, initial: true
+    state :approved
     state :rejected 
 
     event :approve do
-      transitions from: :pending, to: :approved
+      transitions from: [:pending, :rejected], to: :approved
     end
 
     event :reject do
-      transitions from: :pending, to: :rejected
+      transitions from: [:pending, :approved], to: :rejected
     end
   end
 end

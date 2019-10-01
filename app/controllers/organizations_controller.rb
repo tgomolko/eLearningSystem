@@ -1,5 +1,5 @@
 class OrganizationsController < ApplicationController
-  before_action :set_organization, only: [:show, :edit, :update, :destroy]
+  before_action :set_organization, only: [:show, :edit, :update, :destroy, :approve, :reject]
   before_action :authenticate_user!
 
   # GET /organizations
@@ -47,6 +47,24 @@ class OrganizationsController < ApplicationController
   def destroy
     @organization.destroy
     redirect_to organizations_url, notice: t(:org_destroyed_successully)
+  end
+
+  def approve
+    approve_service = OrganizationApproveService.new(@organization)
+    if approve_service.approve_organization
+      redirect_to admin_pending_org_path, notice: t(:org_aproved_successully)
+    else
+      redirect_to admin_pending_org_path, alert: t(:org_already_approved)
+    end
+  end
+
+  def reject 
+    approve_service = OrganizationApproveService.new(@organization)
+    if approve_service.reject_organization
+      redirect_to admin_pending_org_path, notice: t(:org_rejected_successully)
+    else
+      redirect_to admin_pending_org_path, alert: t(:org_already_rejected)
+    end
   end
 
   private
