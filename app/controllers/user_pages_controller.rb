@@ -3,10 +3,12 @@ class UserPagesController < ApplicationController
   before_action :set_course, only: [:create, :continue]
   before_action :authenticate_user!
 
+  include UserAnswerHelper
+
   def create
     @user_page = UserPage.new(user_page_params)
     
-    if all_question_answered?
+    if all_question_answered?(@page)
       @user_page.completed = true
       if @user_page.save
         if next_page && @page != last_page
@@ -52,11 +54,5 @@ class UserPagesController < ApplicationController
 
   def last_page
     @course.pages.order("created_at DESC").max
-  end
-
-  def all_question_answered?
-    page_questions = @page.questions
-    user_answers_count = current_user.user_answers.where(question_id: page_questions.pluck(:id)).size
-    user_answers_count == page_questions.size
   end
 end
