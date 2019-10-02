@@ -6,163 +6,18 @@
     </div>
   </div>
 
-
   <div class="columns">
-  
-    <div class="column">
-      <div class="dashboard">
-        <h1 class="title is-3 is-board">Current Courses</h1>
-        <table class="table is-bordered is-hoverable is-striped">
-          <thead>
-            <tr class="is-selected">
-              <th>Course name</th>
-              <th>Percent of passing %</th>
-            </tr>
-          </thead>
-           <tbody>
-            <% @uncompleted_courses.each do |course| %>
-              <tr>
-                <th><%= link_to course.title, course_path(course) %></th>
-                <th><%= percent_of_progess(course, current_user) %></th>
-              </tr>
-            <% end %>
-          </tbody>
-          <tr>
-            <td colspan="2" style="text-align: center;">&nbsp;<%= link_to "show more", "#", class: "button is-link"%></td>
-          </tr>
-        </table>
-      </div>
-    </div>
-
-    <div class="column">
-      <div class="dashboard">
-        <h1 class="title is-3 is-board">Curses in organizations</h1>
-        <table class="table is-bordered">
-          <thead>
-            <tr class="is-selected">
-              <th>Course name</th>
-              <th>Percent of passing %</th>
-            </tr>
-          </thead>
-           <tbody>
-            <% @uncompleted_courses.each do |course| %>
-              <tr>
-                <th><%= link_to course.title, course_path(course) %></th>
-                <th><%= percent_of_progess(course, current_user) %></th>
-              </tr>
-            <% end %>
-          </tbody>
-          <tr>
-            <td colspan="2" style="text-align: center;">&nbsp;<%= link_to "show more", "#", class: "button is-link"%></td>
-          </tr>
-        </table>
-      </div>
-    </div>
-
-    <div class="column">
-      <div class="dashboard">
-        <h1 class="title is-3 is-board">Courses in not orgs</h1>
-        <table class="table is-bordered">
-          <thead>
-            <tr class="is-selected">
-              <th>Course name</th>
-              <th>Percent of passing %</th>
-            </tr>
-          </thead>
-           <tbody>
-            <% @uncompleted_courses.each do |course| %>
-              <tr>
-                <th><%= link_to course.title, course_path(course) %></th>
-                <th><%= percent_of_progess(course, current_user) %></th>
-              </tr>
-            <% end %>
-          </tbody>
-          <tr>
-            <td colspan="2" style="text-align: center;">&nbsp;<%= link_to "show more", "#", class: "button is-link"%></td>
-          </tr>
-        </table>
-      </div>
-    </div>
+    <%= render "user/dashboard/current_courses"%>
+    <%= render "user/dashboard/org_courses"%>
+    <%= render "user/dashboard/not_org_courses" %>
   </div>
 
   <div class="columns">
-    <div class="column">
-      <div class="dashboard">
-        <h1 class="title is-3 is-board">Favorites</h1>
-        <table class="table is-bordered">
-          <thead>
-            <tr class="is-selected">
-              <th>Course name</th>
-              <th>Percent of passing %</th>
-            </tr>
-          </thead>
-           <tbody>
-            <% @uncompleted_courses.each do |course| %>
-              <tr>
-                <th><%= link_to course.title, course_path(course) %></th>
-                <th><%= percent_of_progess(course, current_user) %></th>
-              </tr>
-            <% end %>
-          </tbody>
-          <tr>
-            <td colspan="2" style="text-align: center;">&nbsp;<%= link_to "show more", "#", class: "button is-link"%></td>
-          </tr>
-        </table>
-      </div>
-    </div>
-
-    <div class="column">
-      <div class="dashboard">
-        <h1 class="title is-3 is-board">Last completed</h1>
-        <table id="completed-table" class="table is-bordered is-hoverable">
-          <thead>
-            <tr class="is-selected">
-              <th>Course name</th>
-            </tr>
-          </thead>
-           <tbody>
-            <% @completed_courses.each do |course| %>
-              <tr>
-                <th><%= link_to course.title, course_path(course) %></th>
-              </tr>
-            <% end %>   
-          </tbody>
-          <tr>
-            <td colspan="2" style="text-align: center;">&nbsp;<%= link_to "show more", "#", class: "button is-link"%></td>
-          </tr>
-        </table>
-      </div>
-    </div>
-
-    <div class="column">
-      <div class="dashboard">
-        <h1 class="title is-3 is-board">Recomendations</h1>
-        <table class="table is-bordered">
-          <thead>
-            <tr class="is-selected">
-              <th>Course name</th>
-              <th>Course Raiting</th>
-            </tr>
-          </thead>
-           <tbody>
-            <% @highest_rate_courses.each do |course| %>
-              <tr>
-                <th><%= link_to course.title, course_path(course) %></th>
-                
-                <th><div class="review-rating" data-score="<%= course_raiting(course)%>"></div></th>
-              </tr>
-            <% end %>
-          </tbody>
-          <tr>
-            <td colspan="2" style="text-align: center;">&nbsp;<%= link_to "show more", "#", class: "button is-link"%></td>
-          </tr>
-        </table>
-      </div>
-    </div>
+    <%= render "user/dashboard/favorites_courses"%>
+    <%= render "user/dashboard/last_completed_courses"%>
+    <%= render "user/dashboard/recomendations"%>
   </div>
 
-</br>
+  </br>
   <%= link_to 'Back', root_path, { class: "button  is-small is-black"} %>
 </div>
-
-

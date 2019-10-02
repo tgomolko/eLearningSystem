@@ -1,0 +1,24 @@
+<div class="column">
+  <div class="dashboard">
+    <h1 class="title is-3 is-board">Favorites</h1>
+    <table id="completed-table" class="table is-bordered is-hoverable is-striped">
+      <thead>
+        <tr class="is-selected">
+          <th>Course name</th>
+          <th>Course raiting</th>
+        </tr>
+      </thead>
+       <tbody>
+        <% @favorite_courses.each do |course| %>
+          <tr>
+            <th><%= link_to course.title, course_path(course) %></th>
+            <th><div class="review-rating" data-score="<%= course_raiting(course)%>"></div></th>
+          </tr>
+        <% end %>
+      </tbody>
+      <tr>
+        <td colspan="2" style="text-align: center;">&nbsp;<%= link_to "show more", "#", class: "button is-link"%></td>
+      </tr>
+    </table>
+  </div>
+</div>

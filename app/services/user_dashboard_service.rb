@@ -20,4 +20,9 @@ class UserDashboardService
     highest_rate_courses_ids = CourseRaiting.all.order(:rate).last(5).pluck(:course_id)
     Course.where(id: highest_rate_courses_ids)
   end
+
+  def get_favorite_courses
+    favorite_courses_ids = @user.bookmarks.pluck(:course_id)
+    Course.where(id: favorite_courses_ids)
+  end
 end
