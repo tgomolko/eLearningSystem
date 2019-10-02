@@ -6,7 +6,8 @@ module CourseHelper
   
   def percent_of_progess(course, user)
     course_pages_ids = course.pages.pluck(:id)
+    return 100 if course_pages_ids.empty?
     completed_pages = current_user.user_pages.where(page_id: course_pages_ids).size
-    (completed_pages / course.pages.size) * 100
+    (completed_pages.to_f / course.pages.size) * 100
   end
 end

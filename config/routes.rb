@@ -26,7 +26,8 @@ Rails.application.routes.draw do
   post 'questions/add'
   post 'user_answers/create'
 
-  get 'user/dashboard'
+  get 'user_dashboard/dashboard'
+  get 'user_dashboard/current_courses'
 
   resources :user_pages, only: :create 
   post 'user_pages/continue'
