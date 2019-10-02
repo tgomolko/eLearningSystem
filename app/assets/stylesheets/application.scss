@@ -143,3 +143,33 @@
   background-size: 1rem 1rem;
   background-color: #ffc107;
 }
+
+.dashboard{
+  width: 378px;
+  text-align: center;
+}
+
+.showmore{
+  text-align: center;
+}
+#completed-table{
+  margin: 0 auto;
+}
+
+.fa.fa-bookmark.fa-3x{
+  color: orange;
+  cursor: pointer;
+}
+
+.fa.fa-bookmark-o.fa-3x:hover{
+  color: orange;
+}
+
+.fa.fa-bookmark-o.fa-3x{
+  cursor: pointer;
+}
+
+.fa-bm{
+  border: none;
+  background: none;
+}

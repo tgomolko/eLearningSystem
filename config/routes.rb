@@ -26,9 +26,11 @@ Rails.application.routes.draw do
   post 'questions/add'
   post 'user_answers/create'
 
+  get 'user/dashboard'
+
   resources :user_pages, only: :create 
   post 'user_pages/continue'
-  #post 'user_courses/:id/complete', to: 'user_courses#complete'
+ 
   resources :user_courses, only: [] do
     member do 
       patch :complete
@@ -37,6 +39,7 @@ Rails.application.routes.draw do
   end
 
   resources :course_raitings, only: :create
+  resources :bookmarks, only: [:create, :destroy]
   #patch '/courses/:id/complete', to: 'courses#complete'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

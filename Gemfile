@@ -41,6 +41,7 @@ gem "paperclip"
 gem 'paperclip-ghostscript'
 gem 'pdftk', '~> 0.0.4'
 gem 'pdf-forms'
+gem 'jquery-datatables'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

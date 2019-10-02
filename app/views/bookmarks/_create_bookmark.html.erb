@@ -1,0 +1,7 @@
+<%= form_tag bookmarks_path, method: :post do %> 
+  <%= hidden_field_tag(:user_id, current_user.id) %>
+  <%= hidden_field_tag(:course_id, @course.id) %>   
+  <%= button_tag "", class: "fa-bm" do %>
+     <i class="fa fa-bookmark-o fa-3x" aria-hidden="true"></i>
+  <% end %>
+<% end %>

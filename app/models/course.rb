@@ -4,10 +4,11 @@ class Course < ApplicationRecord
   ACCESS_STATE = %w{ Public Private Individual }
   
   belongs_to :user
-  has_many :pages, dependent: :destroy 
+  has_many :pages, dependent: :destroy
   has_many :user_answers, dependent: :destroy
   has_many :user_courses, dependent: :destroy
   has_many :course_raiting, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
 
   has_attached_file :attachment_pdf, { url: '/attachment_pdf/:id/:filename',
                                        path: "public/attachment_pdf/:id/:filename" }
