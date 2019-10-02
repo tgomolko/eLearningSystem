@@ -6,9 +6,9 @@ class CourseRaitingsController < ApplicationController
     @course_raiting = CourseRaiting.new(course_raiting_params)
     
     if @course_raiting.save
-      redirect_to @course, notice: 'You rated course, thanks'
+      redirect_to @course, notice: t(:rated_course)
     else
-       redirect_to @course, alert: "Something was wrong"
+       redirect_to @course, alert: t(:something_wrong)
     end
   end
 
