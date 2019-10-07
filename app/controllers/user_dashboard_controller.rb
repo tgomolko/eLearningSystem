@@ -1,31 +1,35 @@
 class UserDashboardController < ApplicationController
   before_action :authenticate_user!
-  before_action :service_dashboard, only: [:dashboard, :current_courses]
+  before_action :service_dashboard
   helper_method :sort_column, :sort_direction
 
-  
   def dashboard
     @uncompleted_courses = @user_dashboard_service.get_uncompleted_courses.last(5)
-    @completed_courses = @user_dashboard_service.get_completed_courses
-    @highest_rate_courses = @user_dashboard_service.get_highest_rate_courses
-    @favorite_courses = @user_dashboard_service.get_favorite_courses
+    @completed_courses = @user_dashboard_service.get_completed_courses.last(5)
+    @highest_rate_courses = @user_dashboard_service.get_highest_rate_courses.last(5)
+    @favorite_courses = @user_dashboard_service.get_favorite_courses.last(5)
   end
 
   def current_courses
-    if sort_column && sort_direction
-      @current_courses = Course.all.paginate(:page => params[:page], :per_page => 10).order(sort_column + " " + sort_direction)
-      #@current_courses = @user_dashboard_service.get_uncompleted_courses.paginate(:page => params[:page], :per_page => 10).order(sort_column + " " + sort_direction)
-    end
-    if params[:search]
-      @current_courses = Course.all.paginate(:page => params[:page], :per_page => 10).where(["title LIKE ?", "%#{params[:search]}%"])
-      #@current_courses = @user_dashboard_service.get_uncompleted_courses.where(["title LIKE ?", "%#{params[:search]}%"])
-    end
+    @current_courses = @user_dashboard_service.current_courses_search
+  end
+
+  def favorites
+    @favorite_courses = @user_dashboard_service.favorites_courses_search
+  end
+
+  def last_completed
+    @completed_courses = @user_dashboard_service.completed_courses_search
+  end
+
+  def recomendations
+    @highest_rate_courses = @user_dashboard_service.recomendation_courses_search
   end
 
   private 
 
   def service_dashboard
-    @user_dashboard_service = UserDashboardService.new(current_user) 
+    @user_dashboard_service = UserDashboardService.new(current_user, params) 
   end
 
   def sort_column

@@ -1,28 +1,33 @@
 <div class="section">
   <div class="container">
     <div class="columns is-centered">
-      <h1 class="title is-2">Current Courses</h1>
+      <h1 class="title is-2">Recomendations</h1>
   </div>
 </div>
 <div class="columns">
   <div class="column">
-    <%= render 'search' %>
+    <%= form_tag user_dashboard_recomendations_path, method: :get, class: "search-form" do  %>
+      <%= text_field_tag :q, params[:q], class: "string required input search" %>
+      <%= submit_tag "Search", class: "button is-info is-rounded"%>
+    <% end %>
     <table id="current-tb" class="table is-bordered is-hoverable is-striped">
       <thead>
         <tr class="is-selected">
           <th><%= sortable "title" %></th>
-          <th><%= link_to "Percent of passing"%></th>
           <th><%= sortable "created_at", "Created"%></th>
+          <th><%= sortable "user_id", "Author"%></th>
           <th><%= sortable "access_state", "Access Status"%></th>
+          <th><%= link_to "Raiting" %></th>
         </tr>
       </thead>
        <tbody>
-        <% @current_courses.each do |course| %>
+        <% @highest_rate_courses.each do |course| %>
           <tr>
             <th><%= link_to course.title, course_path(course) %></th>
-            <th><%= percent_of_progess(course, current_user) %></th>
             <th><%= course.created_at.strftime("%B %e, %Y") %>
+            <th><%= course.user.name %>  
             <th><%= course.access_state %>
+            <th><div class="review-rating" data-score="<%= course_raiting(course)%>"></div></th>
           </tr>
         <% end %>
       </tbody>
@@ -33,7 +38,7 @@
 <div class="section">
   <div class="container">
     <div class="columns is-centered">
-      <%= will_paginate @current_courses, renderer: BulmaPagination::Rails %>
+      <%= will_paginate @highest_rate_courses, renderer: BulmaPagination::Rails %>
     </div>
     </br>
     <%= link_to 'Back', user_dashboard_path, { class: "button  is-small is-black"} %>

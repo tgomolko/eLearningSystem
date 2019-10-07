@@ -15,6 +15,10 @@
           <%= link_to "Create Course", new_course_path, class: "button is-link is-rounded" %>
         </p>
 
+        <p class="control">
+          <%= link_to "My Dashboard", user_dashboard_path, class: "button is-warning is-rounded" %>
+        </p>
+
         <% if current_user.admin? %>
           <p class="control" >
             <%= link_to "Dashboard", admin_dashboard_path, class: "button is-danger is-rounded" %>

@@ -44,6 +44,9 @@ gem 'pdf-forms'
 gem 'jquery-datatables'
 gem 'will_paginate'
 gem 'will_paginate-bulma'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

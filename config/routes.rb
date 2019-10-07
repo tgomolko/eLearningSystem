@@ -26,8 +26,11 @@ Rails.application.routes.draw do
   post 'questions/add'
   post 'user_answers/create'
 
-  get 'user_dashboard/dashboard'
+  get 'user_dashboard', to: 'user_dashboard#dashboard'
   get 'user_dashboard/current_courses'
+  get 'user_dashboard/favorites'
+  get 'user_dashboard/last_completed'
+  get 'user_dashboard/recomendations'
 
   resources :user_pages, only: :create 
   post 'user_pages/continue'
@@ -39,6 +42,8 @@ Rails.application.routes.draw do
     end 
   end
 
+  get 'search', to: 'search#search'
+  
   resources :course_raitings, only: :create
   resources :bookmarks, only: [:create, :destroy]
   #patch '/courses/:id/complete', to: 'courses#complete'
