@@ -5,15 +5,13 @@ class UserDashboardService
     @params = params   
   end
 
-  def build_dashboard_data
-    data = []
+  def build_dashboard_data(data = [])
     data << get_uncompleted_courses.last(5)
     data << get_completed_courses.last(5)
     data << get_highest_rate_courses.last(5)
     data << get_favorite_courses.last(5)
     data << get_org_courses.last(5)
     data << get_not_org_courses.last(5)
-    data
   end
 
   def current_courses_search
@@ -146,7 +144,7 @@ class UserDashboardService
   def get_user_certificates  
     @user.user_courses.where.not(certificate_path: nil)
   end
-  
+
   def sort_column
     Course.column_names.include?(@params[:sort]) ? @params[:sort] : "title"
   end
