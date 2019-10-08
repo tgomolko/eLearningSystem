@@ -1,4 +1,3 @@
-
 class Course < ApplicationRecord
   include AASM
   #include Elasticsearch::Model
@@ -7,7 +6,7 @@ class Course < ApplicationRecord
   #include EsHelper
 
   ACCESS_STATE = %w{ Public Private Individual }
-  
+
   belongs_to :user
   has_many :pages, dependent: :destroy
   has_many :user_answers, dependent: :destroy
@@ -19,9 +18,9 @@ class Course < ApplicationRecord
                                        path: "public/attachment_pdf/:id/:filename" }
   validates_attachment_content_type :attachment_pdf, content_type: ['application/pdf']
   validates :title, length: { maximum: 100 }, presence: true
-  
+
   mount_uploader :image, ImageUploader
-  
+
   aasm do
     state :draft, initial: true
     state :ready
