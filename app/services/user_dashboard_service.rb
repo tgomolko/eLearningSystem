@@ -2,7 +2,7 @@ class UserDashboardService
 
   def initialize(user, params)
     @user = user
-    @params = params   
+    @params = params
   end
 
   def build_dashboard_data(data = [])
@@ -65,11 +65,11 @@ class UserDashboardService
   def org_courses_search
     if sort_column_params?
       org_courses  = get_org_courses.paginate(page: @params[:page], per_page: 10)
-                                                .order(sort_column + " " + sort_direction)
+                                    .order(sort_column + " " + sort_direction)
     end
     if search_params?
       org_courses = get_org_courses.paginate(page: @params[:page], per_page: 10)
-                                               .where(["title LIKE ?", "%#{@params[:q]}%"])
+                                   .where(["title LIKE ?", "%#{@params[:q]}%"])
     end
     org_courses
   end
@@ -77,11 +77,11 @@ class UserDashboardService
   def not_org_courses_search
     if sort_column_params?
       not_org_courses  = get_not_org_courses.paginate(page: @params[:page], per_page: 10)
-                                                .order(sort_column + " " + sort_direction)
+                                            .order(sort_column + " " + sort_direction)
     end
     if search_params?
       not_org_courses = get_not_org_courses.paginate(page: @params[:page], per_page: 10)
-                                               .where(["title LIKE ?", "%#{@params[:q]}%"])
+                                           .where(["title LIKE ?", "%#{@params[:q]}%"])
     end
     not_org_courses
   end
@@ -89,11 +89,11 @@ class UserDashboardService
   def user_courses_search
     if sort_column_params?
       user_courses = get_current_user_courses.paginate(page: @params[:page], per_page: 10)
-                                                .order(sort_column + " " + sort_direction)
+                                             .order(sort_column + " " + sort_direction)
     end
     if search_params?
       user_courses = get_current_user_courses.paginate(page: @params[:page], per_page: 10)
-                                               .where(["title LIKE ?", "%#{@params[:q]}%"])
+                                             .where(["title LIKE ?", "%#{@params[:q]}%"])
     end
     user_courses
   end
@@ -102,7 +102,7 @@ class UserDashboardService
     user_cettificates = get_user_certificates.paginate(page: @params[:page], per_page: 10)
   end
 
-  private 
+  private
 
   def get_uncompleted_courses
     starting_courses_ids = @user.following.pluck(:id)
@@ -141,7 +141,7 @@ class UserDashboardService
     @user.courses
   end
 
-  def get_user_certificates  
+  def get_user_certificates
     @user.user_courses.where.not(certificate_path: nil)
   end
 
@@ -153,11 +153,11 @@ class UserDashboardService
     %w[asc desc].include?(@params[:direction]) ? @params[:direction] : "asc"
   end
 
-  def sort_column_params? 
+  def sort_column_params?
     sort_column && sort_direction
   end
 
-  def search_params? 
+  def search_params?
     @params[:q]
   end
 end
