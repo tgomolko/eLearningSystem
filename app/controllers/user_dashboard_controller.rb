@@ -4,10 +4,7 @@ class UserDashboardController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def dashboard
-    @uncompleted_courses = @user_dashboard_service.get_uncompleted_courses.last(5)
-    @completed_courses = @user_dashboard_service.get_completed_courses.last(5)
-    @highest_rate_courses = @user_dashboard_service.get_highest_rate_courses.last(5)
-    @favorite_courses = @user_dashboard_service.get_favorite_courses.last(5)
+    @uncompleted_courses, @completed_courses, @highest_rate_courses, @favorite_courses, @org_courses,  @not_org_courses = @user_dashboard_service.build_dashboard_data
   end
 
   def current_courses
@@ -24,6 +21,22 @@ class UserDashboardController < ApplicationController
 
   def recomendations
     @highest_rate_courses = @user_dashboard_service.recomendation_courses_search
+  end
+
+  def org_courses
+    @org_courses = @user_dashboard_service.org_courses_search
+  end
+
+  def not_org_courses
+    @not_org_courses = @user_dashboard_service.not_org_courses_search
+  end
+
+  def user_courses
+    @user_courses = @user_dashboard_service.user_courses_search
+  end
+
+  def user_certificates
+    @user_certificates = @user_dashboard_service.user_certificates_search
   end
 
   private 

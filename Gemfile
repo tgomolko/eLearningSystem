@@ -41,7 +41,6 @@ gem "paperclip"
 gem 'paperclip-ghostscript'
 gem 'pdftk', '~> 0.0.4'
 gem 'pdf-forms'
-gem 'jquery-datatables'
 gem 'will_paginate'
 gem 'will_paginate-bulma'
 gem 'elasticsearch-model'

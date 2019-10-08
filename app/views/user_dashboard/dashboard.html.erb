@@ -5,6 +5,23 @@
       <h1 class="title is-2">User Dashboard</h1>
     </div>
   </div>
+  
+  <div class="tabs is-toggle is-fullwidth is-large">
+    <ul>
+      <li>
+        <%= link_to user_dashboard_my_courses_path, title: "edit course" do %>
+            <span class="icon"><i class="fa fa-graduation-cap " aria-hidden="true"></i></span></i></span>
+            <span>My Courses</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to user_dashboard_my_certificates_path, title: "edit course" do %>
+          <span class="icon"><i class="fa fa-certificate" aria-hidden="true"></i></span></i></span>
+          <span>My certificates</span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
 
   <div class="columns">
     <%= render "user_dashboard/dashboard/current_courses"%>

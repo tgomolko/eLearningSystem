@@ -31,6 +31,10 @@ Rails.application.routes.draw do
   get 'user_dashboard/favorites'
   get 'user_dashboard/last_completed'
   get 'user_dashboard/recomendations'
+  get 'user_dashboard/org_courses'
+  get 'user_dashboard/not_org_courses'
+  get 'user_dashboard/my_courses', to: 'user_dashboard#user_courses'
+  get 'user_dashboard/my_certificates', to: 'user_dashboard#user_certificates'
 
   resources :user_pages, only: :create 
   post 'user_pages/continue'
@@ -42,8 +46,6 @@ Rails.application.routes.draw do
     end 
   end
 
-  get 'search', to: 'search#search'
-  
   resources :course_raitings, only: :create
   resources :bookmarks, only: [:create, :destroy]
   #patch '/courses/:id/complete', to: 'courses#complete'

@@ -5,19 +5,19 @@
       <thead>
         <tr class="is-selected">
           <th>Course name</th>
-          <th>Percent of passing %</th>
+          <th>Author</th>
         </tr>
       </thead>
        <tbody>
-        <% @uncompleted_courses.each do |course| %>
+        <% @org_courses.each do |course| %>
           <tr>
             <th><%= link_to course.title, course_path(course) %></th>
-            <th><%= percent_of_progess(course, current_user) %></th>
+            <th><%= link_to course.user.name %></th>
           </tr>
         <% end %>
       </tbody>
       <tr>
-        <td colspan="2" style="text-align: center;">&nbsp;<%= link_to "show more", "#", class: "button is-link"%></td>
+        <td colspan="2" style="text-align: center;">&nbsp;<%= link_to "show more", user_dashboard_org_courses_path, class: "button is-link"%></td>
       </tr>
     </table>
   </div>
