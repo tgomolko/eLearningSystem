@@ -10,22 +10,7 @@
       <div class="message-text"><%= conversation.last_message.body %></div>
       <time class="time"><%= conversation.last_message.created_at.strftime("%-d %B %Y, %H:%M:%S") %></time>
     </p>
-    <p>
-      <% if conversation.is_trashed?(current_user) %>
-        <%= link_to restore_conversation_path(conversation), method: :post do %>
-          <span class=""><i class="fa fa-undo" aria-hidden="true"></i></span>
-        <% end %>
-      <% else %>
-        <%= link_to conversation_path(conversation), method: :delete, data: { confirm: "Are you sure you want to delete this" } do %>
-            <span class=""><i class="fa fa-trash" aria-hidden="true"></i></span>
-        <% end %>
-      <% end %>
-      <% if conversation.is_unread?(current_user) %>
-        <%= link_to mark_as_read_conversation_path(conversation), method: :post do %>
-          <span class=""><i class="fa fa-check-circle" aria-hidden="true"></i></span>
-        <% end %>
-      <% end %>
-    </p>
+    <p><%= render "conversation_buttons", conversation: conversation %></p>
   </div>
 </article>
 <p><%#= render 'conversations/participant', conversation: conversation %></p>

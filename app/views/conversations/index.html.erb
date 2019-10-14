@@ -8,10 +8,21 @@
   <%= link_to 'Start conversation', new_message_path, class: 'button is-info is-rounded' %>
 </aside>
 <div class="mg"></div>
+
 <div class="wrapper">
   <%= render partial: 'conversations/conversation', collection: @conversations %>
 </div>
+
 <% if @box == 'trash' %>
   <p><%= link_to 'Empty trash', empty_trash_conversations_path, class: 'button is-danger', method: :delete, data: {confirm: 'Are you sure?'} %></p>
 <% end %>
-<%= will_paginate %>
+
+<div class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <%= will_paginate renderer: BulmaPagination::Rails %>
+    </div>
+    </br>
+    <%= link_to 'Back', user_dashboard_path, { class: "button  is-small is-black"} %>
+  </div>
+</div>

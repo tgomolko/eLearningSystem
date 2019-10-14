@@ -8,9 +8,15 @@
         </p>
 
         <p class="control">
+          <%= link_to conversations_path do %>
+            <span class=""><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></span>
+          <% end %>
+        </p>
+
+        <p class="control">
           <%= link_to "Create Organization", new_organization_path, class: "button is-success is-rounded" %>
         </p>
-        
+
         <p class="control">
           <%= link_to "Create Course", new_course_path, class: "button is-link is-rounded" %>
         </p>
