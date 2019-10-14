@@ -14,6 +14,7 @@
  *= require_self
  */
 @import 'bulma';
+@import 'chosen';
 
 .navbar.is-info{
   box-shadow: 0 0 1px 1px rgba(20,23,28,.1),0 3px 1px 0 rgba(20,23,28,.1);
@@ -107,8 +108,8 @@
 }
 
 .button.is-small.is-primary.quest{
-  margin-left: 105px; 
-  margin-top: 5px; 
+  margin-left: 105px;
+  margin-top: 5px;
 }
 
 .radio-dv{
@@ -117,8 +118,8 @@
 }
 
 .button.is-small.is-danger.rquest{
-  margin-left: 103px; 
-  margin-top: 5px; 
+  margin-left: 103px;
+  margin-top: 5px;
 }
 
 .t-quest{
@@ -203,4 +204,53 @@ table{
 }
 .fa.fa-pencil.fa-1x{
   font-size: 20px;
+}
+
+.column.is-4.is-message{
+  -webkit-box-shadow: -3px -3px 86px -1px rgba(0,0,0,0.36);
+  -moz-box-shadow: -3px -3px 86px -1px rgba(0,0,0,0.36);
+  box-shadow: -3px -3px 86px -1px rgba(0,0,0,0.36);
+}
+
+#mailbox{
+  width: 300px;
+  float: left;
+  margin: 90px;
+  box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);
+
+}
+
+.mg{
+  margin-top: 89px;
+}
+
+.media.is-custom{
+
+  box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);
+  margin: 0 auto;
+}
+
+.time{
+  font-size: 14px;
+  font-style: italic;
+}
+
+.image-custom{
+  margin: 28px;
+}
+
+.item-m{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Light", Helvetica, Arial , Verdana, sans-serif;
+  font-weight: 300;
+  background-color: #f7f7f9;
+  margin-bottom: 5px;
+  padding-left: 11px;
+  padding-right: 7px;
+  border: 1px solid #dee2e6;
+  box-shadow: 4px 2px 11px -4px rgba(1,0,0,1);
+}
+
+.wrapper{
+  width: 810px;
+  margin: 0 auto;
 }

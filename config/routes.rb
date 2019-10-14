@@ -2,19 +2,19 @@ Rails.application.routes.draw do
   resources :courses do
     member do
       patch '/complete', to: 'courses#complete'
-    end    
+    end
     resources :pages, except: :index
   end
 
-  resources :organizations do 
+  resources :organizations do
     member do
       patch :approve
-      patch :reject 
+      patch :reject
     end
   end
-  
+
   devise_for :users, controllers: { registrations: 'registrations' }
- 
+
   resources :relationships, only: [:create, :destroy]
 
   get 'welcome/index'
@@ -36,18 +36,29 @@ Rails.application.routes.draw do
   get 'user_dashboard/my_courses', to: 'user_dashboard#user_courses'
   get 'user_dashboard/my_certificates', to: 'user_dashboard#user_certificates'
 
-  resources :user_pages, only: :create 
+  resources :user_pages, only: :create
   post 'user_pages/continue'
- 
+
   resources :user_courses, only: [] do
-    member do 
+    member do
       patch :complete
       get :result
-    end 
+    end
   end
 
   resources :course_raitings, only: :create
   resources :bookmarks, only: [:create, :destroy]
+  resources :conversations, only: [:index, :show, :destroy] do
+     member do
+      post :reply
+      post :restore
+      post :mark_as_read
+    end
+    collection do
+      delete :empty_trash
+    end
+  end
+  resources :messages, only: [:new, :create]
   #patch '/courses/:id/complete', to: 'courses#complete'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

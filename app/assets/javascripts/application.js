@@ -18,6 +18,9 @@
 //= require jquery_ujs
 //= require jquery.raty
 //= require jquery-ui
+//= require chosen-jquery
+//= require jquery.turbolinks
+
 
 document.addEventListener("turbolinks:load", function() {
 
@@ -122,7 +125,7 @@ $(document).ready (function () {
     if (active.length > 0) {
       active.removeClass("active");
       $('#box3').find('.hid-f').clone().prependTo(active);
-    } 
+    }
     $(this).parent().addClass("active");
     $(this).parent().find('.hid-f').remove();
   });
@@ -131,4 +134,5 @@ $(document).ready (function () {
     $('#rate-bnt').show();
   });
 
+  $('.chosen-it').chosen({width: '200px'});
 });

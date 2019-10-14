@@ -1,0 +1,33 @@
+<div class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-4 is-message">
+      <h1 class="title is-2">Start conversation</h1>
+      <%= form_tag messages_path, method: :post do %>
+
+        <div class="field is-horizontal is-pulled-left">
+          <div class="field-label">
+            <%= label_tag 'message[subject]', 'Subject', class: "label" %>
+          </div>
+          <div class="control">
+            <%= text_field_tag 'message[subject]', nil, required: true, class: 'input', placeholder: 'subject...' %>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+          <%= label_tag 'message[body]', 'Message', class: "label" %>
+           <%= text_area_tag 'message[body]', nil, class: 'textarea', required: true, placeholder: "Type something..." %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= label_tag 'recipients', 'Choose recipients', class: "label" %>
+          <%= select_tag 'recipients', recipients_options, multiple: true, class: 'chosen-it' %>
+        </div>
+
+        <%= submit_tag 'Send', class: 'button is-link' %>
+      <% end %>
+    </div>
+  </div>
+</div>
