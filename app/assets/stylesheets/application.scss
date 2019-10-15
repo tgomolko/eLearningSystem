@@ -207,9 +207,10 @@ table{
 }
 
 .column.is-4.is-message{
-  -webkit-box-shadow: -3px -3px 86px -1px rgba(0,0,0,0.36);
+  /*-webkit-box-shadow: -3px -3px 86px -1px rgba(0,0,0,0.36);
   -moz-box-shadow: -3px -3px 86px -1px rgba(0,0,0,0.36);
-  box-shadow: -3px -3px 86px -1px rgba(0,0,0,0.36);
+  box-shadow: -3px -3px 86px -1px rgba(0,0,0,0.36);*/
+  box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);
 }
 
 #mailbox{
@@ -225,7 +226,6 @@ table{
 }
 
 .media.is-custom{
-
   box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);
   margin: 0 auto;
 }
