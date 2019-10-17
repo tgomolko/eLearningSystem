@@ -1,11 +1,7 @@
 class Course < ApplicationRecord
   include AASM
-  #include Elasticsearch::Model
-  #include Elasticsearch::Model::Callbacks
-  #include ElasticMyAnalyzer
-  #include EsHelper
 
-  ACCESS_STATE = %w{ Public Private Individual }
+  ACCESS_STATE = %w{ Public Private Individual }.freeze
 
   belongs_to :user
   has_many :pages, dependent: :destroy
@@ -32,12 +28,4 @@ class Course < ApplicationRecord
       transitions from: :ready, to: :draft
     end
   end
-
-  # settings ES_SETTING do
-  #   mappings dynamic: 'true' do
-  #     indexes :title, type: 'text',  analyzer: 'english'
-  #     indexes :description, type: 'text',  analyzer: 'english'
-  #     indexes :created_at, type: 'keyword'
-  #   end
-  # end
 end

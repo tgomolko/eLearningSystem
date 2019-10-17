@@ -43,12 +43,9 @@ gem 'pdftk', '~> 0.0.4'
 gem 'pdf-forms'
 gem 'will_paginate'
 gem 'will_paginate-bulma'
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
 gem 'mailboxer'
 gem 'chosen-rails'
 gem 'jquery-turbolinks'
-
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

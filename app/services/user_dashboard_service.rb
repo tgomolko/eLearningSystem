@@ -117,18 +117,14 @@ class UserDashboardService
   end
 
   def get_completed_courses
-    #last_complection_ids = @user.user_courses.pluck(:course_id)
     Course.where(id: @user.user_courses.pluck(:course_id))
   end
 
   def get_favorite_courses
-   #favorite_courses_ids = @user.bookmarks.pluck(:course_id)
     Course.where(id: @user.bookmarks.pluck(:course_id))
-   # binding.pry
   end
 
   def get_org_courses
-    #org_ids = User.where(role: "org_admin").ids
     Course.where(user_id: User.where(role: "org_admin").ids)
   end
 
