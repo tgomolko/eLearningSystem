@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_132408) do
+ActiveRecord::Schema.define(version: 2019_10_18_124208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -194,7 +194,9 @@ ActiveRecord::Schema.define(version: 2019_10_08_132408) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "role", default: 1
+    t.bigint "organization_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["organization_id"], name: "index_users_on_organization_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -216,4 +218,5 @@ ActiveRecord::Schema.define(version: 2019_10_08_132408) do
   add_foreign_key "user_courses", "users"
   add_foreign_key "user_pages", "pages"
   add_foreign_key "user_pages", "users"
+  add_foreign_key "users", "organizations"
 end

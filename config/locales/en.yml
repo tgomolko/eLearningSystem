@@ -32,3 +32,4 @@ en:
   trash_cleaned: "Your trash was cleaned!"
   mark_as_read: "The conversation was marked as read"
   message_sent: "Message has been sent!"
+  access__manager_disable: "Access disable, only for Managers"
