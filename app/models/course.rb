@@ -1,7 +1,8 @@
 class Course < ApplicationRecord
   include AASM
 
-  ACCESS_STATE = %w{ Public Private Individual }.freeze
+  ACCESS_STATE = %w{ Public Individual }.freeze
+  ACCESS_STATE_FOR_ORG_USERS = %w{ Public Private Individual }.freeze
 
   belongs_to :user
   has_many :pages, dependent: :destroy
