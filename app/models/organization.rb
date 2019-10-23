@@ -1,13 +1,15 @@
 class Organization < ApplicationRecord
   include AASM
-  
+
   belongs_to :user
+  has_many :users
+  has_many :courses
   validates :company_name, length: { maximum: 100 }, presence: true
 
   aasm do
     state :pending, initial: true
     state :approved
-    state :rejected 
+    state :rejected
 
     event :approve do
       transitions from: [:pending, :rejected], to: :approved

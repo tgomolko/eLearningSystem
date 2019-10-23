@@ -49,8 +49,7 @@ ActiveRecord::Schema.define(version: 2019_10_18_124756) do
     t.string "attachment_pdf_content_type"
     t.bigint "attachment_pdf_file_size"
     t.datetime "attachment_pdf_updated_at"
-    t.bigint "organization_id"
-    t.index ["organization_id"], name: "index_courses_on_organization_id"
+    t.integer "organization_id"
     t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
@@ -206,7 +205,6 @@ ActiveRecord::Schema.define(version: 2019_10_18_124756) do
   add_foreign_key "bookmarks", "users"
   add_foreign_key "course_raitings", "courses"
   add_foreign_key "course_raitings", "users"
-  add_foreign_key "courses", "organizations"
   add_foreign_key "courses", "users"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"

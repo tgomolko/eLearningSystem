@@ -28,7 +28,9 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = current_user.courses.build(course_params)
-    
+
+    CourseOrganizationService.new(@course, current_user, params).set_organization_id if params[:course][:access_state] == "Private"
+
     if @course.save
       redirect_to @course, notice: t(:course_created_successfully)
     else
@@ -42,7 +44,7 @@ class CoursesController < ApplicationController
     if @course.update(course_params)
       redirect_to @course, notice: t(:course_updated_successully)
     else
-      render :edit 
+      render :edit
     end
   end
 
@@ -61,8 +63,8 @@ class CoursesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def course_params
-    params.require(:course).permit(:title, :description, :aasm_state, :user_id, 
-                                   :requirements, :access_state, :image, 
+    params.require(:course).permit(:title, :description, :aasm_state, :user_id,
+                                   :requirements, :access_state, :image,
                                    :attachment_pdf)
   end
 end
