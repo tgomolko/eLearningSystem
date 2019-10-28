@@ -1,13 +1,23 @@
 class ManagerDashboardController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_access_manager_dashboard!
+  before_action :set_manager_dashboard_service
   helper_method :sort_column, :sort_direction
+  helper_method :sort_user_column, :sort_direction
 
   def dashboard
-    @organization_courses = ManagerDashboardService.new(current_user, params).organization_courses_search
+    @organization_courses = @manager_dashboard_service.organization_courses
+  end
+
+  def organization_users
+    @organization_users = @manager_dashboard_service.organization_users
   end
 
   private
+
+  def set_manager_dashboard_service
+    @manager_dashboard_service = ManagerDashboardService.new(current_user, params)
+  end
 
   def ensure_access_manager_dashboard!
     unless current_user.org_admin?
@@ -17,6 +27,10 @@ class ManagerDashboardController < ApplicationController
 
   def sort_column
     Course.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
+
+  def sort_user_column
+    User.column_names.include?(params[:sort]) ? params[:sort] : "name"
   end
 
   def sort_direction

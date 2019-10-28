@@ -2,7 +2,7 @@ class Organization < ApplicationRecord
   include AASM
 
   belongs_to :user
-  has_many :users
+  has_many :users#, foreign_key: "participant_org_id"
   has_many :courses
   validates :company_name, length: { maximum: 100 }, presence: true
 

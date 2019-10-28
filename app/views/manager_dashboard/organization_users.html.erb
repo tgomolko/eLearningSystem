@@ -1,0 +1,43 @@
+<div class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <h1 class="title is-2">Organization Users</h1>
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <%= form_tag manager_dashboard_organization_users_path, method: :get, class: "search-form" do  %>
+      <%= text_field_tag :q, params[:q], class: "string required input search" %>
+      <%= submit_tag "Search", class: "button is-info is-rounded"%>
+    <% end %>
+      <table id="current-tb" class="table is-bordered is-hoverable is-striped">
+      <thead>
+        <tr class="is-selected">
+          <th><%= sortable_user "name", "Name" %></th>
+          <th><%= sortable_user "username", "Username"%></th>
+          <th><%= sortable_user "email", "Email"%></th>
+        </tr>
+      </thead>
+       <tbody>
+        <% @organization_users.each do |user| %>
+          <tr>
+            <th><%= user.name %></th>
+            <th><%= user.username %>
+            <th><%= user.email %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <%= will_paginate @organization_users, renderer: BulmaPagination::Rails %>
+    </div>
+    </br>
+    <%= link_to 'Back', user_dashboard_path, { class: "button  is-small is-black"} %>
+  </div>
+</div>
