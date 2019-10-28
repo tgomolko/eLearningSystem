@@ -1,5 +1,5 @@
 class ManagerDashboardService
-  attr_reader :user
+  attr_reader :user, :params
 
   def initialize(user, params)
     @params = params
@@ -8,24 +8,24 @@ class ManagerDashboardService
 
   def organization_courses
     if sort_column_params?
-      @organization_courses = @user.organization.courses.paginate(page: @params[:page], per_page: 10)
+      @organization_courses = user.organization.courses.paginate(page: params[:page], per_page: 10)
                                                .order(sort_column + " " + sort_direction)
     end
     if search_params?
-      @organization_courses = @user.organization.courses.paginate(page: @params[:page], per_page: 10)
-                                               .where(["title LIKE ?", "%#{@params[:q]}%"])
+      @organization_courses = user.organization.courses.paginate(page: params[:page], per_page: 10)
+                                               .where(["title LIKE ?", "%#{params[:q]}%"])
     end
     @organization_courses
   end
 
   def organization_users
     if sort_user_column_params?
-      @organization_users = get_organization_users.paginate(page: @params[:page], per_page: 10)
+      @organization_users = get_organization_users.paginate(page: params[:page], per_page: 10)
                                                .order(sort_user_column + " " + sort_direction)
     end
     if search_params?
-      @organization_users = get_organization_users.paginate(page: @params[:page], per_page: 10)
-                                               .where(["name LIKE ?", "%#{@params[:q]}%"])
+      @organization_users = get_organization_users.paginate(page: params[:page], per_page: 10)
+                                               .where(["name LIKE ?", "%#{params[:q]}%"])
     end
     @organization_users
   end
@@ -37,15 +37,15 @@ class ManagerDashboardService
   private
 
   def sort_column
-    Course.column_names.include?(@params[:sort]) ? @params[:sort] : "title"
+    Course.column_names.include?(params[:sort]) ? params[:sort] : "title"
   end
 
   def sort_user_column
-    User.column_names.include?(@params[:sort]) ? @params[:sort] : "name"
+    User.column_names.include?(params[:sort]) ? params[:sort] : "name"
   end
 
   def sort_direction
-    %w[asc desc].include?(@params[:direction]) ? @params[:direction] : "asc"
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 
   def sort_column_params?
@@ -57,6 +57,6 @@ class ManagerDashboardService
   end
 
   def search_params?
-    @params[:q]
+    params[:q]
   end
 end
