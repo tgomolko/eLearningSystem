@@ -5,7 +5,9 @@ class ManagerDashboardController < ApplicationController
   helper_method :sort_column, :sort_direction
   helper_method :sort_user_column, :sort_direction
 
-  def dashboard
+  def dashboard ; end
+
+  def organization_courses
     @organization_courses = @manager_dashboard_service.organization_courses
   end
 

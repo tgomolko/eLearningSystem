@@ -1,3 +1,10 @@
+<div class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <h1 class="title is-2">Organization Courses</h1>
+  </div>
+</div>
+
 <div class="columns">
   <div class="column">
     <%= form_tag manager_dashboard_path, method: :get, class: "search-form" do  %>
@@ -33,7 +40,7 @@
       <%= will_paginate @organization_courses, renderer: BulmaPagination::Rails %>
     </div>
     </br>
-    <%= link_to 'Back', user_dashboard_path, { class: "button  is-small is-black"} %>
+    <%= link_to 'Back', manager_dashboard_path, { class: "button  is-small is-black"} %>
   </div>
 </div>
 

@@ -1,4 +1,26 @@
 <div class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-4">
+      <h1 class="title is-2">Manager Dashboard</h1>
+    </div>
+  </div>
+  <div class="tabs is-toggle is-fullwidth is-large">
+    <ul>
+      <li>
+        <%= link_to manager_dashboard_organization_courses_path do %>
+            <span class="icon"><i class="fa fa-graduation-cap " aria-hidden="true"></i></span></i></span>
+            <span>Organization Courses</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to manager_dashboard_organization_users_path do %>
+          <span class="icon"><i class="fa fa-users" aria-hidden="true"></i></span></i></span>
+          <span>Organization Users</span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
   <div class="import-form">
     <label class="label">Import emails from CSV file</label>
       <%= form_tag import_emails_path, multipart: true, class: "attachmetn" do  %>
@@ -7,12 +29,4 @@
       <% end %>
     </label>
   </div>
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-4">
-      <h1 class="title is-2">Manager Dashboard</h1>
-    </div>
-  </div>
 </div>
-
-<%= render "organization_courses" %>

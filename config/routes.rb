@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get 'user_dashboard/my_certificates', to: 'user_dashboard#user_certificates'
 
   get 'manager_dashboard', to: 'manager_dashboard#dashboard'
+  get 'manager_dashboard/organization_courses'
 
   resources :user_pages, only: :create
   post 'user_pages/continue'
