@@ -5,6 +5,7 @@ class EmailController < ApplicationController
   def import
     if params[:file].content_type == "text/csv"
       Email.import(params[:file])
+      ImportEmailService.new(current_user.organization_id).add_users_to_organization
       redirect_to manager_dashboard_path, notice: t(:emails_imported)
     else
       redirect_to manager_dashboard_path, alert: t(:file_is_not_csv)
