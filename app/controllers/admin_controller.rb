@@ -1,6 +1,6 @@
 class AdminController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_get_admin_dashboard!, only: [:dashboard, :pending_org, :organizations]
+  before_action :ensure_access_admin_dashboard!
 
   def dashboard
   end
@@ -15,9 +15,9 @@ class AdminController < ApplicationController
 
   private
 
-  def ensure_get_admin_dashboard!
-    if current_user.role != "admin"
-      redirect_to root_path, alert: "You don't belong there!"
+  def ensure_access_admin_dashboard!
+     unless current_user.admin?
+      redirect_to root_path, alert: t(:access_admin_disable)
     end
   end
 end

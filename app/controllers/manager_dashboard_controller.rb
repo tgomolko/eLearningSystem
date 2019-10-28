@@ -10,8 +10,8 @@ class ManagerDashboardController < ApplicationController
   private
 
   def ensure_access_manager_dashboard!
-    unless current_user.role == "org_admin"
-      redirect_to root_path, alert: t(:access__manager_disable)
+    unless current_user.org_admin?
+      redirect_to root_path, alert: t(:access_manager_disable)
     end
   end
 

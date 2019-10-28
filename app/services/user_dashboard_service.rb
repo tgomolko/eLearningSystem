@@ -5,7 +5,7 @@ class UserDashboardService
     @params = params
   end
 
-  def build_dashboard_data(data = [])
+  def build_dashboard_data(*data)
     data << get_uncompleted_courses.last(5)
     data << get_completed_courses.last(5)
     data << get_highest_rate_courses.last(5)
@@ -125,16 +125,15 @@ class UserDashboardService
   end
 
   def get_org_courses
-    Course.where(user_id: User.where(role: "org_admin").ids)
+    Course.where.not(organization_id: nil)
   end
 
   def get_not_org_courses
-    user_ids = User.where.not(role: "org_admin").ids
-    Course.where(user_id: user_ids)
+    Course.where(organization_id: nil)
   end
 
   def get_current_user_courses
-    @user.courses
+    @user.following
   end
 
   def get_user_certificates

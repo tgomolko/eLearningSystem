@@ -1,7 +1,8 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: [:show, :edit, :update, :destroy, :approve, :reject]
   before_action :authenticate_user!
-  
+  before_action :ensure_create_organization_more_then_one, only: :new
+
   # GET /organizations
   # GET /organizations.json
   def index
@@ -14,7 +15,7 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations/new
   def new
-    @organization = current_user.organizations.build
+    @organization = current_user.build_organization
   end
 
   # GET /organizations/1/edit
@@ -24,22 +25,22 @@ class OrganizationsController < ApplicationController
   # POST /organizations
   # POST /organizations.json
   def create
-    @organization = current_user.organizations.build(organization_params)
+    @organization = current_user.build_organization(organization_params)
     if @organization.save
       redirect_to @organization, notice: t(:org_created_successfully)
     else
-      render :new 
+      render :new
     end
   end
 
   # PATCH/PUT /organizations/1
   # PATCH/PUT /organizations/1.json
-  def update   
+  def update
     if @organization.update(organization_params)
       redirect_to @organization, notice: t(:org_updated_successfully)
     else
       render :edit
-    end  
+    end
   end
 
   # DELETE /organizations/1
@@ -58,7 +59,7 @@ class OrganizationsController < ApplicationController
     end
   end
 
-  def reject 
+  def reject
     approve_service = OrganizationApproveService.new(@organization)
     if approve_service.reject_organization
       redirect_to admin_pending_org_path, notice: t(:org_rejected_successfully)
@@ -76,5 +77,11 @@ class OrganizationsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def organization_params
     params.require(:organization).permit(:company_name, :description, :user_id)
+  end
+
+  def ensure_create_organization_more_then_one
+    if current_user.organization
+      redirect_to root_path, alert: "User can have only one organization"
+    end
   end
 end

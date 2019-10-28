@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_one :organization
+  has_one :organization, dependent: :destroy
   has_many :courses, dependent: :destroy
   has_many :user_answers, dependent: :destroy
   has_many :user_pages, dependent: :destroy

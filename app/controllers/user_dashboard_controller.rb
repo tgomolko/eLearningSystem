@@ -39,10 +39,10 @@ class UserDashboardController < ApplicationController
     @user_certificates = @user_dashboard_service.user_certificates_search
   end
 
-  private 
+  private
 
   def service_dashboard
-    @user_dashboard_service = UserDashboardService.new(current_user, params) 
+    @user_dashboard_service = UserDashboardService.new(current_user, params)
   end
 
   def sort_column
