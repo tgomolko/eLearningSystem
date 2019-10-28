@@ -1,4 +1,12 @@
 <div class="section">
+  <div class="import-form">
+    <label class="label">Import emails from CSV file</label>
+      <%= form_tag import_emails_path, multipart: true, class: "attachmetn" do  %>
+        <%= file_field_tag :file %>
+        <p><%= submit_tag "Import", class: "button is-success is-rounded is-import"%></p>
+      <% end %>
+    </label>
+  </div>
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-4">
