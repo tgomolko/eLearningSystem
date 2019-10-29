@@ -46,6 +46,7 @@ gem 'will_paginate-bulma'
 gem 'mailboxer'
 gem 'chosen-rails'
 gem 'jquery-turbolinks'
+gem 'sidekiq'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

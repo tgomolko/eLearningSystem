@@ -15,6 +15,15 @@ module ELearningSystem
     config.i18n.available_locales = :en
     config.autoload_paths << Rails.root.join('lib')
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
+
+    config.active_job.queue_adapter = :sidekiq
+
+    config.action_mailer.perform_deliveries = true
+    config.action_mailer.raise_delivery_errors = true
+
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.default_url_options = { :host => "localhost:3000" }
+    #config.action_mailer.smtp_settings = { ... }
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

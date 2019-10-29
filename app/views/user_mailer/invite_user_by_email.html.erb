@@ -1,0 +1,4 @@
+<h1>Hello, <%= @email %><h1>
+<p><h2>You have been invated by <%= @user.username %> to SingUp for "eLearning system" and to become a member of <%= @organization.company_name %></h2></p>
+<p><h4>Please click on the link bellow to view the online sigh up form</h4></p>
+<%= link_to "SingUp", "http://localhost:3000/users/sign_up?participant_org_id=#{@organization.id}"%>
