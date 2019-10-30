@@ -3,11 +3,8 @@ class EmailController < ApplicationController
   before_action :validate_files_params
 
   def import
-    if params[:file].content_type == "text/csv"
-      Email.import(params[:file])
-
+    if params[:file].content_type == "text/csv" && Email.import(params[:file])
       AddUsersToOrganizationJob.new.perform(current_user.organization_id)
-
       UserEmailInvitationService.new(current_user, @organization).send_email_invites
       redirect_to manager_dashboard_path, notice: t(:emails_imported)
     else
