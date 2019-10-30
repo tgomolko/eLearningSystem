@@ -18,7 +18,9 @@
 
 .navbar.is-info{
   box-shadow: 0 0 1px 1px rgba(20,23,28,.1),0 3px 1px 0 rgba(20,23,28,.1);
-  height: 65px;
+  height: 82px;
+  background-color: #293352;
+
 }
 
 .navbar-brand{
@@ -262,4 +264,110 @@ table{
 
 .is-import{
   margin-top: 5px;
+}
+.welcome{
+  height: 500px;
+  background-image: image_url('welcome.jpg');
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.h-line{
+  position: absolute;
+  margin-top: 10%;
+  margin-left: 8%;
+}
+
+.headline{
+  font-weight: 600;
+  color: #FFF;
+  margin-bottom: 10px;
+  font-size: 44px;
+}
+
+.headline-cont{
+  font-size: 20px;
+  line-height: 34px;
+  margin-bottom: 30px;
+  color: #FFF;
+}
+
+.center-welcome{
+  width: 100%;
+  height: 500px;
+  background-color: #293352;
+}
+
+.h-line-content{
+  width: 47%;
+  text-align: center;
+  margin: 0 auto;
+  position: unset;
+  padding-top: 5%;
+}
+
+.headline-center{
+  font-weight: 600;
+  color: #FFF;
+  margin-bottom: 10px;
+  font-size: 65px;
+}
+
+.button.is-link.is-outlined{
+  color: #FFF;
+  width: 263px;
+  height: 51px;
+  border-color: #fff;
+}
+
+.button.is-link.is-outlined:hover{
+  background-color: #fff;
+  color: #293352;
+  border-color: #fff;
+}
+
+#logo-name{
+  color: #fff;
+  font-size: 29px;
+}
+
+.navbar.is-info .navbar-brand a.navbar-item:hover{
+  background-color: #293352;
+}
+
+.wrp{
+  width: 100%;
+  height: 100%;
+}
+
+.lates-courses{
+  width: 100%;
+  height: 500px;
+  background-color: #fff;
+}
+
+.course{
+  width: 15%;
+  height: 65%;
+  margin-left: 80px;
+  margin-top: 50px;
+  float: left;
+  text-align: left;
+  color: #000;
+  font-weight: 400;
+  line-height: 1.5;
+  box-shadow: -2px 8px 22px 0 rgba(0,0,0,.15);
+}
+
+.course:hover{
+  box-shadow: -2px 8px 22px 0 rgba(0,0,0,.15);
+}
+
+.main-c-t{
+  padding-left: 15px;
+}
+
+.main-c-desc{
+  padding-left: 15px;
 }
