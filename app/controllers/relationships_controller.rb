@@ -20,6 +20,6 @@ class RelationshipsController < ApplicationController
   private
 
   def first_course_page
-    @course.pages.sort_by { |page| page.created_at } 
+    @course.pages.sort_by { |page| page.created_at }
   end
 end

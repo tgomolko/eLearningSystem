@@ -1,4 +1,4 @@
 <%= form_for(current_user.relationships.find_by(followed_id: @course.id),
              html: { method: :delete }) do |f| %>
-  <%= f.submit "Unfollow", class: "button is-danger is-rounded is-large is-centered" %>
+  <%= f.submit "Finish Course", class: "button is-danger is-rounded is-large is-centered" %>
 <% end %>

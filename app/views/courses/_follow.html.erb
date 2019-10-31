@@ -1,4 +1,4 @@
 <%= form_for(current_user.relationships.build) do |f| %>
   <%= hidden_field_tag :followed_id, @course.id %>
-  <%= f.submit "Follow", class: "button is-info is-rounded is-large is-centered" %>
+  <%= f.submit "Start Course", class: "button is-info is-rounded is-large is-centered" %>
 <% end %>
