@@ -24,8 +24,8 @@
     <h1 class="title is-3">Requirements:</h1>
     <%= @course.requirements %>
 
-    <div class="feature-image is-centered">
-      <%= image_tag(@course.image_url(:thumb)) if @course.image_url %>
+    <div class="feature-image is-centered" style="text-align: center;">
+      <%= image_tag(@course.image_url(:default)) if @course.image_url %>
     </div>
     <hr/>
 

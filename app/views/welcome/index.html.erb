@@ -16,11 +16,16 @@
   </div>
 
   <div class="lates-courses">
+    <div class="headline-center l-courses">Latest Courses</div>
     <% @courses.each do |course| %>
       <%= link_to course_path(course)  do %>
         <div class="course">
-           <figure class="image">
-              <%= image_tag('course.svg')%>
+           <figure class="image mainp">
+              <% if course.image_url %>
+                <%= image_tag(course.image_url(:thumb), class: "pp") %>
+              <% else %>
+                <%= image_tag('course.svg') %>
+              <% end %>
           </figure>
           <p><h1 class="title is-4 center main-c-t"><%= course.title %></h1></p>
           <p><div class="desc-course main-c-desc"><%= course.description[0...120]... %></div></p>
@@ -30,4 +35,14 @@
     <% end %>
   </div>
 
-</div>
+<footer class="footer">
+  <div class="navbar-brand">
+    <%= link_to root_path, class: "navbar-item" do %>
+      <h1 class="title is-6" id="logo-name">eLearningSystem</h1>
+    <% end %>
+  </div>
+    <div class="content has-text-centered">
+      <div class="author">by Timofey Gomolko</div>
+    </div>
+</footer>
+
