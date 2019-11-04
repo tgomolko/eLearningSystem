@@ -10,10 +10,10 @@ class UserCourseCompleteService
 
   def create_user_course
     answered_right = true_answered_questions_count
+    user.unfollow(@course)
     if answered_right
       user_course.result = result
       user_course.answered_correctly = answered_right
-      user.unfollow(@course)
       generate_certificate(user, course)
     else
       user_course.result = 0
