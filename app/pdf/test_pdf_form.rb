@@ -1,5 +1,4 @@
 class TestPdfForm < FillablePdfForm
-
   def initialize(user, course)
     @user = user
     @course = course

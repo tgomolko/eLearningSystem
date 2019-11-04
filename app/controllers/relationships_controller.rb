@@ -13,13 +13,19 @@ class RelationshipsController < ApplicationController
 
   def destroy
     @course = Relationship.find(params[:id]).followed
-    current_user.unfollow(@course)
-    redirect_to @course, notice: t(:unfollow_course)
+    finish_course_service = FinishCourseService.new(@course, current_user)
+    if finish_course_service.course_completed?
+      current_user.unfollow(@course)
+      finish_course_service.remove_user_answers_and_pages_for_course
+      redirect_to @course, notice: t(:unfollow_course)
+    else
+      redirect_to @course, notice: "You have already passed that course"
+    end
   end
 
   private
 
   def first_course_page
-    @course.pages.sort_by { |page| page.created_at }
+    @first_course_page ||= @course.pages.sort_by { |page| page.created_at }
   end
 end

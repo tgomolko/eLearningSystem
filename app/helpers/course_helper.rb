@@ -1,5 +1,4 @@
 module CourseHelper
-
   def course_started?(course)
     current_user.following?(course) if user_signed_in?
   end
@@ -13,5 +12,9 @@ module CourseHelper
 
   def user_in_org?(user)
     user.organization_id.nil?
+  end
+
+  def course_completed?(course)
+    current_user.user_courses.where(course_id: course.id).any?
   end
 end

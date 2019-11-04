@@ -7,7 +7,7 @@ class UserPagesController < ApplicationController
 
   def create
     @user_page = UserPage.new(user_page_params)
-    
+
     if all_question_answered?(@page)
       @user_page.completed = true
       if @user_page.save
@@ -39,7 +39,7 @@ class UserPagesController < ApplicationController
   end
 
   def set_course
-   @course = Course.find(params[:course_id]) 
+    @course = Course.find(params[:course_id])
   end
 
   def set_page
@@ -53,6 +53,6 @@ class UserPagesController < ApplicationController
   end
 
   def last_page
-    @course.pages.order("created_at DESC").max
+    @last_page ||= @course.pages.order("created_at DESC").max
   end
 end
