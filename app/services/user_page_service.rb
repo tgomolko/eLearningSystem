@@ -1,4 +1,5 @@
 class UserPageService
+  #WHILE DOESN'T USE
   def initialize(page, course, user)
     @page = page
     @course = course

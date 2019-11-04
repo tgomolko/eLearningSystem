@@ -1,4 +1,5 @@
 class QuestionService
+  attr_reader :question, :params
 
   def initialize(question, params)
     @question = question
@@ -6,15 +7,15 @@ class QuestionService
   end
 
   def set_answers_values
-    @question.answers = checkbox_question_answers_hash
+    question.answers = checkbox_question_answers_hash
   end
 
-  private 
+  private
 
   def checkbox_question_answers_hash
-    if @params[:questions] && @params[:answers]
+    if params[:questions] && params[:answers]
       answers = @params[:answers]
-      checkbox_values = @params[:questions][:content]
+      checkbox_values = params[:questions][:content]
       Hash[answers.zip checkbox_values]
     else
       Hash.new

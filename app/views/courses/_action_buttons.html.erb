@@ -7,6 +7,5 @@
   <% end %>
 <% end %>
 </br>
-<% if check_on_completed(current_user) %>
-  <%= link_to "View Results", result_user_course_path(@course), class: "button is-large is-info is-fullwidth" %>
-<% end%>
+<%= link_to "View Results", result_user_course_path(@course), class: "button is-large is-info is-fullwidth" if check_on_completed(current_user) %>
+

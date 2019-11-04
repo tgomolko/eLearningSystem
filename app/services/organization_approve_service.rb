@@ -1,4 +1,5 @@
 class OrganizationApproveService
+  attr_reader :organization, :user
 
   def initialize(organization)
     @organization = organization
@@ -6,14 +7,14 @@ class OrganizationApproveService
   end
 
   def approve_organization
-    unless @organization.approved?
-      @organization.approve!
-      @user.update_attributes(organization_id: @organization.id)
-      @user.update_attributes(role: "org_admin") if @user.user?
+    unless organization.approved?
+      organization.approve!
+      user.update_attributes(organization_id: organization.id)
+      user.update_attributes(role: "org_admin") if user.user?
     end
   end
 
   def reject_organization
-    @organization.reject! unless @organization.rejected?
+    organization.reject! unless organization.rejected?
   end
 end
