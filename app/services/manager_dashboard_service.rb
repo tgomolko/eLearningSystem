@@ -31,7 +31,7 @@ class ManagerDashboardService
   end
 
   def get_organization_users
-    User.where(participant_org_id: user.organization_id).or(User.where(organization_id: user.organization_id))
+    organization_users ||= Organization.find(user.organization_id).users
   end
 
   private

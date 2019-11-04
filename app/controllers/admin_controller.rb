@@ -2,8 +2,7 @@ class AdminController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_access_admin_dashboard!
 
-  def dashboard
-  end
+  def dashboard ; end
 
   def pending_org
     @pending_org = Organization.where(aasm_state: "pending")

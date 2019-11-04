@@ -81,7 +81,7 @@ class OrganizationsController < ApplicationController
 
   def ensure_create_organization_more_then_one
     if current_user.organization
-      redirect_to root_path, alert: "User can have only one organization"
+      redirect_to root_path, alert: t(:only_one_organization)
     end
   end
 end

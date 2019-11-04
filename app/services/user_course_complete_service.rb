@@ -1,27 +1,29 @@
 class UserCourseCompleteService
+  attr_reader :user, :user_course, :course
 
-  def initialize(course, current_user, user_course)
+  def initialize(course, user, user_course)
     @course = course
-    @current_user = current_user
+    @user = user
     @user_course = user_course
     @true_user_answers = 0
   end
 
   def create_user_course
-    answered_right = count_true_answered_questions
-    if answered_right 
-      @user_course.result = result
-      @user_course.answered_correctly = answered_right
-      generate_certificate(@current_user, @course)
+    answered_right = true_answered_questions_count
+    if answered_right
+      user_course.result = result
+      user_course.answered_correctly = answered_right
+      user.unfollow(@course)
+      generate_certificate(user, course)
     else
-      @user_course.result = 0
+      user_course.result = 0
     end
-    @user_course
+    user_course
   end
-  
-  private 
 
-  def count_true_answered_questions
+  private
+
+  def true_answered_questions_count
     return if get_all_questions_of_course.size == 0 #if page doesn't have any question
     count_true_answers_on_text_questions
     count_true_answers_on_another_questions
@@ -34,33 +36,33 @@ class UserCourseCompleteService
 
   def get_all_questions_of_course
     all_course_questions = []
-    @course.pages.each do |page|
+    course.pages.each do |page|
       all_course_questions << page.questions
     end
     all_course_questions.flatten
   end
 
   def create_hash_of_text_questions_ids_and_answers
-    textbox_questions = get_all_questions_of_course.select { |q| q.question_type == "textbox"}
+    textbox_questions ||= get_all_questions_of_course.select { |q| q.question_type == "textbox"}
     Hash[textbox_questions.pluck(:id).zip textbox_questions.pluck(:answer)]
   end
 
   def create_hash_of_another_questions_ids_and_answers
-    another_questions = get_all_questions_of_course.select { |q| q.question_type == ("checkbox" || "radio") }
+    another_questions ||= get_all_questions_of_course.select { |q| q.question_type == ("checkbox" || "radio") }
     Hash[another_questions.pluck(:id).zip another_questions.pluck(:answers)]
   end
 
   def get_all_user_answers
-    @current_user.user_answers
+    user_answers ||= user.user_answers.where(course_id: course.id)
   end
 
   def create_hash_of_user_answers_on_text_questions
-    answers_on_text_questions = get_all_user_answers.select { |a| a.answer }
+    answers_on_text_questions ||= get_all_user_answers.select { |a| a.answer }
     Hash[answers_on_text_questions.pluck(:question_id).zip answers_on_text_questions.pluck(:answer)]
   end
 
   def create_hash_of_user_answers_on_another_questions
-    answers_on_another_questions = get_all_user_answers.select { |a| a.answers.any? }
+    answers_on_another_questions ||= get_all_user_answers.select { |a| a.answers.any? }
     Hash[answers_on_another_questions.pluck(:question_id).zip answers_on_another_questions.pluck(:answers)]
   end
 
@@ -89,6 +91,6 @@ class UserCourseCompleteService
   def generate_certificate(user, course)
     return if @result <= 90
     certificate_path = TestPdfForm.new(user, course).export()
-    @user_course.certificate_path = certificate_path
+    user_course.certificate_path = certificate_path
   end
 end

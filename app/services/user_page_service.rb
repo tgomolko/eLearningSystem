@@ -1,5 +1,4 @@
 class UserPageService
-#THAT'S DONT USING YET
   def initialize(page, course, user)
     @page = page
     @course = course
@@ -14,11 +13,5 @@ class UserPageService
 
   def last_page
     @course.pages.order("created_at DESC").max
-  end
-
-  def all_question_answered?
-    page_questions = @page.questions
-    user_answers_count = @user.user_answers.where(question_id: page_questions.pluck(:id)).size
-    user_answers_count == page_questions.size
   end
 end

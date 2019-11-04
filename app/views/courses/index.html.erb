@@ -1,20 +1,17 @@
-
-
-    <div class="headline-center l-courses">Courses</div>
-    <% @courses.each do |course| %>
-        <div class="dsd">
-      <%= link_to course_path(course)  do %>
-           <figure class="image mainp">
-              <% if course.image_url %>
-                <%= image_tag(course.image_url(:thumb), class: "pp") %>
-              <% else %>
-                <%= image_tag('course.svg') %>
-              <% end %>
-          </figure>
-          <p><h1 class="title is-4 center main-c-t"><%= course.title %></h1></p>
-          <p><div class="desc-course main-c-desc"><%= course.description[0...120]... %></div></p>
-          <div style="padding-left: 15px" class="review-rating" data-score="<%= course_raiting(course) %>"></div>
-      <% end %>
-        </div>
-    <% end %>
-
+<div class="headline-center l-courses">Courses</div>
+<% @courses.each do |course| %>
+    <div class="dsd">
+  <%= link_to course_path(course)  do %>
+       <figure class="image mainp">
+          <% if course.image_url %>
+            <%= image_tag(course.image_url(:thumb), class: "pp") %>
+          <% else %>
+            <%= image_tag('course.svg') %>
+          <% end %>
+      </figure>
+      <p><h1 class="title is-4 center main-c-t"><%= course.title %></h1></p>
+      <p><div class="desc-course main-c-desc"><%= course.description[0...120]... %></div></p>
+      <div style="padding-left: 15px" class="review-rating" data-score="<%= course_raiting(course) %>"></div>
+  <% end %>
+    </div>
+<% end %>

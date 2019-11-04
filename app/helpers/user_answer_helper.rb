@@ -1,6 +1,6 @@
 module UserAnswerHelper
   def answered?(question)
-    answered_questions_ids.include?(current_user.user_answers.pluck(:question_id))
+    current_user.user_answers.pluck(:question_id).include?(question.id)
   end
 
   def all_question_answered?(page)

@@ -1,10 +1,10 @@
 class UserDashboardController < ApplicationController
   before_action :authenticate_user!
-  before_action :service_dashboard
+  before_action :dashboard_service
   helper_method :sort_column, :sort_direction
 
   def dashboard
-    @uncompleted_courses, @completed_courses, @highest_rate_courses, @favorite_courses, @org_courses,  @not_org_courses = @user_dashboard_service.build_dashboard_data
+    @uncompleted_courses, @completed_courses, @highest_rate_courses, @favorite_courses, @org_courses, @not_org_courses = @user_dashboard_service.build_dashboard_data
   end
 
   def current_courses
@@ -41,7 +41,7 @@ class UserDashboardController < ApplicationController
 
   private
 
-  def service_dashboard
+  def dashboard_service
     @user_dashboard_service = UserDashboardService.new(current_user, params)
   end
 

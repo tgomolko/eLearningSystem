@@ -1,5 +1,4 @@
 class CourseRaitingService
-
   def initialize(course)
     @course = course
   end

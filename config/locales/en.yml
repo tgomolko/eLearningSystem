@@ -37,3 +37,4 @@ en:
   emails_imported: "Emails were imported!"
   file_no_chosen: "File no chosen"
   file_is_not_csv: "File is not CSV format"
+  only_one_organization: "User can create only one organization"

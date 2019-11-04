@@ -99,16 +99,13 @@ class UserDashboardService
   end
 
   def user_certificates_search
-    user_cettificates = get_user_certificates.paginate(page: @params[:page], per_page: 10)
+    user_cettificates ||= get_user_certificates.paginate(page: @params[:page], per_page: 10)
   end
 
   private
 
   def get_uncompleted_courses
-    starting_courses_ids = @user.following.pluck(:id)
-    completed_courses_ids = @user.user_courses.pluck(:course_id)
-    uncompleted_courses_ids = starting_courses_ids - completed_courses_ids
-    Course.where(id: uncompleted_courses_ids)
+    @user.following
   end
 
   def get_highest_rate_courses
@@ -117,27 +114,27 @@ class UserDashboardService
   end
 
   def get_completed_courses
-    Course.where(id: @user.user_courses.pluck(:course_id))
+    completed_courses ||= Course.where(id: @user.user_courses.pluck(:course_id))
   end
 
   def get_favorite_courses
-    Course.where(id: @user.bookmarks.pluck(:course_id))
+    favorite_courses ||= Course.where(id: @user.bookmarks.pluck(:course_id))
   end
 
   def get_org_courses
-    Course.where.not(organization_id: nil)
+    org_courses ||= Course.where.not(organization_id: nil)
   end
 
   def get_not_org_courses
-    Course.where(organization_id: nil)
+    not_org_courses ||= Course.where(organization_id: nil)
   end
 
   def get_current_user_courses
-    @user.following
+    current_courses ||= @user.following
   end
 
   def get_user_certificates
-    @user.user_courses.where.not(certificate_path: nil)
+    user_cettificates ||= @user.user_courses.where.not(certificate_path: nil)
   end
 
   def sort_column

@@ -4,9 +4,8 @@ class UserAnswersController < ApplicationController
 
   def create
     @user_answer = UserAnswer.new(user_answer_params)
+    UserAnswerService.new(@user_answer, params).set_user_answers_values
 
-    user_answer_service = UserAnswerService.new(@user_answer, params)
-    user_answer_service.set_user_answers_values
     if @user_answer.save
       redirect_to course_page_path(@course, @page), notice: t(:answer_accepted)
     else
@@ -14,7 +13,7 @@ class UserAnswersController < ApplicationController
     end
   end
 
-  private 
+  private
 
   def user_answer_params
     params.permit(:answer, :question_id, :course_id, :user_id, :answers)
@@ -25,10 +24,10 @@ class UserAnswersController < ApplicationController
   end
 
   def set_course
-    @course = Course.find(params[:course_id])  
+    @course = Course.find(params[:course_id])
   end
 
   def set_page
-    @page = Page.find(params[:page_id])    
+    @page = Page.find(params[:page_id])
   end
 end

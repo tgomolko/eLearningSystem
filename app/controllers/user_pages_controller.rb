@@ -8,16 +8,11 @@ class UserPagesController < ApplicationController
   def create
     @user_page = UserPage.new(user_page_params)
 
-    if all_question_answered?(@page)
-      @user_page.completed = true
-      if @user_page.save
-        if next_page && @page != last_page
-          redirect_to course_page_path(@course, next_page)
-        else
-          redirect_to @course, notice: t(:passed_all_pages)
-        end
+    if all_question_answered?(@page) && @user_page.save
+      if next_page && (@page != last_page)
+        redirect_to course_page_path(@course, next_page)
       else
-        redirect_to course_page_path(@course, @page), alert: t(:something_wrong)
+        redirect_to @course, notice: t(:passed_all_pages)
       end
     else
       redirect_to course_page_path(@course, @page), alert: t(:should_answer_all_questions)
