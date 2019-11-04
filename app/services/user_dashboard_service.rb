@@ -106,7 +106,7 @@ class UserDashboardService
   private
 
   def get_uncompleted_courses
-    user.following
+    current_courses ||= user.following
   end
 
   def get_highest_rate_courses
@@ -131,7 +131,7 @@ class UserDashboardService
   end
 
   def get_current_user_courses
-    current_courses ||= @user.following
+    current_courses ||= @user.courses
   end
 
   def get_user_certificates

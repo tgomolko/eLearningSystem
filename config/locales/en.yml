@@ -16,7 +16,7 @@ en:
   question_added: "Question was added"
   something_wrong: "Something was wrong("
   start_course: "You started course"
-  unfollow_course: "You successfully unfollow course"
+  finish_course: "You successfully finished course"
   answer_accepted: "You answer was accepted"
   course_passed: "You passed course"
   course_already_completed: "Course have already completed"
@@ -38,3 +38,4 @@ en:
   file_no_chosen: "File no chosen"
   file_is_not_csv: "File is not CSV format"
   only_one_organization: "User can create only one organization"
+  course_already_passed: "You have already passed that course"

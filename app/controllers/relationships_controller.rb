@@ -17,9 +17,9 @@ class RelationshipsController < ApplicationController
     if finish_course_service.course_completed?
       current_user.unfollow(@course)
       finish_course_service.remove_user_answers_and_pages_for_course
-      redirect_to @course, notice: t(:unfollow_course)
+      redirect_to @course, notice: t(:finish_course)
     else
-      redirect_to @course, notice: "You have already passed that course"
+      redirect_to @course, notice: t(:course_already_passed)
     end
   end
 
