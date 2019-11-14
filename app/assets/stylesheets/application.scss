@@ -350,9 +350,10 @@ table{
 
 .course{
   width: 15%;
-  min-height: 65%;
-  margin-left: 80px;
-  margin-top: 50px;
+  min-height: 365px;
+  margin-left: 40px;
+  position: relative;
+  left: 5%;
   float: left;
   text-align: left;
   color: #000;
@@ -367,6 +368,7 @@ table{
 
 .main-c-t{
   padding-left: 15px;
+  position: relative;
 }
 
 .main-c-desc{
@@ -404,9 +406,8 @@ table{
 }
 
 .mainp{
-    width: 276px;
-    max-height: 160px;
-    object-fit: contain;
+  max-height: 160px;
+  object-fit: contain;
 }
 
 img.pp{

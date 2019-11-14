@@ -27,8 +27,8 @@
                 <%= image_tag('course.svg') %>
               <% end %>
           </figure>
-          <p><h1 class="title is-4 center main-c-t"><%= course.title %></h1></p>
-          <p><div class="desc-course main-c-desc"><%= course.description[0...120]... %></div></p>
+          <h1 class="title is-4 center main-c-t"><%= course.title %></h1>
+          <div class="desc-course main-c-desc"><%= course.description[0...120]... %></div>
           <div style="padding-left: 15px" class="review-rating" data-score="<%= course_raiting(course) %>"></div>
         </div>
       <% end %>

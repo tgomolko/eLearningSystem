@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
     @pages = @course.pages
-    @course_raiting = CourseRaitingService.new(@course).calculate_course_raiting
+    @course_raiting = @course.course_raiting.average(:rate).to_i
   end
 
   # GET /courses/new
@@ -28,8 +28,7 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = current_user.courses.build(course_params)
-
-    CourseOrganizationService.new(@course, current_user, params).set_organization_id if params[:course][:access_state] == "Private"
+    @course.organization_id = current_user.organization_id if params[:course][:access_state] == "Private"
 
     if @course.save
       redirect_to @course, notice: t(:course_created_successfully)
