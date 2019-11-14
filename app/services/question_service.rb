@@ -7,16 +7,17 @@ class QuestionService
   end
 
   def set_answers_values
-    question.answers = checkbox_question_answers_hash
+    question.answers = checkbox_question_answers
   end
 
   private
 
-  def checkbox_question_answers_hash
+  def checkbox_question_answers
     if params[:questions] && params[:answers]
-      answers = @params[:answers]
-      checkbox_values = params[:questions][:content]
-      Hash[answers.zip checkbox_values]
+     # answers = params[:answers]
+     # checkbox_values = params[:questions][:content]
+      #Hash[answers.zip checkbox_values]
+      Hash[params[:answers].zip params[:questions][:content]]
     else
       Hash.new
     end

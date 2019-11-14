@@ -2,16 +2,16 @@ class UserCoursesController < ApplicationController
   before_action :set_course, :completed?, only: [:complete]
   before_action :set_user_course, only: :result
   before_action :authenticate_user!
-  
+
   include UserCourseHelper
-  
+
   def complete
     @user_course = UserCourse.new(user_course_params)
 
     user_course_complete_service = UserCourseCompleteService.new(@course, current_user, @user_course)
     user_course_complete_service.create_user_course
     if @user_course.save
-      redirect_to @course, notice: t(:course_passed)
+      redirect_to result_user_course_path(@course), notice: t(:course_passed)
     else
       redirect_to @course, alert: t(:something_wrong)
     end

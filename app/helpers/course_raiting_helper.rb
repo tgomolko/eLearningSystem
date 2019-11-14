@@ -8,10 +8,6 @@ module CourseRaitingHelper
   end
 
   def course_raiting(course)
-    if course.course_raiting.any?
-      (course.course_raiting.pluck(:rate).reduce(:+) / course.course_raiting.pluck(:rate).size.to_f).to_i
-    else
-      return 0
-    end
+    course.course_raiting.average(:rate).to_i
   end
 end

@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   before_action :set_course
   before_action :authenticate_user!
   before_action :dont_show_completed_page, :dont_show_pages_not_following_course, only: :show
-  
+
   def index
     @pages = Page.where(course_id: @course.id)
   end
@@ -30,7 +30,7 @@ class PagesController < ApplicationController
     if @page.update(page_params)
       redirect_to edit_course_page_path(@course, @page), notice: t(:page_updated_successfully)
     else
-      render :edit 
+      render :edit
     end
   end
 
@@ -49,8 +49,7 @@ class PagesController < ApplicationController
   end
 
   def dont_show_completed_page
-    user_completed_pages_ids = current_user.user_pages.where(completed: true).pluck(:page_id)
-    if user_completed_pages_ids.include?(@page.id)
+    if current_user.user_pages.where(completed: true).pluck(:page_id).include?(@page.id)
       redirect_to @course, alert: t(:page_passed)
     end
   end

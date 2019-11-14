@@ -7,7 +7,6 @@ module UserDashboardHelper
   end
 
   def get_course(certificate)
-    course_id = certificate.course_id
-    Course.find(course_id)
+    Course.find(certificate.course_id)
   end
 end
