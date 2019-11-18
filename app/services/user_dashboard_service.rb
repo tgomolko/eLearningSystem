@@ -6,13 +6,13 @@ class UserDashboardService
     @params = params
   end
 
-  def build_dashboard_data(*data)
-    data << get_uncompleted_courses.last(5)
-    data << get_completed_courses.last(5)
-    data << get_highest_rate_courses.last(5)
-    data << get_favorite_courses.last(5)
-    data << get_org_courses.last(5)
-    data << get_not_org_courses.last(5)
+  def build_dashboard_data(limit = 5, *data)
+    data << get_uncompleted_courses.last(limit)
+    data << get_completed_courses.last(limit)
+    data << get_highest_rate_courses.last(limit)
+    data << get_favorite_courses.last(limit)
+    data << get_org_courses.last(limit)
+    data << get_not_org_courses.last(limit)
   end
 
   def current_courses_search
@@ -110,8 +110,7 @@ class UserDashboardService
   end
 
   def get_highest_rate_courses
-    highest_rate_courses_ids = CourseRaiting.all.order(:rate).pluck(:course_id)
-    Course.where(id: highest_rate_courses_ids)
+    higest_rate_courses ||= Course.where(id: CourseRaiting.all.order(:rate).pluck(:course_id))
   end
 
   def get_completed_courses

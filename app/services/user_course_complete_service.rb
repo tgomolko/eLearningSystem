@@ -55,12 +55,12 @@ class UserCourseCompleteService
   end
 
   def text_questions_user_answers
-    text_user_answers ||= user_answers.select { |a| a.answer }
+    text_user_answers = user_answers.select { |a| a.answer }
     Hash[text_user_answers.pluck(:question_id).zip text_user_answers.pluck(:answer)]
   end
 
   def course_question_user_answers
-    question_answers ||= user_answers.select { |a| a.answers.any? }
+    question_answers = user_answers.select { |a| a.answers.any? }
     Hash[question_answers.pluck(:question_id).zip question_answers.pluck(:answers)]
   end
 

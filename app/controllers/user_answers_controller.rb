@@ -4,7 +4,7 @@ class UserAnswersController < ApplicationController
 
   def create
     @user_answer = UserAnswer.new(user_answer_params)
-    UserAnswerService.new(@user_answer, params).set_user_answers_values
+    UserAnswerService.new(@user_answer, params).set_user_answers
 
     if @user_answer.save
       redirect_to course_page_path(@course, @page), notice: t(:answer_accepted)

@@ -14,9 +14,6 @@ class QuestionService
 
   def checkbox_question_answers
     if params[:questions] && params[:answers]
-     # answers = params[:answers]
-     # checkbox_values = params[:questions][:content]
-      #Hash[answers.zip checkbox_values]
       Hash[params[:answers].zip params[:questions][:content]]
     else
       Hash.new

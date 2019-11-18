@@ -12,6 +12,8 @@ class EmailController < ApplicationController
     end
   end
 
+  private
+
   def validate_files_params
     redirect_to manager_dashboard_path, alert: t(:file_no_chosen) unless params[:file]
   end

@@ -6,17 +6,15 @@ class UserAnswerService
     @params = params
   end
 
-  def set_user_answers_values
-    user_answer.answers = user_question_answers_hash
+  def set_user_answers
+    user_answer.answers = user_question_answers
   end
 
   private
 
-  def user_question_answers_hash
+  def user_question_answers
     if params[:user] && params[:answer_keys]
-      answers = params[:user][:answers]
-      answers_keys = @params[:answer_keys]
-      Hash[answers_keys.zip answers]
+      Hash[params[:answer_keys].zip params[:user][:answers]]
     else
       Hash.new
     end
