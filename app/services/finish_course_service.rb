@@ -6,7 +6,7 @@ class FinishCourseService
     @user = user
   end
 
-  def remove_user_answers_and_pages_for_course
+  def remove_user_answers_and_pages
     user.user_pages.where(page_id: course.pages.ids).destroy_all
     user.user_answers.where(course_id: course.id).destroy_all
   end

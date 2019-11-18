@@ -3,7 +3,7 @@ class UserCoursesController < ApplicationController
   before_action :set_user_course, only: :result
   before_action :authenticate_user!
 
-  include UserCourseHelper
+  include CourseHelper
 
   def complete
     @user_course = UserCourse.new(user_course_params)
@@ -30,7 +30,7 @@ class UserCoursesController < ApplicationController
   end
 
   def completed?
-    redirect_to @course, alert: t(:course_already_completed) if check_on_completed(current_user)
+    redirect_to @course, alert: t(:course_already_completed) if course_completed?(@course)
   end
 
   def set_user_course

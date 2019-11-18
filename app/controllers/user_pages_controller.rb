@@ -8,7 +8,7 @@ class UserPagesController < ApplicationController
   def create
     @user_page = UserPage.new(user_page_params)
 
-    if all_question_answered?(@page) && @user_page.save
+    if all_questions_answered?(@page) && @user_page.save
       if next_page && (@page != last_page)
         redirect_to course_page_path(@course, next_page)
       else
