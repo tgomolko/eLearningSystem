@@ -8,7 +8,7 @@ module UserCourseHelper
     if answer.answer
       answer.answer
     else
-      answer.answers.select { |k,v| v == "true"}.keys.join(", ")
+      answer.answers.select { |k,v| v == "true" }.keys.join(", ")
     end
   end
 end

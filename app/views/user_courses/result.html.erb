@@ -21,7 +21,7 @@
     </div>
   </div>
 </div>
-
+<h1 class="title is-2">Right Answers and You Answers</h1>
 <table id="current-tb" class="table is-bordered is-hoverable is-striped">
   <thead>
     <tr class="is-selected">
@@ -38,7 +38,7 @@
             <% if question.question_type == "textbox"%>
               <%= question.answer %>
             <% else %>
-             <%= question.answers.select { |k,v| v == "false"}.keys.join(", ") %>
+             <%= question.answers.select { |k,v| v == "true"}.keys.join(", ") %>
             <% end %>
           </th>
           <th>
