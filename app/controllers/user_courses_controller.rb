@@ -17,7 +17,10 @@ class UserCoursesController < ApplicationController
     end
   end
 
-  def result ; end
+  def result
+    @course_questions = Question.where(page_id: @course.pages.ids)
+    @user_answers = current_user.user_answers.where(question_id: @course_questions.ids).order(:question_id)
+  end
 
   private
 
