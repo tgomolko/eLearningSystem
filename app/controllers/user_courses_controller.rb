@@ -1,5 +1,5 @@
 class UserCoursesController < ApplicationController
-  before_action :set_course, :completed?, only: [:complete]
+  before_action :set_course, :completed?, only: :complete
   before_action :set_user_course, only: :result
   before_action :authenticate_user!
 

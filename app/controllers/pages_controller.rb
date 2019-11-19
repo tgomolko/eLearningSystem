@@ -1,7 +1,6 @@
 class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
-  before_action :set_course
-  before_action :authenticate_user!
+  before_action :set_course, :authenticate_user!
   before_action :dont_show_completed_page, :dont_show_pages_not_following_course, only: :show
 
   def index

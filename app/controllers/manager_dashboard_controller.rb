@@ -1,7 +1,5 @@
 class ManagerDashboardController < ApplicationController
-  before_action :authenticate_user!
-  before_action :ensure_access_manager_dashboard!
-  before_action :set_manager_dashboard_service
+  before_action :authenticate_user!, :ensure_access_to_manager_dashboard!, :set_manager_dashboard_service
   helper_method :sort_column, :sort_direction
   helper_method :sort_user_column, :sort_direction
 
@@ -21,7 +19,7 @@ class ManagerDashboardController < ApplicationController
     @manager_dashboard_service = ManagerDashboardService.new(current_user, params)
   end
 
-  def ensure_access_manager_dashboard!
+  def ensure_access_to_manager_dashboard!
     unless current_user.org_admin?
       redirect_to root_path, alert: t(:access_manager_disable)
     end

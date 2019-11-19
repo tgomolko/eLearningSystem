@@ -135,6 +135,7 @@ $(document).ready (function () {
   });
 
   $('.chosen-it').chosen({width: '200px'});
+
 });
 
 // $(document).ready(function() {

@@ -1,6 +1,5 @@
 class AdminController < ApplicationController
-  before_action :authenticate_user!
-  before_action :ensure_access_admin_dashboard!
+  before_action :authenticate_user!, :ensure_access_to_admin_dashboard!
 
   def dashboard ; end
 
@@ -14,7 +13,7 @@ class AdminController < ApplicationController
 
   private
 
-  def ensure_access_admin_dashboard!
+  def ensure_access_to_admin_dashboard!
     unless current_user.admin?
       redirect_to root_path, alert: t(:access_admin_disable)
     end

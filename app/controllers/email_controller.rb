@@ -1,6 +1,5 @@
 class EmailController < ApplicationController
-  before_action :authenticate_user!, :set_organization
-  before_action :validate_files_params
+  before_action :authenticate_user!, :set_organization, :validate_files_params
 
   def import
     if params[:file].content_type == "text/csv" && Email.import(params[:file])

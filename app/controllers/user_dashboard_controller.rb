@@ -1,6 +1,5 @@
 class UserDashboardController < ApplicationController
-  before_action :authenticate_user!
-  before_action :dashboard_service
+  before_action :authenticate_user!, :dashboard_service
   helper_method :sort_column, :sort_direction
 
   def dashboard
