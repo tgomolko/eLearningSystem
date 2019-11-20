@@ -1,14 +1,4 @@
 Rails.application.configure do
-  config.after_initialize do
-      Bullet.enable        = true
-      Bullet.alert         = false
-      Bullet.bullet_logger = true
-      Bullet.console       = false
-    # Bullet.growl         = true
-      Bullet.rails_logger  = false
-      Bullet.add_footer    = false
-    end  # Settings specified here will take precedence over those in config/application.rb.
-
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.

@@ -6,7 +6,7 @@
 </div>
 <div class="columns">
   <div class="column">
-    <%= form_tag user_dashboard_not_org_courses_path, method: :get, class: "search-form" do  %>
+    <%= form_tag user_dashboard_courses_path, method: :get, class: "search-form" do  %>
       <%= text_field_tag :q, params[:q], class: "string required input search" %>
       <%= submit_tag "Search", class: "button is-info is-rounded"%>
     <% end %>
@@ -24,7 +24,7 @@
           <tr>
             <th><%= link_to course.title, course_path(course) %></th>
             <th><%= course.created_at.strftime("%B %e, %Y") %>
-            <th><%= course.user.name %>  
+            <th><%= course.user.name %>
             <th><%= course.access_state %>
           </tr>
         <% end %>

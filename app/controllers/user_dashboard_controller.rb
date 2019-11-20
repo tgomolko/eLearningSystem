@@ -26,7 +26,7 @@ class UserDashboardController < ApplicationController
     @org_courses = @user_dashboard_service.org_courses_search
   end
 
-  def not_org_courses
+  def courses
     @not_org_courses = @user_dashboard_service.not_org_courses_search
   end
 

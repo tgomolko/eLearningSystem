@@ -1,5 +1,5 @@
 class EmailController < ApplicationController
-  before_action :authenticate_user!, :set_organization, :validate_files_params
+  before_action :authenticate_user!, :set_organization, :validate_file_params
 
   def import
     if params[:file].content_type == "text/csv" && Email.import(params[:file])
@@ -13,7 +13,7 @@ class EmailController < ApplicationController
 
   private
 
-  def validate_files_params
+  def validate_file_params
     redirect_to manager_dashboard_path, alert: t(:file_no_chosen) unless params[:file]
   end
 

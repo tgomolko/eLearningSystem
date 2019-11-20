@@ -20,9 +20,14 @@
   box-shadow: 0 0 1px 1px rgba(20,23,28,.1),0 3px 1px 0 rgba(20,23,28,.1);
   height: 82px;
   background-color: #293352;
-
+  position: fixed;
+  width: 100%;
 }
 
+.section{
+  position: relative;
+  top: 67px;
+}
 .navbar-brand{
   margin-left: 10%;
 }
@@ -217,10 +222,12 @@ table{
 
 #mailbox{
   width: 300px;
-  float: left;
-  margin: 90px;
+  /*float: left;*/
+  /*margin: 90px;*/
   box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);
-
+  top: 130px;
+  position: relative;
+  left: 88px;
 }
 
 .mg{
@@ -255,6 +262,8 @@ table{
 .wrapper{
   width: 810px;
   margin: 0 auto;
+  position: relative;
+  bottom: 313px;
 }
 
 .import-form{

@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   get 'user_dashboard/last_completed'
   get 'user_dashboard/recomendations'
   get 'user_dashboard/org_courses'
-  get 'user_dashboard/not_org_courses'
+  get 'user_dashboard/courses'
   get 'user_dashboard/my_courses', to: 'user_dashboard#user_courses'
   get 'user_dashboard/my_certificates', to: 'user_dashboard#user_certificates'
 
