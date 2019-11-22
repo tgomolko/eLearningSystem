@@ -1,3 +1,4 @@
+<% if user_signed_in? %>
 <%= render 'user_courses/complete_course_form' %>
 <% if course_started?(@course) && !all_user_pages_completed? %>
   <%= form_tag '/user_pages/continue', method: :post, remote: true,  class: 'render-form' do %>
@@ -8,3 +9,4 @@
 <% end %>
 </br>
 <%= link_to "View Results", result_user_course_path(@course), class: "button is-large is-info is-fullwidth" if course_completed?(@course) %>
+<% end %>

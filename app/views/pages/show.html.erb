@@ -1,11 +1,11 @@
 <div id="progressbar"></div>
 <div class="columns is-centered">
-  <div class="column is-2">
+  <div class="column is-6">
     <h1 class="title is-2"><%= @page.title %></h1>
-    <h3 class="subtitle is-4">Content:</h3>
+    <h3 class="subtitle is-6">Content:</h3>
     <%= @page.content %></br>
-    <h3 class="subtitle is-4"> Questions</h3>
-    <% @page.questions.each do |question| %> 
+    <div class="question-wrapper"><h3 class="subtitle is-4"> Questions</h3>
+    <% @page.questions.each do |question| %>
       <%= render 'questions/textbox_question', question: question %>
       <%= render 'questions/checkbox_question', question: question %>
       <%= render 'questions/radio_question', question: question %>
@@ -13,6 +13,7 @@
     </br>
       <%= render 'user_pages/user_page_form'%>
      </br>
+   </div>
     <%= link_to 'Edit', edit_course_page_path(@course, @page) , { class: "button is-link is-small"} %>
     <%= link_to 'Back', course_path(@course),{ class: "button  is-small is-black"}  %>
   </div>

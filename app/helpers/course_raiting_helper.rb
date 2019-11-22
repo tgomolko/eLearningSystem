@@ -1,6 +1,6 @@
 module CourseRaitingHelper
   def user_rated_course?(course, user)
-    course.course_raiting.where(user_id: user.id).empty? if user_signed_in?
+    course.course_raiting.where(user_id: user.id).empty?
   end
 
   def course_has_any_rate?(course)

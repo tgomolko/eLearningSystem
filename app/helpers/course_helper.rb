@@ -1,6 +1,6 @@
 module CourseHelper
   def course_started?(course)
-    current_user.following?(course) if user_signed_in?
+    current_user.following?(course)
   end
 
   def percent_of_progess(course, user)
