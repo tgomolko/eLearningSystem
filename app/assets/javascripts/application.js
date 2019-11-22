@@ -61,8 +61,8 @@ document.addEventListener("turbolinks:load", function() {
 
 });
 
-  setTimeout("$('.notification').fadeOut(3000).slideUp(500)");
 $(document).ready (function () {
+  setTimeout("$('.notification').fadeOut(3000).slideUp(500)");
 
   $('#rating-form').raty({
     path: '/assets/',
@@ -70,7 +70,7 @@ $(document).ready (function () {
   });
 
   $('.review-rating').raty({
-    readOnly: true
+    readOnly: true,
     rate: function() {
     return $(this).attr('data-score');
     },

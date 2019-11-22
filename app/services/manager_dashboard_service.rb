@@ -8,26 +8,26 @@ class ManagerDashboardService
 
   def organization_courses
     if sort_column_params?
-      organization_courses = user.organization.courses.paginate(page: params[:page], per_page: 10)
+      @organization_courses = user.organization.courses.paginate(page: params[:page], per_page: 10)
                                                .order(sort_column + " " + sort_direction)
     end
     if search_params?
-      organization_courses = user.organization.courses.paginate(page: params[:page], per_page: 10)
+      @organization_courses = user.organization.courses.paginate(page: params[:page], per_page: 10)
                                                .where(["title LIKE ?", "%#{params[:q]}%"])
     end
-    organization_courses
+    @organization_courses
   end
 
   def organization_users
     if sort_user_column_params?
-      organization_users = get_organization_users.paginate(page: params[:page], per_page: 10)
+      @organization_users = get_organization_users.paginate(page: params[:page], per_page: 10)
                                                .order(sort_user_column + " " + sort_direction)
     end
     if search_params?
-      organization_users = get_organization_users.paginate(page: params[:page], per_page: 10)
+      @organization_users = get_organization_users.paginate(page: params[:page], per_page: 10)
                                                .where(["name LIKE ?", "%#{params[:q]}%"])
     end
-    organization_users
+    @organization_users
   end
 
   def get_organization_users
