@@ -20,7 +20,7 @@
 //= require jquery-ui
 //= require chosen-jquery
 //= require jquery.turbolinks
-
+//= require tinymce
 
 document.addEventListener("turbolinks:load", function() {
 
