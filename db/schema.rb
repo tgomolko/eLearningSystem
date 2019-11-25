@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_29_133639) do
+ActiveRecord::Schema.define(version: 2019_11_25_134653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -152,6 +152,15 @@ ActiveRecord::Schema.define(version: 2019_10_29_133639) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "tinymce_images", force: :cascade do |t|
+    t.string "file"
+    t.string "owner_type"
+    t.bigint "owner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_type", "owner_id"], name: "index_tinymce_images_on_owner_type_and_owner_id"
   end
 
   create_table "user_answers", force: :cascade do |t|

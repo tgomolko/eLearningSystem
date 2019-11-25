@@ -47,8 +47,8 @@ gem 'mailboxer'
 gem 'chosen-rails'
 gem 'jquery-turbolinks'
 gem 'sidekiq'
-gem 'tinymce-rails'
-
+gem 'tinymce-rails', '~> 4.0'
+gem 'tinymce-rails-imageupload', '~> 4.0'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

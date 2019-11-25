@@ -10,6 +10,7 @@ class Course < ApplicationRecord
   has_many :user_courses, dependent: :destroy
   has_many :course_raitings, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :tinymce_images, as: :owner
 
   scope :ready, -> { where(aasm_state: "ready") }
 
