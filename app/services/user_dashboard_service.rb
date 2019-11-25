@@ -122,11 +122,11 @@ class UserDashboardService
   end
 
   def get_org_courses
-    org_courses ||= Course.where.not(organization_id: nil)
+    org_courses ||= Course.ready.where.not(organization_id: nil)
   end
 
   def get_not_org_courses
-    not_org_courses ||= Course.where(organization_id: nil)
+    not_org_courses ||= Course.ready.where(organization_id: nil)
   end
 
   def get_current_user_courses

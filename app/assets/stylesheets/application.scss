@@ -20,24 +20,9 @@
   box-shadow: 0 0 1px 1px rgba(20,23,28,.1),0 3px 1px 0 rgba(20,23,28,.1);
   height: 82px;
   background-color: #293352;
-  position: fixed;
   width: 100%;
 }
 
-.section{
-  position: relative;
-  top: 97px;
-}
-
-.column.is-6{
-  position: relative;
-  top: 97px;
-}
-
-.container .is-6{
-  position: relative;
-  top: 0;
-}
 .navbar-brand{
   margin-left: 10%;
 }
@@ -144,11 +129,6 @@
   margin-left: 70px;
 }
 
-#progressbar{
-  position: relative;
-  top: 85px;
-}
-
 .ui-progressbar {
   height: 1em;
   text-align: left;
@@ -198,11 +178,6 @@
 .fa-bm{
   border: none;
   background: none;
-}
-
-.bookmark {
-  position: relative;
-  top: 72px;
 }
 
 #current-tb{
@@ -294,6 +269,7 @@ table{
 .is-import{
   margin-top: 5px;
 }
+
 .welcome{
   height: 500px;
   background-image: image_url('welcome.jpg');
@@ -301,7 +277,6 @@ table{
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  top: 82px;
 }
 
 .h-line{
@@ -328,8 +303,6 @@ table{
   width: 100%;
   height: 500px;
   background-color: #293352;
-  position: relative;
-  top: 82px;
 }
 
 .h-line-content{
@@ -379,8 +352,6 @@ table{
   height: 500px;
   background-color: #fff;
   margin-bottom: 50px;
-  position: relative;
-  top: 81px;
 }
 
 .course{
@@ -428,8 +399,6 @@ table{
 .footer{
   background-color: #293352;
   height: 120px;
-  position: relative;
-  top: 82px;
 }
 
 .author{
