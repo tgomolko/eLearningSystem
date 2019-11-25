@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    @courses = Course.last(5)
+    @courses = Course.ready.last(5)
   end
 end

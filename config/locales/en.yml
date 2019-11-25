@@ -39,3 +39,5 @@ en:
   file_is_not_csv: "File is not CSV format"
   only_one_organization: "User can create only one organization"
   course_already_passed: "You have already passed that course"
+  course_status_changed_on_ready: "Course status changed on ready"
+  course_status_changed_on_draft: "Course status changed on draft"

@@ -10,10 +10,10 @@
       <h1 class="title is-5"><span class="tag is-primary is-medium">Access
         <%= @course.access_state %></span>
         <p class="control is-pulled-right" >
-          <%= link_to "Add page to course", new_course_page_path(@course), class: "button is-success is-rounded" %>
+          <%= link_to "Add page to course", new_course_page_path(@course), class: "button is-success is-rounded" if @course.draft? %>
         </p>
         <span class="is-pulled-right">
-          <span class="tag is-info is-medium is-custom"><%= @course.aasm_state %></span>
+          <%= render "states", course: @course %>
         </span>
       </h1>
     <% end %>

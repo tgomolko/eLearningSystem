@@ -11,6 +11,8 @@ class Course < ApplicationRecord
   has_many :course_raitings, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
 
+  scope :ready, -> { where(aasm_state: "ready") }
+
   has_attached_file :attachment_pdf, { url: '/attachment_pdf/:id/:filename',
                                        path: "public/attachment_pdf/:id/:filename" }
   validates_attachment_content_type :attachment_pdf, content_type: ['application/pdf']
@@ -21,11 +23,11 @@ class Course < ApplicationRecord
   aasm do
     state :draft, initial: true
     state :ready
-    event :make_ready do
+    event :ready do
       transitions from: :draft, to: :ready
     end
 
-    event :make_draft do
+    event :draft do
       transitions from: :ready, to: :draft
     end
   end

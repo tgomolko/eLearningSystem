@@ -1,0 +1,9 @@
+<%if @course.aasm_state == "draft" %>
+  <%= link_to ready_course_path(@course), method: :patch, title: "ready" do %>
+    <span class="is-pulled-right"><span class="tag is-warning is-medium is-custom">Set status ready</span></span>
+  <% end %>
+<% else %>
+  <%= link_to draft_course_path(@course), method: :patch, title: "draft" do %>
+    <span class="is-pulled-right"><span class="tag is-info is-medium is-custom">Set status draft</span></span>
+  <% end %>
+<% end %>

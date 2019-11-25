@@ -1,11 +1,11 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:show]
+  before_action :set_course, only: [:show, :edit, :destroy, :ready, :draft]
+  before_action :authenticate_user!, except: :show
 
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all.includes(:user)
+    @courses = Course.ready.includes(:user)
   end
 
   # GET /courses/1
@@ -52,6 +52,16 @@ class CoursesController < ApplicationController
   def destroy
     @course.destroy
     redirect_to courses_url, notice: t(:course_destroyed_successully)
+  end
+
+  def ready
+    @course.ready!
+    redirect_to @course, notice: t(:course_status_changed_on_ready)
+  end
+
+  def draft
+    @course.draft!
+    redirect_to @course, notice: t(:course_status_changed_on_draft)
   end
 
   private

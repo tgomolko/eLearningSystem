@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :courses do
     member do
       patch '/complete', to: 'courses#complete'
+      patch 'ready/', to: 'courses#ready'
+      patch 'draft', to: 'courses#draft'
     end
     resources :pages, except: :index
   end
