@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
     @pages = @course.pages
-    @course_raiting = @course.course_raiting.average(:rate).to_i
+    @course_raiting = @course.course_raitings.average(:rate).to_i
   end
 
   # GET /courses/new

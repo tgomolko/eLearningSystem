@@ -8,7 +8,7 @@ class Course < ApplicationRecord
   has_many :pages, dependent: :destroy
   has_many :user_answers, dependent: :destroy
   has_many :user_courses, dependent: :destroy
-  has_many :course_raiting, dependent: :destroy
+  has_many :course_raitings, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
 
   has_attached_file :attachment_pdf, { url: '/attachment_pdf/:id/:filename',

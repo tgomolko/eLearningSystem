@@ -8,7 +8,7 @@ class UserEmailInvitationService
 
   def send_email_invites
     Email.where(invited: false).each do |email|
-      SendNewUserInvitationJob.new.perform(email, user, organization)
+      SendNewUserInvitationJob.new.perform(email.email, user, organization)
       email.update_attributes(invited: true)
     end
   end
