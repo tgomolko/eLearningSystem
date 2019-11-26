@@ -1,29 +1,21 @@
 class OrganizationsController < ApplicationController
-  before_action :set_organization, only: [:show, :edit, :update, :destroy, :approve, :reject]
-  before_action :authenticate_user!, :ensure_organiuzation_access, except: :show
+  before_action :set_organization, except: [:index, :new, :create]
+  before_action :authenticate_user!, except: :show
   before_action :ensure_create_organization_more_then_one, only: :new
+  before_action :ensure_organiuzation_access, only: :edit
 
-  # GET /organizations
-  # GET /organizations.json
   def index
     @organizations = Organization.all
   end
 
-  # GET /organizations/1
-  # GET /organizations/1.json
   def show ; end
 
-  # GET /organizations/new
   def new
     @organization = current_user.build_organization
   end
 
-  # GET /organizations/1/edit
-  def edit
-  end
+  def edit ; end
 
-  # POST /organizations
-  # POST /organizations.json
   def create
     @organization = current_user.build_organization(organization_params)
     if @organization.save
@@ -33,8 +25,6 @@ class OrganizationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /organizations/1
-  # PATCH/PUT /organizations/1.json
   def update
     if @organization.update(organization_params)
       redirect_to @organization, notice: t(:org_updated_successfully)
@@ -43,8 +33,6 @@ class OrganizationsController < ApplicationController
     end
   end
 
-  # DELETE /organizations/1
-  # DELETE /organizations/1.json
   def destroy
     @organization.destroy
     redirect_to organizations_url, notice: t(:org_destroyed_successfully)
@@ -69,12 +57,11 @@ class OrganizationsController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
+
   def set_organization
     @organization = Organization.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def organization_params
     params.require(:organization).permit(:company_name, :description, :user_id)
   end
