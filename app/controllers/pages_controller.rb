@@ -2,7 +2,8 @@ class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   before_action :set_course, :authenticate_user!
   before_action :dont_show_completed_page, :dont_show_pages_not_following_course, only: :show
-  before_action :ensure_page_access, only: [:edit]
+  before_action :ensure_page_access, only: :edit
+
   def index
     @pages = Page.where(course_id: @course.id)
   end
@@ -11,9 +12,7 @@ class PagesController < ApplicationController
     @page = @course.pages.build
   end
 
-  def edit
-
-  end
+  def edit ; end
 
   def show
     @pages = @course.pages.order("created_at DESC")

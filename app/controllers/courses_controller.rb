@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :destroy, :update, :ready, :draft]
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :ensure_course_access, only: [:edit]
+  before_action :ensure_course_access, only: :edit
 
   # GET /courses
   # GET /courses.json
