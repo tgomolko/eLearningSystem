@@ -220,7 +220,7 @@ table{
   /*float: left;*/
   /*margin: 90px;*/
   box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);
-  top: 130px;
+  /*top: 130px*/;
   position: relative;
   left: 88px;
 }
@@ -258,12 +258,11 @@ table{
   width: 810px;
   margin: 0 auto;
   position: relative;
-  bottom: 313px;
+  bottom: 450px;
 }
 
 .import-form{
   margin-left: 118px;
-  width: 20%;
 }
 
 .is-import{
@@ -420,7 +419,7 @@ img.pp{
   max-height: 160px;
 }
 
-.dsd{
+.courses-index{
   text-align: left;
   float: left;
   margin-left:  20px;
@@ -440,4 +439,10 @@ img.pp{
 
 .question-wrapper{
   text-align: center;
+}
+
+.trash{
+  position: relative;
+  left: 89px;
+  bottom: 65px;
 }

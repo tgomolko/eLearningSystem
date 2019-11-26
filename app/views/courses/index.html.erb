@@ -1,6 +1,6 @@
 <div class="headline-center l-courses">Courses</div>
 <% @courses.each do |course| %>
-    <div class="dsd">
+    <div class="courses-index">
   <%= link_to course_path(course)  do %>
        <figure class="image mainp">
           <% if course.image_url %>

@@ -1,3 +1,4 @@
+<h1 class="title is-2 is-centered" style="margin-top: 50px">MailBox</h1>
 <aside class="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile" id="mailbox">
   <p class="menu-label is-hidden-touch">Emailbox</p>
   <ul class="menu-list">
@@ -14,7 +15,7 @@
 </div>
 
 <% if @box == 'trash' %>
-  <p><%= link_to 'Empty trash', empty_trash_conversations_path, class: 'button is-danger', method: :delete, data: {confirm: 'Are you sure?'} %></p>
+  <p><%= link_to 'Empty trash', empty_trash_conversations_path, class: 'button is-danger trash', method: :delete, data: {confirm: 'Are you sure?'} %></p>
 <% end %>
 
 <div class="section">
@@ -22,7 +23,5 @@
     <div class="columns is-centered">
       <%= will_paginate renderer: BulmaPagination::Rails %>
     </div>
-    </br>
-    <%= link_to 'Back', user_dashboard_path, { class: "button  is-small is-black"} %>
   </div>
 </div>

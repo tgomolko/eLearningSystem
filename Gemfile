@@ -76,6 +76,7 @@ group :development do
   gem 'pry'
   gem 'bullet'
   gem 'ruby-growl'
+  gem "letter_opener"
 end
 
 group :test do

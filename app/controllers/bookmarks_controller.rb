@@ -5,7 +5,7 @@ class BookmarksController < ApplicationController
 
   def create
     @bookmark = Bookmark.new(bookmark_params)
-    
+
     if @bookmark.save
       redirect_to @course, notice: t(:added_bookmark)
     else
