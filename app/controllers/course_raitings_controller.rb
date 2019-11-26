@@ -4,7 +4,7 @@ class CourseRaitingsController < ApplicationController
 
   def create
     @course_raiting = CourseRaiting.new(course_raiting_params)
-    binding.pry
+
     if @course_raiting.save
       redirect_to @course, notice: t(:rated_course)
     else
