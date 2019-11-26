@@ -343,7 +343,7 @@ DEPENDENCIES
   aasm (~> 5.0)
   better_errors
   bootsnap (>= 1.1.0)
-  bootstrap-sass
+  bootstrap-sass (~> 3.4)
   bullet
   bulma-rails (~> 0.8.0)
   byebug
