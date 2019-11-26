@@ -3,7 +3,7 @@
     <h1 class="title is-2"><%= @organization.company_name %></h1>
     <h3 class="subtitle is-4">Description:</h3>
     <%= @organization.description %></br>
-    <%= link_to 'Edit', edit_organization_path(@organization), { class: "button is-link is-small"} %> 
+    <%= link_to 'Edit', edit_organization_path(@organization), { class: "button is-link is-small"} if user_signed_in? && policy(@organization).edit? %>
     <%= link_to 'Back', organizations_path,{ class: "button  is-small is-black"}  %>
   </div>
 </div>

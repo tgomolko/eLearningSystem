@@ -13,7 +13,7 @@
       <%= render 'user_pages/user_page_form'%>
      </br>
    </div>
-    <%= link_to 'Edit', edit_course_page_path(@course, @page) , { class: "button is-link is-small"} %>
+    <%= link_to 'Edit', edit_course_page_path(@course, @page) , { class: "button is-link is-small"} if policy(@page).edit? %>
     <%= link_to 'Back', course_path(@course),{ class: "button  is-small is-black"}  %>
   </div>
 </div>

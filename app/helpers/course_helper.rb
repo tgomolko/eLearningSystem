@@ -7,7 +7,7 @@ module CourseHelper
     course_pages_ids = course.pages.pluck(:id)
     return 100 if course_pages_ids.empty?
     completed_pages_size = current_user.user_pages.where(page_id: course_pages_ids).size
-    (completed_pages_size.to_f / course.pages.size) * 100
+    ((completed_pages_size.to_f / course.pages.size) * 100).round
   end
 
   def user_in_org?(user)

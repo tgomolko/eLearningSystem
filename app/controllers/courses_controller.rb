@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :destroy, :ready, :draft]
-  before_action :authenticate_user!, except: :show
+  before_action :set_course, only: [:show, :edit, :destroy, :update, :ready, :draft]
+  before_action :authenticate_user!, except: [:show, :index]
+  before_action :ensure_course_access, only: [:edit]
 
   # GET /courses
   # GET /courses.json
@@ -41,7 +42,7 @@ class CoursesController < ApplicationController
   # PATCH/PUT /courses/1.json
   def update
     if @course.update(course_params)
-      redirect_to @course, notice: t(:course_updated_successully)
+      redirect_to @course, notice: t(:course_updated_successfully)
     else
       render :edit
     end
@@ -51,7 +52,7 @@ class CoursesController < ApplicationController
   # DELETE /courses/1.json
   def destroy
     @course.destroy
-    redirect_to courses_url, notice: t(:course_destroyed_successully)
+    redirect_to courses_url, notice: t(:course_destroyed_successfully)
   end
 
   def ready
@@ -75,5 +76,19 @@ class CoursesController < ApplicationController
     params.require(:course).permit(:title, :description, :aasm_state, :user_id,
                                    :requirements, :access_state, :image,
                                    :attachment_pdf)
+  end
+
+  def ensure_access_to_manager_dashboard!
+    unless current_user.org_admin?
+      redirect_to root_path, alert: t(:access_manager_disable)
+    end
+  end
+
+  def ensure_course_access
+    begin
+      authorize @course
+    rescue
+      redirect_to root_path, alert: t(:access_disable)
+    end
   end
 end

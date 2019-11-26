@@ -17,10 +17,9 @@
       <%= f.button :submit, 'Save changes', class: 'button is-link is-medium is-rounded mv4' %>
     <% end %>
     </br>
-    <%= link_to 'Show', course_page_path(@course, @page), { class: "button is-link is-small"} %>
-    <%= link_to 'Back',  course_page_path(@course, @page), class: 'button is-small is-black' %>
     </br>
     <%= render "add_questions" %>
+    <%= link_to 'Back',  course_path(@course), class: 'button is-small is-black' %>
   </div>
 </div>
 <%= tinymce(uploadimage_form_url: course_tinymce_images_path(@course)) %>

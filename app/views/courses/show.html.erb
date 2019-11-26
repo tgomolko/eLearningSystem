@@ -10,10 +10,10 @@
       <h1 class="title is-5"><span class="tag is-primary is-medium">Access
         <%= @course.access_state %></span>
         <p class="control is-pulled-right" >
-          <%= link_to "Add page to course", new_course_page_path(@course), class: "button is-success is-rounded" if @course.draft? %>
+          <%= link_to "Add page to course", new_course_page_path(@course), class: "button is-success is-rounded" if @course.draft? && policy(:course) %>
         </p>
         <span class="is-pulled-right">
-          <%= render "states", course: @course %>
+          <%= render "states", course: @course  if user_signed_in? && policy(@course).edit? %>
         </span>
       </h1>
     <% end %>
@@ -37,11 +37,14 @@
 
     <h1 class="subtitle is-5 is-pulled-right">Created by: <%= @course.user.name %> <%= time_ago_in_words(@course.created_at) %> ago</h1></br>
     </br>
-    <%= render 'follow_form' %>
-    <%= render 'action_buttons'%>
-    <%= render 'course_raitings/course_raiting_form' %>
+    <% unless @course.draft? %>
+      <%= render 'follow_form' %>
+      <%= render 'action_buttons'%>
+      <%= render 'course_raitings/course_raiting_form' %>
+    <% end %>
+      <%= render 'course_pages', pages: @pages if @course.draft? %>
     </br>
-    <%= link_to 'Edit', edit_course_path(@course), { class: "button is-link is-small"} %>
-    <%= link_to 'Back', courses_path,{ class: "button is-small is-black"}  %>
+      <%= link_to 'Edit', edit_course_path(@course), { class: "button is-link is-small"} if user_signed_in? &&policy(@course).edit? %>
+      <%= link_to 'Back', courses_path,{ class: "button is-small is-black"}  %>
   </div>
 </div>

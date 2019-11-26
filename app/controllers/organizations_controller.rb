@@ -1,6 +1,6 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: [:show, :edit, :update, :destroy, :approve, :reject]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :ensure_organiuzation_access, except: :show
   before_action :ensure_create_organization_more_then_one, only: :new
 
   # GET /organizations
@@ -82,6 +82,14 @@ class OrganizationsController < ApplicationController
   def ensure_create_organization_more_then_one
     if current_user.organization
       redirect_to root_path, alert: t(:only_one_organization)
+    end
+  end
+
+  def ensure_organiuzation_access
+    begin
+      authorize @organization
+    rescue
+      redirect_to root_path, alert: t(:access_disable)
     end
   end
 end

@@ -7,15 +7,15 @@ class ApplicationPolicy
   end
 
   def index?
-    if @user.role.admin? || @user.id == current_user.id
+    true
   end
 
   def show?
-    index?
+    true
   end
 
   def create?
-    index?
+    true
   end
 
   def new?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    index?
+    @user.admin? || @user.id == record.user_id
   end
 
   def edit?
@@ -31,6 +31,6 @@ class ApplicationPolicy
   end
 
   def destroy?
-    if @user.admin?
+    update?
   end
 end
