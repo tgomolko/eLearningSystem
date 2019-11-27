@@ -9,9 +9,7 @@ Rails.application.routes.draw do
       patch 'draft', to: 'courses#draft'
     end
     resources :tinymce_images, only: [:create, :edit, :update], owner: "Course"
-    resources :pages, except: :index do
-
-    end
+    resources :pages, except: :index
   end
 
   resources :organizations do

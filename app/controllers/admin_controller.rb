@@ -4,7 +4,7 @@ class AdminController < ApplicationController
   def dashboard ; end
 
   def pending_org
-    @pending_org = Organization.where(aasm_state: "pending")
+    @pending_org = Organization.pending
   end
 
   def organizations
