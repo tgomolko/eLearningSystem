@@ -37,11 +37,13 @@
 
     <h1 class="subtitle is-5 is-pulled-right">Created by: <%= @course.user.name %> <%= time_ago_in_words(@course.created_at) %> ago</h1></br>
     </br>
-    <% unless @course.draft? %>
+
+    <% if user_signed_in? && @course.ready? %>
       <%= render 'follow_form' %>
       <%= render 'action_buttons'%>
       <%= render 'course_raitings/course_raiting_form' %>
     <% end %>
+
       <%= render 'course_pages', pages: @pages if @course.draft? %>
     </br>
       <%= link_to 'Edit', edit_course_path(@course), { class: "button is-link is-small"} if user_signed_in? &&policy(@course).edit? %>

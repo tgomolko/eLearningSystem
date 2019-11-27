@@ -10,7 +10,7 @@
       <%= render 'questions/radio_question', question: question %>
     <% end %>
     </br>
-      <%= render 'user_pages/user_page_form'%>
+      <%= render 'user_pages/user_page_form' unless @page.course.draft? %>
      </br>
    </div>
     <%= link_to 'Edit', edit_course_page_path(@course, @page) , { class: "button is-link is-small"} if policy(@page).edit? %>

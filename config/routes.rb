@@ -27,11 +27,13 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
   root 'welcome#index'
+
   get 'admin/dashboard'
   get 'admin/pending_org'
   get 'admin/organizations'
 
   post 'questions/add'
+
   post 'user_answers/create'
 
   get 'user_dashboard', to: 'user_dashboard#dashboard'
@@ -46,8 +48,10 @@ Rails.application.routes.draw do
 
   get 'manager_dashboard', to: 'manager_dashboard#dashboard'
   get 'manager_dashboard/organization_courses'
+  get 'manager_dashboard/organization_users'
 
   resources :user_pages, only: :create
+
   post 'user_pages/continue'
 
   resources :user_courses, only: [] do
@@ -58,7 +62,9 @@ Rails.application.routes.draw do
   end
 
   resources :course_raitings, only: :create
+
   resources :bookmarks, only: [:create, :destroy]
+
   resources :conversations, only: [:index, :show, :destroy] do
      member do
       post :reply
@@ -69,10 +75,8 @@ Rails.application.routes.draw do
       delete :empty_trash
     end
   end
+
   resources :messages, only: [:new, :create]
 
   post 'import_emails', to: 'email#import'
-  get 'manager_dashboard/organization_users'
-  #patch '/courses/:id/complete', to: 'courses#complete'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
