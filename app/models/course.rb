@@ -12,10 +12,9 @@ class Course < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :tinymce_images, as: :owner
 
-  scope :ready, -> { where(aasm_state: "ready") }
-
   has_attached_file :attachment_pdf, { url: '/attachment_pdf/:id/:filename',
                                        path: "public/attachment_pdf/:id/:filename" }
+
   validates_attachment_content_type :attachment_pdf, content_type: ['application/pdf']
   validates :title, length: { maximum: 100 }, presence: true
 
