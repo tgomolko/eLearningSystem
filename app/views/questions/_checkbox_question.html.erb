@@ -1,9 +1,9 @@
 <% if question.checkbox? %>
-  <p><%= question.content%></p>
+  <p class="title is-5"><%= question.content%></p>
   <%= form_tag '/user_answers/create', method: :post, remote: true, class: 'render-form' do %>
     <% question.answers.each do |k,v| %>
         <div>
-        <%= hidden_field_tag "user[answers][]", false, class: "hid-f" %> 
+        <%= hidden_field_tag "user[answers][]", false, class: "hid-f" %>
         <%= check_box_tag "user[answers][]", true, false, class: "chp" %>
         <%= k %>
         <%= hidden_field_tag "answer_keys[]",k %>
@@ -20,6 +20,6 @@
     <% end %>
   <% end %>
   <div id="box1" style="display: none">
-    <%= hidden_field_tag "user[answers][]", false, class: "hid-f" %> 
+    <%= hidden_field_tag "user[answers][]", false, class: "hid-f" %>
   </div>
 <% end %>

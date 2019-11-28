@@ -78,28 +78,49 @@ $(document).ready (function () {
   });
 
   $(document).on("click","#add-q", function() {
-    $("#main").append($(".add-from").html());
+    $(".main").append($(".add-from").html());
   });
 
   $(document).on("click","#add-checkbox-form", function() {
-    $("#main").append($("#checkbox-form").html());
+    $(".main").append($(".checkbox-form").html());
   });
 
   $(document).on("click","#add-radio-form", function() {
-    $("#main").append($("#radio-form").html());
+    $(".main").append($(".radio-form").html());
   });
 
   $(document).on("click",".hide-q", function() {
-   $(this).parent().hide();
+    $(this).parent().hide();
   });
 
   $(document).on ("click", ".checkbox", function () {
-    $("#cont").append($("#box").html());
+    $(this).parent().children('.cont').append($(".box").html());
   });
 
   $(document).on ("click", ".radio-add", function () {
-    $("#radio-cont").append($("#radio-box").html());
+    $(this).parent().children('.radio-cont').append($(".radio-box").html());
   });
+
+   $(document).on ("click", ".rm", function () {
+    //debugger
+    $(this).parent().remove();
+  });
+
+   $(document).on ("click", ".close-form", function () {
+    //debugger
+    $(this).parent().remove();
+  });
+
+   $(document).on ("click", ".rm-rq", function () {
+    //debugger
+    $(this).parent().remove();
+  });
+
+   $(document).on ("click", ".close-form-rq", function () {
+    //debugger
+    $(this).parent().remove();
+  });
+
 
   $(document).on ("click", ".answer", function () {
     $(this).parent().find('.add-from').show();

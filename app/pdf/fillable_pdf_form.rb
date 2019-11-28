@@ -18,7 +18,7 @@ class FillablePdfForm
     @output_path
   end
 
-  def get_field_names 
+  def get_field_names
     pdftk.get_field_names template_path
   end
 
@@ -31,7 +31,7 @@ class FillablePdfForm
   end
 
   def default_template
-    "#{Rails.root}/public/attachment_pdf/default_template/elearning_certificate.pdf"
+    "#{Rails.root}/public/attachment_pdf/default_template/elearning_system_certificate.pdf"
   end
 
   protected

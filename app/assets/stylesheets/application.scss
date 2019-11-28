@@ -72,7 +72,7 @@
 }
 
 #answer{
-  margin-left: 0px;
+  width: 150px;
 }
 
 .button.is-small.is-info.is-dis{
@@ -101,8 +101,7 @@
 }
 
 .ff{
-  width: 240px;
-  margin-left: 72px;
+  margin-left: 34px;
 }
 
 #answers_{
@@ -115,8 +114,7 @@
 }
 
 .radio-dv{
-  width: 245px;
-  margin-left: 63px;
+  margin-left: 45px;
 }
 
 .button.is-small.is-danger.rquest{
@@ -125,8 +123,7 @@
 }
 
 .t-quest{
-  width: 307px;
-  margin-left: 70px;
+  margin-left: 66px;
 }
 
 .ui-progressbar {
@@ -439,4 +436,8 @@ img.pp{
   position: relative;
   left: 89px;
   bottom: 65px;
+}
+
+.render-form{
+  margin-bottom: 22px;
 }

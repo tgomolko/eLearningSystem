@@ -1,23 +1,25 @@
- <div id="radio-form" style="display: none"> 
+ <div class="radio-form" style="display: none">
   <%= form_tag '/questions/add', method: :post, remote: true, class: 'render-form' do %>
-    <a class="radio-add">add radio</a>
-    <p><%= label_tag 'content'%> <%= text_field_tag :content %></p>
+    <a class="radio-add"><i class="fa fa-plus" aria-hidden="true"></i></a>
+    <%= label_tag 'content'%> <%= text_field_tag :content %>
       <%= hidden_field_tag(:question_type, params["question_type"] = "radio") %>
       <%= hidden_field_tag(:page_id, @page.id) %>
       <%= hidden_field_tag(:course_id, @course.id) %>
-    <div id="radio-cont"> </div>
+      <a class="close-form-rq" title="close form"><i class="fa fa-minus-square" style="color:red"></i></a>
+    <div class="radio-cont"></div>
     <%= submit_tag 'Create radio question', class: 'button is-small is-danger rquest' %>
   <% end %>
-    
-  <div id="radio-box" style="display: none">
-    <div class="radio-dv">  
+
+  <div class="radio-box" style="display: none">
+    <div class="radio-dv">
       <%= hidden_field_tag "questions[content][]", false, class: "hid-f" %>
       <%= radio_button_tag "questions[content][]", true, false, class: "rd" %>
       <%= label_tag 'answer'%> <%= text_field_tag "answers[]" %>
+      <a class="rm-rq" title="remove answer input"><i class="fa fa-close"></i></a>
     </div>
   </div>
-   
+
   <div id="box3" style="display: none">
-    <%= hidden_field_tag "questions[content][]", false, class: "hid-f" %> 
+    <%= hidden_field_tag "questions[content][]", false, class: "hid-f" %>
   </div>
 </div>
