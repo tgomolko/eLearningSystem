@@ -25,7 +25,7 @@
             <th><%= link_to course.title, course_path(course) %></th>
             <th><%= course.created_at.strftime("%B %e, %Y") %>
             <th><%= course.access_state %>
-            <th >
+            <th>
                 <div class="is-pulled-right"><%= link_to course, method: :detele, data: { confirm: "Are you sure you want to delete this" } do %>
                   <span class="is-pulled-right"><i class="fa fa-trash fa-1x" aria-hidden="true"></i></span>
               <% end %>
