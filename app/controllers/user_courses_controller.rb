@@ -7,9 +7,8 @@ class UserCoursesController < ApplicationController
 
   def complete
     @user_course = UserCourse.new(user_course_params)
+    UserCourseCompleteService.new(@course, current_user, @user_course).create_user_course
 
-    user_course_complete_service = UserCourseCompleteService.new(@course, current_user, @user_course)
-    user_course_complete_service.create_user_course
     if @user_course.save
       redirect_to result_user_course_path(@course), notice: t(:course_passed)
     else
