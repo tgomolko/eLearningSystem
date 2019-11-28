@@ -101,23 +101,19 @@ $(document).ready (function () {
     $(this).parent().children('.radio-cont').append($(".radio-box").html());
   });
 
-   $(document).on ("click", ".rm", function () {
-    //debugger
+  $(document).on ("click", ".rm", function () {
     $(this).parent().remove();
   });
 
-   $(document).on ("click", ".close-form", function () {
-    //debugger
+  $(document).on ("click", ".close-form", function () {
     $(this).parent().remove();
   });
 
-   $(document).on ("click", ".rm-rq", function () {
-    //debugger
+  $(document).on ("click", ".rm-rq", function () {
     $(this).parent().remove();
   });
 
-   $(document).on ("click", ".close-form-rq", function () {
-    //debugger
+  $(document).on ("click", ".close-form-rq", function () {
     $(this).parent().remove();
   });
 
@@ -156,24 +152,4 @@ $(document).ready (function () {
   });
 
   $('.chosen-it').chosen({width: '200px'});
-
 });
-
-// $(document).ready(function() {
-//   var stickyNavTop = $('.navbar').offset().top;
-
-//   var stickyNav = function(){
-//     var scrollTop = $(window).scrollTop();
-
-//     if (scrollTop > stickyNavTop) {
-//         $('.navbar').addClass('sticky');
-//     } else {
-//         $('.navbar').removeClass('sticky');
-//     }
-// };
-
-
-// $(window).scroll(function() {
-//   stickyNav();
-//   });
-// });
