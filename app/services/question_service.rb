@@ -6,13 +6,13 @@ class QuestionService
     @params = params
   end
 
-  def set_answers_values
-    question.answers = checkbox_question_answers
+  def set_answer
+    question.answers = build_question_answer
   end
 
   private
 
-  def checkbox_question_answers
+  def build_question_answer
     if params[:questions] && params[:answers]
       Hash[params[:answers].zip params[:questions][:content]]
     else

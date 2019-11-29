@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
 
   def add
     @question = Question.new(question_params)
-    QuestionService.new(@question, params).set_answers_values
+    QuestionService.new(@question, params).set_answer
 
     if @question.save
       redirect_to edit_course_page_path(@course, @page), notice: t(:question_added)
