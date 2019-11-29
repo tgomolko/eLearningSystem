@@ -3,8 +3,7 @@ class PotentialOrganizationParticipantsController < ApplicationController
 
   def import
     if params[:file].content_type == "text/csv"
-      PotentialOrganizationParticipantImportService.new(params[:file]).call
-      AddParticipantsToOrganizationJob.new.perform(@organization, current_user)
+      PotentialOrganizationParticipantsImportService.new(@organization, current_user, params[:file]).call
       redirect_to manager_dashboard_path, notice: t(:invitations_sending_in_progress)
     else
       redirect_to manager_dashboard_path, alert: t(:file_is_not_csv)

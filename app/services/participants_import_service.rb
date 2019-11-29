@@ -1,4 +1,4 @@
-class PotentialOrganizationParticipantImportService
+class ParticipantsImportService
   attr_reader :file
 
   def initialize(file)
