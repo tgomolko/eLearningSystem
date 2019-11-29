@@ -9,8 +9,8 @@ class OrganizationApproveService
   def approve_organization
     unless organization.approved?
       organization.approve!
-      user.update_attributes(organization_id: organization.id)
-      user.update_attributes(role: "org_admin") if user.user?
+      user.update(organization_id: organization.id, participant_org_id: organization.id)
+      user.update(role: "org_admin") if user.user?
     end
   end
 

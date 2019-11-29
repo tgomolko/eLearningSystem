@@ -1,4 +1,4 @@
-class SendNewUserInvitationJob < ApplicationJob
+class SendOrganizationParticipantInvitationJob < ApplicationJob
   queue_as :mailers
 
   def perform(email, user, orgaization)

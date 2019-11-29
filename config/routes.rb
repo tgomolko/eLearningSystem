@@ -76,5 +76,5 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:new, :create]
 
-  post 'import_emails', to: 'email#import'
+  post 'import_emails', to: 'potential_organization_participants#import'
 end
