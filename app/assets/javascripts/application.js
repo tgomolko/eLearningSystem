@@ -138,7 +138,7 @@ $(document).ready (function () {
   });
 
   $(document).on('change','.rd', function(e){
-    var active = $('#radio-cont').find(".active");
+    var active = $('.radio-cont').find(".active");
     if (active.length > 0) {
       active.removeClass("active");
       $('#box3').find('.hid-f').clone().prependTo(active);
