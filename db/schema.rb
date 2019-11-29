@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_25_134653) do
+ActiveRecord::Schema.define(version: 2019_11_29_084317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -51,12 +51,6 @@ ActiveRecord::Schema.define(version: 2019_11_25_134653) do
     t.datetime "attachment_pdf_updated_at"
     t.integer "organization_id"
     t.index ["user_id"], name: "index_courses_on_user_id"
-  end
-
-  create_table "emails", force: :cascade do |t|
-    t.string "email"
-    t.boolean "invited", default: false
-    t.index ["email"], name: "index_emails_on_email"
   end
 
   create_table "mailboxer_conversation_opt_outs", id: :serial, force: :cascade do |t|
@@ -130,6 +124,12 @@ ActiveRecord::Schema.define(version: 2019_11_25_134653) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_pages_on_course_id"
+  end
+
+  create_table "potential_organization_participants", force: :cascade do |t|
+    t.string "email"
+    t.boolean "invited", default: false
+    t.index ["email"], name: "index_potential_organization_participants_on_email"
   end
 
   create_table "questions", force: :cascade do |t|
