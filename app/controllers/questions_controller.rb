@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!
 
   def add
-    @question = Question.new(question_params)
+    @question = @page.questions.build(question_params)
     QuestionService.new(@question, params).set_answer
 
     if @question.save

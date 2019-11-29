@@ -4,12 +4,12 @@ class BookmarksController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @bookmark = Bookmark.new(bookmark_params)
+    @bookmark = current_user.bookmarks.build(bookmark_params)
 
     if @bookmark.save
       redirect_to @course, notice: t(:added_bookmark)
     else
-       redirect_to @course, alert: t(:something_wrong)
+      redirect_to @course, alert: t(:something_wrong)
     end
   end
 

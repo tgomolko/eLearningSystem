@@ -8,7 +8,7 @@ class UserCourseCompleteService
     @true_user_answers = 0
   end
 
-  def create_user_course
+  def call
     answered_right = true_answered_questions_count
     user.unfollow(@course)
     if answered_right

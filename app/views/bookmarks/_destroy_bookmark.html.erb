@@ -1,4 +1,4 @@
-<%= form_tag bookmark_path(current_user.bookmarks.find_by(course_id: @course.id)), method: :delete do %> 
+<%= form_tag bookmark_path(current_user.bookmarks.find_by(course_id: @course.id)), method: :delete do %>
   <%= hidden_field_tag(:course_id, @course.id) %>
   <%= button_tag "", class: "fa-bm" do %>
      <i class="fa fa-bookmark fa-3x" aria-hidden="true"></i>

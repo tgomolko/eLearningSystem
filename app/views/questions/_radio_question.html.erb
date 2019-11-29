@@ -14,7 +14,6 @@
     </div>
     <%= hidden_field_tag(:course_id, @course.id) %>
     <%= hidden_field_tag(:page_id, @page.id) %>
-    <%= hidden_field_tag(:user_id, current_user.id) %>
     <% if answered?(question) %>
       <%= submit_tag 'Question answered!',  class: 'button is-small is-info is-dis' %>
     <% else %>

@@ -4,19 +4,12 @@ class RelationshipsController < ApplicationController
   def create
     @course = Course.find(params[:followed_id])
     current_user.follow(@course)
-    if first_course_page.any?
-      redirect_to course_page_path(@course, first_course_page), notice: t(:start_course)
-    else
-      redirect_to @course
-    end
+    redirect_to course_page_path(@course, first_course_page), notice: t(:start_course)
   end
 
   def destroy
     @course = Relationship.find(params[:id]).followed
-    finish_course_service = FinishCourseService.new(@course, current_user)
-    if finish_course_service.course_completed?
-      current_user.unfollow(@course)
-      finish_course_service.remove_user_answers_and_pages
+    if FinishCourseService.new(@course, current_user).call
       redirect_to @course, notice: t(:finish_course)
     else
       redirect_to @course, notice: t(:course_already_passed)

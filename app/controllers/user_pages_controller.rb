@@ -6,7 +6,7 @@ class UserPagesController < ApplicationController
   include UserAnswerHelper
 
   def create
-    @user_page = UserPage.new(user_page_params)
+    @user_page = current_user.user_pages.build(user_page_params)
 
     if all_questions_answered?(@page) && @user_page.save
       if next_page && (@page != last_page)

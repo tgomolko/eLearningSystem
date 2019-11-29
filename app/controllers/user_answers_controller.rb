@@ -3,7 +3,7 @@ class UserAnswersController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @user_answer = UserAnswer.new(user_answer_params)
+    @user_answer = current_user.user_answers.build(user_answer_params)
     UserAnswerService.new(@user_answer, params).set_user_answer
 
     if @user_answer.save

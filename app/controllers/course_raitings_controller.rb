@@ -3,7 +3,7 @@ class CourseRaitingsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @course_raiting = CourseRaiting.new(course_raiting_params)
+    @course_raiting = current_user.course_raitings.build(course_raiting_params)
 
     if @course_raiting.save
       redirect_to @course, notice: t(:rated_course)
