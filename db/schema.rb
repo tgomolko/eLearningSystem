@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_29_084317) do
+ActiveRecord::Schema.define(version: 2019_12_02_111855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -180,7 +180,7 @@ ActiveRecord::Schema.define(version: 2019_11_29_084317) do
     t.bigint "user_id"
     t.bigint "course_id"
     t.boolean "completed", default: false
-    t.float "result"
+    t.float "result", default: 0.0
     t.integer "answered_correctly", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

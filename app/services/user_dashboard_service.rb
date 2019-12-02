@@ -72,7 +72,7 @@ class UserDashboardService
   end
 
   def user_certificates_search
-    user_cettificates ||= get_user_certificates.paginate(page: params[:page], per_page: 10)
+    user_cettificates ||= user_certificates.paginate(page: params[:page], per_page: 10)
   end
 
   private
