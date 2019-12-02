@@ -20,7 +20,7 @@ class CoursesController < ApplicationController
 
   def create
     @course = current_user.courses.build(course_params)
-    @course.organization_id = current_user.organization_id if params[:course][:access_state] == "Private"
+    add_organizations_id_to_course
 
     if @course.save
       redirect_to @course, notice: t(:course_created_successfully)
@@ -30,6 +30,8 @@ class CoursesController < ApplicationController
   end
 
   def update
+    add_organizations_id_to_course
+
     if @course.update(course_params)
       redirect_to @course, notice: t(:course_updated_successfully)
     else
@@ -64,17 +66,13 @@ class CoursesController < ApplicationController
                                    :attachment_pdf)
   end
 
-  def ensure_access_to_manager_dashboard!
-    unless current_user.org_admin?
-      redirect_to root_path, alert: t(:access_manager_disable)
-    end
+  def add_organizations_id_to_course
+    @course.organization_id = current_user.organization_id || current_user.participant_org_id if params[:course][:access_state] == "Private"
   end
 
   def ensure_course_access
-    begin
-      authorize @course
-    rescue
-      redirect_to root_path, alert: t(:access_disable)
-    end
+    authorize @course
+  rescue
+    redirect_to root_path, alert: t(:access_disable)
   end
 end

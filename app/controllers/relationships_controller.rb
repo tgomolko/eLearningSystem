@@ -9,8 +9,8 @@ class RelationshipsController < ApplicationController
 
   def destroy
     @course = Relationship.find(params[:id]).followed
-    if FinishCourseService.new(@course, current_user).call
-      redirect_to @course, notice: t(:finish_course)
+    if CancelCourseService.new(@course, current_user).call
+      redirect_to @course, notice: t(:cancel_course)
     else
       redirect_to @course, notice: t(:course_already_passed)
     end

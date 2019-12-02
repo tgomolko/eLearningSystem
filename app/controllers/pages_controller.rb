@@ -60,10 +60,8 @@ class PagesController < ApplicationController
   end
 
   def ensure_page_access
-    begin
-      authorize @page
-    rescue
-      redirect_to root_path, alert: t(:access_disable)
-    end
+    authorize @page
+  rescue
+    redirect_to root_path, alert: t(:access_disable)
   end
 end

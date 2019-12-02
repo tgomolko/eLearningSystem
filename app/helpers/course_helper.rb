@@ -11,7 +11,7 @@ module CourseHelper
   end
 
   def user_in_org?(user)
-    user.organization_id
+    user.organization_id || user.participant_org_id
   end
 
   def course_completed?(course)

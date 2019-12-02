@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'simple_form', '~> 5.0'
-gem 'gravatar_image_tag'
+gem 'gravatar_image_tag', '~> 1.2'
 gem 'devise', '~> 4.7'
 gem 'bootstrap-sass', '~> 3.4'
 gem 'bulma-rails', '~> 0.8.0'
@@ -75,7 +75,6 @@ group :development do
   gem 'guard-livereload'
   gem 'pry'
   gem 'bullet'
-  gem 'ruby-growl'
   gem "letter_opener"
 end
 

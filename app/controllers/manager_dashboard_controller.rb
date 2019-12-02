@@ -5,11 +5,11 @@ class ManagerDashboardController < ApplicationController
   def dashboard ; end
 
   def organization_courses
-    @organization_courses = @manager_dashboard_service.organization_courses
+    @organization_courses = @manager_dashboard_service.organization_courses_search
   end
 
   def organization_users
-    @organization_users = @manager_dashboard_service.organization_users
+    @organization_users = @manager_dashboard_service.organization_users_search
   end
 
   private
@@ -19,9 +19,7 @@ class ManagerDashboardController < ApplicationController
   end
 
   def ensure_access_to_manager_dashboard!
-    unless current_user.org_admin?
-      redirect_to root_path, alert: t(:access_manager_disable)
-    end
+    redirect_to root_path, alert: t(:access_manager_disable) unless current_user.org_admin?
   end
 
   def sort_column

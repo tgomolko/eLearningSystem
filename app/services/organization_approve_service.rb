@@ -7,11 +7,11 @@ class OrganizationApproveService
   end
 
   def approve_organization
-    unless organization.approved?
-      organization.approve!
-      user.update(organization_id: organization.id, participant_org_id: organization.id)
-      user.update(role: "org_admin") if user.user?
-    end
+    return if organization.approved?
+
+    organization.approve!
+    user.update(organization_id: organization.id, participant_org_id: organization.id)
+    user.update(role: "org_admin") if user.user?
   end
 
   def reject_organization

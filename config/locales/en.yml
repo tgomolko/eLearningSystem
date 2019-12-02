@@ -16,7 +16,7 @@ en:
   question_added: "Question was added"
   something_wrong: "Something was wrong("
   start_course: "You started course"
-  finish_course: "You successfully finished course"
+  cancel_course: "Course was canceled"
   answer_accepted: "You answer was accepted"
   course_passed: "You passed course"
   course_already_completed: "Course have already completed"

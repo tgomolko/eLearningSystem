@@ -6,11 +6,9 @@ class BookmarksController < ApplicationController
   def create
     @bookmark = current_user.bookmarks.build(bookmark_params)
 
-    if @bookmark.save
-      redirect_to @course, notice: t(:added_bookmark)
-    else
-      redirect_to @course, alert: t(:something_wrong)
-    end
+    redirect_to @course, notice: t(:added_bookmark) if @bookmark.save
+
+    redirect_to @course, alert: t(:something_wrong)
   end
 
   def destroy

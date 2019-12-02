@@ -7,95 +7,67 @@ class UserDashboardService
   end
 
   def build_dashboard_data(limit = 5, *data)
-    data << get_uncompleted_courses.last(limit)
-    data << get_completed_courses.last(limit)
-    data << get_highest_rate_courses.last(limit)
-    data << get_favorite_courses.last(limit)
-    data << get_org_courses.last(limit)
-    data << get_not_org_courses.last(limit)
+    data << uncompleted_courses.last(limit)
+    data << completed_courses.last(limit)
+    data << highest_rate_courses.last(limit)
+    data << favorite_courses.last(limit)
+    data << org_courses.last(limit)
+    data << not_org_courses.last(limit)
   end
 
   def current_courses_search
-    if sort_column_params?
-      @current_courses = get_uncompleted_courses.paginate(page: params[:page], per_page: 10)
-                                               .order(sort_column + " " + sort_direction)
-    end
-    if search_params?
-      @current_courses = get_uncompleted_courses.paginate(page: params[:page], per_page: 10)
-                                               .where(["title LIKE ?", "%#{params[:q]}%"])
-    end
+    @current_courses = paginate_sort_courses(uncompleted_courses) if sort_column_params?
+
+    @current_courses = paginate_found_courses(uncompleted_courses) if search_params?
+
     @current_courses
   end
 
   def favorites_courses_search
-    if sort_column_params?
-      @favorite_courses = get_favorite_courses.paginate(page: params[:page], per_page: 10)
-                                             .order(sort_column + " " + sort_direction)
-    end
-    if search_params?
-      @favorite_courses = get_favorite_courses.paginate(page: params[:page], per_page: 10)
-                                             .where(["title LIKE ?", "%#{params[:q]}%"])
-    end
+    @favorite_courses = paginate_sort_courses(favorite_courses) if sort_column_params?
+
+    @favorite_courses = paginate_found_courses(favorite_courses) if search_params?
+
     @favorite_courses
   end
 
   def completed_courses_search
-    if sort_column_params?
-      @completed_courses = get_completed_courses.paginate(page: params[:page], per_page: 10)
-                                               .order(sort_column + " " + sort_direction)
-    end
-    if search_params?
-      @completed_courses = get_completed_courses.paginate(page: params[:page], per_page: 10)
-                                               .where(["title LIKE ?", "%#{params[:q]}%"])
-    end
+    @completed_courses =  paginate_sort_courses(completed_courses) if sort_column_params?
+
+    @completed_courses = paginate_found_courses(completed_courses) if search_params?
+
     @completed_courses
   end
 
   def recomendation_courses_search
-    if sort_column_params?
-      @recomendations  = get_highest_rate_courses.paginate(page: params[:page], per_page: 10)
-                                                .order(sort_column + " " + sort_direction)
-    end
-    if search_params?
-      @recomendations = get_highest_rate_courses.paginate(page: params[:page], per_page: 10)
-                                               .where(["title LIKE ?", "%#{params[:q]}%"])
-    end
+    @recomendations  = paginate_sort_courses(highest_rate_courses) if sort_column_params?
+
+    @recomendations = paginate_found_courses(highest_rate_courses) if search_params?
+
     @recomendations
   end
 
   def org_courses_search
-    if sort_column_params?
-      @org_courses  = get_org_courses.paginate(page: params[:page], per_page: 10)
-                                    .order(sort_column + " " + sort_direction)
-    end
-    if search_params?
-      @org_courses = get_org_courses.paginate(page: params[:page], per_page: 10)
-                                   .where(["title LIKE ?", "%#{params[:q]}%"])
-    end
+    @org_courses = paginate_sort_courses(org_courses) if sort_column_params?
+
+    @org_courses = paginate_found_courses(org_courses) if search_params?
+
     @org_courses
   end
 
   def not_org_courses_search
-    if sort_column_params?
-      @not_org_courses  = get_not_org_courses.paginate(page: params[:page], per_page: 10)
-                                            .order(sort_column + " " + sort_direction)
-    end
-    if search_params?
-      @not_org_courses = get_not_org_courses.paginate(page: params[:page], per_page: 10)
-                                           .where(["title LIKE ?", "%#{params[:q]}%"])
-    end
+    @not_org_courses = paginate_sort_courses(not_org_courses) if sort_column_params?
+
+    @not_org_courses = paginate_found_courses(not_org_courses) if search_params?
+
     @not_org_courses
   end
 
   def user_courses_search
-    if sort_column_params?
-      @user_courses = get_current_user_courses.paginate(page: params[:page], per_page: 10)
-                                             .order(sort_column + " " + sort_direction)
-    end
-    if search_params?
-      @user_courses = get_current_user_courses.paginate(page: params[:page], per_page: 10)
-                                             .where(["title LIKE ?", "%#{params[:q]}%"])
-    end
+    @user_courses = paginate_sort_courses(current_user_courses) if sort_column_params?
+
+    @user_courses = paginate_found_courses(current_user_courses) if search_params?
+
     @user_courses
   end
 
@@ -105,36 +77,44 @@ class UserDashboardService
 
   private
 
-  def get_uncompleted_courses
+  def uncompleted_courses
     current_courses ||= user.following
   end
 
-  def get_highest_rate_courses
+  def highest_rate_courses
     higest_rate_courses ||= Course.where(id: CourseRaiting.all.order(:rate).pluck(:course_id))
   end
 
-  def get_completed_courses
+  def completed_courses
     completed_courses ||= Course.where(id: @user.user_courses.pluck(:course_id))
   end
 
-  def get_favorite_courses
+  def favorite_courses
     favorite_courses ||= Course.where(id: @user.bookmarks.pluck(:course_id))
   end
 
-  def get_org_courses
+  def org_courses
     org_courses ||= Course.ready.where.not(organization_id: nil)
   end
 
-  def get_not_org_courses
+  def not_org_courses
     not_org_courses ||= Course.ready.where(organization_id: nil)
   end
 
-  def get_current_user_courses
+  def current_user_courses
     current_courses ||= @user.courses
   end
 
-  def get_user_certificates
+  def user_certificates
     user_cettificates ||= @user.user_courses.where.not(certificate_path: nil)
+  end
+
+  def paginate_sort_courses(courses)
+    courses.paginate(page: params[:page], per_page: 10).order(sort_column + " " + sort_direction)
+  end
+
+  def paginate_found_courses(courses)
+    courses.paginate(page: params[:page], per_page: 10).where(["title LIKE ?", "%#{params[:q]}%"])
   end
 
   def sort_column

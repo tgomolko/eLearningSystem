@@ -117,7 +117,6 @@ $(document).ready (function () {
     $(this).parent().remove();
   });
 
-
   $(document).on ("click", ".answer", function () {
     $(this).parent().find('.add-from').show();
     $(this).hide();
