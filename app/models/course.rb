@@ -4,6 +4,10 @@ class Course < ApplicationRecord
   ACCESS_STATE = %w{ Public Individual }.freeze
   ACCESS_STATE_FOR_ORG_USERS = %w{ Public Private Individual }.freeze
 
+  scope :higest_rated, -> { where(id: CourseRaiting.all.order(:rate).pluck(:course_id)) }
+  scope :organizations, -> { where.not(organization_id: nil) }
+  scope :not_organizations, -> { where(organization_id: nil) }
+
   belongs_to :user
   has_many :pages, dependent: :destroy
   has_many :user_answers, dependent: :destroy

@@ -73,10 +73,8 @@ class OrganizationsController < ApplicationController
   end
 
   def ensure_organiuzation_access
-    begin
-      authorize @organization
-    rescue
-      redirect_to root_path, alert: t(:access_disable)
-    end
+    authorize @organization
+  rescue
+    redirect_to root_path, alert: t(:access_disable)
   end
 end

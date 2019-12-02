@@ -1,7 +1,7 @@
 class ConversationsController < ApplicationController
-  before_action :authenticate_user!, :get_mailbox
-  before_action :get_conversation, except: [:index, :empty_trash]
-  before_action :get_box, only: :index
+  before_action :authenticate_user!, :mailbox
+  before_action :conversation, except: [:index, :empty_trash]
+  before_action :box, only: :index
 
   def index
     if @box.eql? "inbox"
@@ -45,15 +45,15 @@ class ConversationsController < ApplicationController
 
   private
 
-  def get_mailbox
+  def mailbox
     @mailbox ||= current_user.mailbox
   end
 
-  def get_conversation
+  def conversation
     @conversation = @mailbox.conversations.find(params[:id])
   end
 
-  def get_box
+  def box
     if params[:box].blank? or !["inbox","sent","trash"].include?(params[:box])
       params[:box] = 'inbox'
     end

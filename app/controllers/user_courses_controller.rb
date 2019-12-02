@@ -1,5 +1,6 @@
 class UserCoursesController < ApplicationController
-  before_action :set_course, :completed?, only: :complete
+  before_action :completed?, only: :complete
+  before_action :set_course
   before_action :set_user_course, only: :result
   before_action :authenticate_user!
 
@@ -36,7 +37,6 @@ class UserCoursesController < ApplicationController
   end
 
   def set_user_course
-    @course = Course.find(params[:id])
-    @user_course = current_user.user_courses.where(course_id: @course.id).first
+    @user_course = current_user.user_courses.find_by(course_id: Course.find(params[:id]))
   end
 end

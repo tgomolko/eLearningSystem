@@ -82,7 +82,7 @@ class UserDashboardService
   end
 
   def highest_rate_courses
-    higest_rate_courses ||= Course.where(id: CourseRaiting.all.order(:rate).pluck(:course_id))
+    higest_rate_courses ||= Course.higest_rated
   end
 
   def completed_courses
@@ -94,11 +94,11 @@ class UserDashboardService
   end
 
   def org_courses
-    org_courses ||= Course.ready.where.not(organization_id: nil)
+    org_courses ||= Course.ready.organizations
   end
 
   def not_org_courses
-    not_org_courses ||= Course.ready.where(organization_id: nil)
+    not_org_courses ||= Course.ready.not_organizations
   end
 
   def current_user_courses

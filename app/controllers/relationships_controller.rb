@@ -9,6 +9,7 @@ class RelationshipsController < ApplicationController
 
   def destroy
     @course = Relationship.find(params[:id]).followed
+
     if CancelCourseService.new(@course, current_user).call
       redirect_to @course, notice: t(:cancel_course)
     else
