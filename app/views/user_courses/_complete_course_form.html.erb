@@ -1,4 +1,4 @@
-<% if all_user_pages_completed? && !course_completed?(@course) %>
+<% if current_user.completed_all_course_pages?(@course) && !current_user.completed_course?(@course) %>
   <%= form_tag complete_user_course_path(@course), method: :patch, class: 'render-form' do %>
     <%= hidden_field_tag(:course_id, @course.id) %>
     <%= hidden_field_tag(:completed, true)%>

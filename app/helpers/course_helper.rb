@@ -1,20 +1,28 @@
 module CourseHelper
-  def course_started?(course)
-    current_user.following?(course)
+  def course_image(course)
+    course.image_url ? image_tag(course.image_url(:thumb), class: "pp") : image_tag('course.svg')
   end
 
-  def percent_of_progess(course, user)
-    course_pages_ids = course.pages.pluck(:id)
-    return 100 if course_pages_ids.empty?
-    completed_pages_size = current_user.user_pages.where(page_id: course_pages_ids).size
-    ((completed_pages_size.to_f / course.pages.size) * 100).round
+  def certificate_template(course)
+    return unless course.attachment_pdf_file_name
+    link_to(course.attachment_pdf.url) do
+      content_tag(:span, content_tag(:i, "", class: "fa fa-file-pdf-o")).html_safe
+    end
   end
 
-  def user_in_org?(user)
-    user.organization_id || user.participant_org_id
+  def created_by(course)
+    content_tag(:h1, "Created by: #{course.user.name} " + "#{time_ago_in_words(course.created_at)}" +
+    " ago", class: "subtitle is-5 is-pulled-right").html_safe
   end
 
-  def course_completed?(course)
-    current_user.user_courses.where(course_id: course.id).any?
+  def main_course_image(course)
+    content_tag(:div, image_tag(course.image_url(:default)), class: "feature-image is-centered", style: "text-align: center;") if @course.image_url
+  end
+
+  def course_action_buttons(course)
+    if user_signed_in? && course.ready?
+      render "follow_form"
+      render "action_buttons"
+    end
   end
 end

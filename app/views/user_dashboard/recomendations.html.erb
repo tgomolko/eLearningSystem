@@ -25,9 +25,9 @@
           <tr>
             <th><%= link_to course.title, course_path(course) %></th>
             <th><%= course.created_at.strftime("%B %e, %Y") %>
-            <th><%= course.user.name %>  
+            <th><%= course.user.name %>
             <th><%= course.access_state %>
-            <th><div class="review-rating" data-score="<%= course_raiting(course)%>"></div></th>
+            <th><div class="review-rating" data-score="<%= course.avg_rate %>"></div></th>
           </tr>
         <% end %>
       </tbody>

@@ -39,8 +39,7 @@ class OrganizationsController < ApplicationController
   end
 
   def approve
-    approve_service = OrganizationApproveService.new(@organization)
-    if approve_service.approve_organization
+    if OrganizationApproveService.new(@organization).approve
       redirect_to admin_pending_org_path, notice: t(:org_aproved_successfully)
     else
       redirect_to admin_pending_org_path, alert: t(:org_already_approved)
@@ -48,8 +47,7 @@ class OrganizationsController < ApplicationController
   end
 
   def reject
-    approve_service = OrganizationApproveService.new(@organization)
-    if approve_service.reject_organization
+    if OrganizationApproveService.new(@organization).reject
       redirect_to admin_pending_org_path, notice: t(:org_rejected_successfully)
     else
       redirect_to admin_pending_org_path, alert: t(:org_already_rejected)
@@ -67,9 +65,7 @@ class OrganizationsController < ApplicationController
   end
 
   def ensure_create_organization_more_then_one
-    if current_user.organization
-      redirect_to root_path, alert: t(:only_one_organization)
-    end
+    redirect_to root_path, alert: t(:only_one_organization) if current_user.organization
   end
 
   def ensure_organiuzation_access

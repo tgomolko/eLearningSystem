@@ -23,7 +23,7 @@
         <% @current_courses.each do |course| %>
           <tr>
             <th><%= link_to course.title, course_path(course) %></th>
-            <th><%= percent_of_progess(course, current_user) %></th>
+            <th><%= course.percent_of_progess(current_user) %></th>
             <th><%= course.created_at.strftime("%B %e, %Y") %>
             <th><%= course.access_state %>
           </tr>

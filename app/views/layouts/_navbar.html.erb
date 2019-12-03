@@ -13,11 +13,9 @@
           <% end %>
         </p>
 
-        <% unless current_user.organization%>
-          <p class="control">
-            <%= link_to "Create Organization", new_organization_path, class: "button is-success is-rounded" %>
-          </p>
-        <% end %>
+        <p class="control">
+          <%= link_to "Create Organization", new_organization_path, class: "button is-success is-rounded" unless current_user.organization %>
+        </p>
 
         <p class="control">
           <%= link_to "Create Course", new_course_path, class: "button is-link is-rounded" %>
@@ -27,28 +25,28 @@
           <%= link_to "My Dashboard", user_dashboard_path, class: "button is-warning is-rounded" %>
         </p>
 
-        <% if current_user.org_admin? %>
-          <p class="control">
-            <%= link_to "Manager Dashboard", manager_dashboard_path, class: "button is-danger is-rounded" %>
-          </p>
-        <% end %>
+        <p class="control">
+          <%= link_to "Manager Dashboard", manager_dashboard_path, class: "button is-danger is-rounded" if current_user.org_admin? %>
+        </p>
 
-        <% if current_user.admin? %>
-          <p class="control" >
-            <%= link_to "Dashboard", admin_dashboard_path, class: "button is-danger is-rounded" %>
-          </p>
-        <% end %>
-        <p>
-          <p class="control">
-            <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"button is-primary" %>
-          </p>
+        <p class="control">
+          <%= link_to "Dashboard", admin_dashboard_path, class: "button is-danger is-rounded" if current_user.admin? %>
+        </p>
+
+        <p class="control">
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"button is-primary" %>
+        </p>
+
       <% else %>
+
         <p class="control">
           <%= link_to 'Sign In', new_user_session_path, class: "button is-primary" %>
         </p>
+
         <p class="control">
            <%= link_to 'Sign Up', new_user_registration_path, class: "button is-danger" %>
         </p>
+
       <% end %>
     </div>
   </div>

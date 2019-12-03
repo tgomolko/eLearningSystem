@@ -21,7 +21,7 @@
 <script type="text/javascript">
   $(document).ready(function(){
     $('#progressbar').progressbar({
-      value: <%= percent_of_progess(@course, current_user) %>
+      value: <%= @course.percent_of_progess(current_user) %>
     });
   });
 </script>

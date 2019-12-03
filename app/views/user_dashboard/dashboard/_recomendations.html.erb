@@ -12,8 +12,8 @@
         <% @highest_rate_courses.each do |course| %>
           <tr>
             <th><%= link_to course.title, course_path(course) %></th>
-            
-            <th><div class="review-rating" data-score="<%= course_raiting(course)%>"></div></th>
+
+            <th><div class="review-rating" data-score="<%= course.avg_rate %>"></div></th>
           </tr>
         <% end %>
       </tbody>

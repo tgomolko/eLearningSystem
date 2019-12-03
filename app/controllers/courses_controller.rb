@@ -19,8 +19,7 @@ class CoursesController < ApplicationController
   def edit ; end
 
   def create
-    @course = current_user.courses.build(course_params)
-    add_organizations_id_to_course
+    @course = current_user.courses.build(build_course_params)
 
     if @course.save
       redirect_to @course, notice: t(:course_created_successfully)
@@ -30,9 +29,7 @@ class CoursesController < ApplicationController
   end
 
   def update
-    add_organizations_id_to_course
-
-    if @course.update(course_params)
+    if @course.update(build_course_params)
       redirect_to @course, notice: t(:course_updated_successfully)
     else
       render :edit
@@ -66,8 +63,8 @@ class CoursesController < ApplicationController
                                    :attachment_pdf)
   end
 
-  def add_organizations_id_to_course
-    @course.organization_id = current_user.organization_id || current_user.participant_org_id if params[:course][:access_state] == "Private"
+  def build_course_params
+    BuildCourseParams.new(current_user, course_params).call
   end
 
   def ensure_course_access

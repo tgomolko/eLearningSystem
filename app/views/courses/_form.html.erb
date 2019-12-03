@@ -10,7 +10,7 @@
       <label class="label">Course State</label>
       <div class="control has-icons-left">
         <span class="select">
-          <% if user_in_org?(current_user) %>
+          <% if current_user.org_member? %>
             <%= f.input_field :access_state, collection: Course::ACCESS_STATE_FOR_ORG_USERS, selected: f.object.access_state || 1,  prompt: "Select access state" %>
           <% else%>
             <%= f.input_field :access_state, collection: Course::ACCESS_STATE, selected: f.object.access_state || 1,  prompt: "Select access state" %>

@@ -1,6 +1,6 @@
 class UserCoursesController < ApplicationController
-  before_action :completed?, only: :complete
   before_action :set_course
+  before_action :completed?, only: :complete
   before_action :set_user_course, only: :result
   before_action :authenticate_user!
 
@@ -8,7 +8,7 @@ class UserCoursesController < ApplicationController
 
   def complete
     @user_course = current_user.user_courses.build(user_course_params)
-    UserCourseCompleteService.new(@course, current_user, @user_course, UserCourseResultCounterService.new(@course, current_user)).call
+    UserCourseCompleteService.new(@course, current_user, @user_course, UserCourseResultCounterService.new(@course, current_user)).complete
 
     if @user_course.save
       redirect_to result_user_course_path(@course), notice: t(:course_passed)
@@ -33,7 +33,7 @@ class UserCoursesController < ApplicationController
   end
 
   def completed?
-    redirect_to @course, alert: t(:course_already_completed) if course_completed?(@course)
+    redirect_to @course, alert: t(:course_already_completed) if current_user.completed_course?(@course)
   end
 
   def set_user_course

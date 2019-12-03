@@ -5,47 +5,14 @@
       <h1 class="title is-2">You results for <%= @course.title %> course</h1>
       <div class="subtitle is-4">Answered correctly <%= @user_course.answered_correctly %></div>
       <div class="subtitle is-4">Course passed on <%= @user_course.result %> %</div>
-      <% if course_has_any_rate?(@course)%>
-         <div class="review-rating" data-score="<%= course_raiting(@course) %>"></div>
-      <% else %>
-        <h2 class="subtitle is-3">Rate this course</h2>
-        <%= render 'course_raitings/course_raiting_form'%>
-      <% end %>
-      <% if @user_course.certificate_path %>
-        You certificate:<%= link_to certificate_url(@user_course.certificate_path) do %>
-          <span class=""><i class="fa fa-file-pdf-o" aria-hidden="true"></i></span>
-        <% end %>
-      <% end %>
-       <hr/>
+
+      <%= course_raiting_form(@course) %>
+
+      <%= user_certificate(@user_course)%>
+      <hr/>
     </br>
     </div>
   </div>
 </div>
-<h1 class="title is-2">Right Answers and You Answers</h1>
-<table id="current-tb" class="table is-bordered is-hoverable is-striped">
-  <thead>
-    <tr class="is-selected">
-      <th><%= "Question" %></th>
-      <th><%= "Right answer" %></th>
-      <th><%= "You Answer" %></th>
-    </tr>
-  </thead>
-   <tbody>
-    <% @course_questions.each do |question| %>
-        <tr>
-          <th><%= question.content %></th>
-          <th>
-            <% if question.question_type == "textbox"%>
-              <%= question.answer %>
-            <% else %>
-             <%= question.answers.select { |k,v| v == "true"}.keys.join(", ") %>
-            <% end %>
-          </th>
-          <th>
-            <%= answer(question)%>
-          </th>
-        </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render "result_table", course_questions: @course_questions %>
 <%= link_to 'Back', course_path(@course), { class: "button is-small is-black"} %>

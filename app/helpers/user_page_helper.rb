@@ -1,7 +1,9 @@
 module UserPageHelper
-  def all_user_pages_completed?
-    course_pages_ids = @course.pages.pluck(:id)
-    return false if course_pages_ids.empty?
-    course_pages_ids.size == current_user.user_pages.where(page_id: course_pages_ids).size
+  def submit_page(page, last_page)
+    if page == last_page
+      submit_tag("Submit LastPage", class: 'button is-medium is-info is-rounded')
+    else
+      submit_tag("Next page", class: 'button is-medium is-info is-rounded')
+    end
   end
 end

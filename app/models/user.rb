@@ -31,4 +31,22 @@ class User < ApplicationRecord
   def mailboxer_email(object)
     email
   end
+
+  def rated_course?(course)
+    course_raitings.where(course_id: course.id).any?
+  end
+
+  def org_member?
+    organization_id || participant_org_id
+  end
+
+  def completed_course?(course)
+    user_courses.where(course_id: course.id).any?
+  end
+
+  def completed_all_course_pages?(course)
+    course_pages_ids = course.pages.pluck(:id)
+    return false if course_pages_ids.empty?
+    course_pages_ids.size == user_pages.where(page_id: course_pages_ids).size
+  end
 end

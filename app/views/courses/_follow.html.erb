@@ -1,4 +1,4 @@
-<% unless course_completed?(@course) %>
+<% unless current_user.completed_course?(@course) %>
   <%= form_for(current_user.relationships.build) do |f| %>
     <%= hidden_field_tag :followed_id, @course.id %>
     <%= f.submit "Start Course", class: "button is-info is-rounded is-large is-centered" %>

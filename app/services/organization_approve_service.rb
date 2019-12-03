@@ -6,7 +6,7 @@ class OrganizationApproveService
     @user = User.find(@organization.user_id)
   end
 
-  def approve_organization
+  def approve
     return if organization.approved?
 
     organization.approve!
@@ -14,7 +14,7 @@ class OrganizationApproveService
     user.org_admin! if user.user?
   end
 
-  def reject_organization
+  def reject
     organization.reject! unless organization.rejected?
   end
 end

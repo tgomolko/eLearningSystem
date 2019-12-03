@@ -35,4 +35,19 @@ class Course < ApplicationRecord
       transitions from: :ready, to: :draft
     end
   end
+
+  def avg_rate
+    course_raitings.average(:rate).to_i
+  end
+
+  def has_any_rate?
+    course_raitings.any?
+  end
+
+  def percent_of_progess(current_user)
+    course_pages_ids = pages.pluck(:id)
+    return 100 if course_pages_ids.empty?
+    completed_pages_size = current_user.user_pages.where(page_id: course_pages_ids).size
+    ((completed_pages_size.to_f / pages.size) * 100).round
+  end
 end

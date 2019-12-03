@@ -1,4 +1,4 @@
-class PdfCertificateGeneratorService
+class PdfCertificateGenerator
   attr_reader :user_course, :form_filler
 
   def initialize(course, user, user_course, form_filler)
