@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  def invite_user_by_email(email, user, organization)
+  def invite_participant(email, user, organization)
     @user = user
     @email = email
     @organization = organization

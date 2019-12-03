@@ -1,14 +1,14 @@
 class PotentialOrganizationParticipantsImportService
-  attr_reader :organization, :user, :file
+  attr_reader :organization, :current_user, :file
 
-  def initialize(organization, user, file)
+  def initialize(organization, current_user, file)
     @organization = organization
-    @user = user
+    @current_user = current_user
     @file = file
   end
 
-  def call
-    ParticipantsImportService.new(file).call
-    AddParticipantsToOrganizationJob.new.perform(organization, user)
+  def import
+    ParticipantsCSVImport.new(file).call
+    AssignParticipantsToOrganizationJob.perform_later(organization.id, current_user.id)
   end
 end

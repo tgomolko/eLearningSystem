@@ -1,4 +1,4 @@
-class ParticipantsImportService
+class ParticipantsCSVImport
   attr_reader :file
 
   def initialize(file)
@@ -6,12 +6,6 @@ class ParticipantsImportService
   end
 
   def call
-    import_participants
-  end
-
-  private
-
-  def import_participants
     CSV.foreach(file.path, headers: true) do |row|
       PotentialOrganizationParticipant.find_or_create_by(email: row["email"])
     end
