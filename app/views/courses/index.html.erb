@@ -1,17 +1,18 @@
-<div class="headline-center l-courses">Courses</div>
-<% @courses.each do |course| %>
-    <div class="courses-index">
-      <%= link_to course_path(course) do %>
-        <figure class="image mainp">
-          <%= course_image(course) %>
-        </figure>
-        <p>
-          <h1 class="title is-4 center main-c-t"><%= course.title %></h1>
-        </p>
-        <p>
-          <div class="desc-course main-c-desc"><%= course.description[0...120]... %></div>
-        </p>
-        <div style="padding-left: 15px" class="review-rating" data-score="<%= course.avg_rate %>"></div>
+<section class="hero is-courses">
+  <h1 class="title is-welcome" style="color: #293352">All Courses</h1>
+  <div class="columns is-multiline is-mobile">
+    <% @courses.each do |course| %>
+      <div class="column is-one-fifth">
+      <%= link_to course_path(course)  do %>
+          <figure class="image is-5">
+            <%= course_image(course) %>
+          </figure>
+          <h1 class="title is-4"><%= course.title %></h1>
+          <div style="min-height: 100px;"><%= course.description[0...120]... %></div>
+          <div class="review-rating" data-score="<%= course.avg_rate %>"></div>
+        </div>
       <% end %>
-    </div>
-<% end %>
+    <% end %>
+  </div>
+</section>
+

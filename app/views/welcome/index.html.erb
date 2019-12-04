@@ -1,23 +1,17 @@
-<div class="wrp">
-
-  <div class="welcome">
-    <div class="h-line">
-      <div class="headline">Learn on your schedule</div>
-      <div class="headline-cont">Anywhere, anytime. Enjoy and develope youself.</div>
-    </div>
+<div class="welcome">
+  <div class="header-title">
+    <h1 class="title is-header">Learn on your schedule</h1>
+    <h2 class="subtitle is-header">Anywhere, anytime. Enjoy and develope youself.</h2>
   </div>
-
-  <div class="center-welcome">
-     <div class="h-line-content">
-      <div class="headline-center">It’s time to start investing in yourself</div>
-      <div class="headline-cont">Because learning something new the easiest way to change your life</div>
-      <%= link_to 'Get Started', new_user_registration_path, class: "button is-link is-outlined is-medium is-rounded mainbnt" %>
-    </div>
-  </div>
-
-  <%= render "lates_courses" %>
-
 </div>
+
+<section class="hero is-welcome">
+  <h1 class="title is-welcome">It’s time to start investing </br> in yourself</h1>
+  <h2 class="subtitle is-welcome"> Because learning something new the easiest way to change your life</h2>
+  <%= link_to 'Get Started', new_user_registration_path, class: "button is-link is-outlined is-medium is-rounded mainbnt" %>
+</section>
+
+<%= render "lates_courses" %>
 
 <footer class="footer">
   <div class="navbar-brand">

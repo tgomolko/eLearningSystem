@@ -406,10 +406,6 @@ table{
   object-fit: contain;
 }
 
-img.pp{
-  max-height: 160px;
-}
-
 .courses-index{
   text-align: left;
   float: left;
@@ -440,4 +436,63 @@ img.pp{
 
 .render-form{
   margin-bottom: 22px;
+}
+
+.column.is-mobile{
+  box-shadow: -2px 8px 22px 0 rgba(0,0,0,.15);
+  margin-right: 10px;
+}
+
+.hero.is-welcome{
+  background-color: #293352;
+  text-align: center;
+  align-items: center;
+  padding-top: 65px;
+  padding-bottom: 27px;
+}
+
+.title.is-welcome{
+  font-weight: 600;
+  color: #fff;
+  font-size: 65px;
+}
+
+.subtitle.is-welcome{
+  font-size: 20px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.mainbnt{
+  margin-bottom: 86px;
+  margin-top: 40px;
+}
+
+.hero.is-courses{
+  background-color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+.title.is-header{
+  font-weight: 600;
+  color: #fff;
+  font-size: 55px;
+  padding-top: 170px;
+  margin-bottom: 20px;
+}
+
+.subtitle.is-header{
+  font-size: 30px;
+  color: #fff;
+}
+
+.header-title{
+  position: relative;
+  left: 100px;
+}
+
+.column.is-one-fifth{
+  box-shadow: -2px 8px 22px 0 rgba(0,0,0,.15);
+  margin-right: 10px;
 }
