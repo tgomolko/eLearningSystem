@@ -50,4 +50,8 @@ class Course < ApplicationRecord
     completed_pages_size = current_user.user_pages.where(page_id: course_pages_ids).size
     ((completed_pages_size.to_f / pages.size) * 100).round
   end
+
+  def favorite?(current_user)
+    current_user.bookmarks.find_by(course_id: id)
+  end
 end

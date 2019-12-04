@@ -1,0 +1,15 @@
+<div class="lates-courses">
+  <div class="headline-center l-courses">Latest Courses</div>
+  <% @courses.each do |course| %>
+    <%= link_to course_path(course)  do %>
+      <div class="course">
+        <figure class="image mainp">
+          <%= course_image(course) %>
+        </figure>
+        <h1 class="title is-4 center main-c-t"><%= course.title %></h1>
+        <div class="desc-course main-c-desc"><%= course.description[0...120]... %></div>
+        <div style="padding-left: 15px" class="review-rating" data-score="<%= course.avg_rate %>"></div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

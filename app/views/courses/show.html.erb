@@ -1,6 +1,6 @@
 <div class="columns is-centered">
 
-  <div class="bookmark"> <span class="is-pulled-left">
+  <div class="bookmark"><span class="is-pulled-left">
     <%= render "bookmarks/bookmark_form", course: @course %>
   </div>
 
@@ -44,12 +44,13 @@
 
     </br></br>
 
-    <%= course_action_buttons(@course) %>
+    <%= course_action_buttons(@course)  %>
 
     <%= render 'course_pages', pages: @pages if @course.draft? %>
 
     </br>
-      <%= link_to 'Edit', edit_course_path(@course), { class: "button is-link is-small"} if user_signed_in? && policy(@course).edit? %>
-      <%= link_to 'Back', courses_path,{ class: "button is-small is-black"}  %>
+
+    <%= link_to 'Edit', edit_course_path(@course), { class: "button is-link is-small"} if user_signed_in? && policy(@course).edit? %>
+    <%= link_to 'Back', courses_path,{ class: "button is-small is-black"}  %>
   </div>
 </div>

@@ -8,8 +8,6 @@ class PagesController < ApplicationController
     @page = @course.pages.build
   end
 
-  def edit ; end
-
   def show
     @pages = @course.pages.order("created_at DESC")
     @last_page = @pages.max

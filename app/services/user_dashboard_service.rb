@@ -72,7 +72,7 @@ class UserDashboardService
   end
 
   def user_certificates_search
-    user_cettificates ||= user_certificates.paginate(page: params[:page], per_page: 10)
+    @user_certificates ||= user_certificates.paginate(page: params[:page], per_page: 10)
   end
 
   private
@@ -106,7 +106,7 @@ class UserDashboardService
   end
 
   def user_certificates
-    user_cettificates ||= @user.user_courses.where.not(certificate_path: nil)
+    user_certificates ||= @user.user_courses.where.not(certificate_path: nil)
   end
 
   def paginate_sort_courses(courses)

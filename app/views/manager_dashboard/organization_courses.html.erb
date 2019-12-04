@@ -7,10 +7,8 @@
 
 <div class="columns">
   <div class="column">
-    <%= form_tag manager_dashboard_path, method: :get, class: "search-form" do  %>
-      <%= text_field_tag :q, params[:q], class: "string required input search" %>
-      <%= submit_tag "Search", class: "button is-info is-rounded"%>
-    <% end %>
+    <%= search_form(manager_dashboard_organization_courses_path) %>
+
     <table id="current-tb" class="table is-bordered is-hoverable is-striped">
       <thead>
         <tr class="is-selected">
@@ -34,13 +32,7 @@
   </div>
 </div>
 
-<div class="section">
-  <div class="container">
-    <div class="columns is-centered">
-      <%= will_paginate @organization_courses, renderer: BulmaPagination::Rails %>
-    </div>
-    </br>
-    <%= link_to 'Back', manager_dashboard_path, { class: "button  is-small is-black"} %>
-  </div>
-</div>
+<%= paginate(@organization_courses)%>
+
+<%= link_to 'Back', manager_dashboard_path, { class: "button  is-small is-black"} %>
 

@@ -16,8 +16,6 @@ class CoursesController < ApplicationController
     @course = current_user.courses.build
   end
 
-  def edit ; end
-
   def create
     @course = current_user.courses.build(build_course_params)
 

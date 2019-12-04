@@ -1,5 +1,5 @@
 <% if user_signed_in?  %>
-  <% if favorite?(@course) %>
+  <% if @course.favorite?(current_user) %>
     <%= render 'bookmarks/destroy_bookmark' %>
   <% else %>
     <%= render 'bookmarks/create_bookmark' %>

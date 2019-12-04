@@ -20,9 +20,7 @@ module CourseHelper
   end
 
   def course_action_buttons(course)
-    if user_signed_in? && course.ready?
-      render "follow_form"
-      render "action_buttons"
-    end
+    return unless user_signed_in? && course.ready?
+    render('follow_form') + render('action_buttons')
   end
 end

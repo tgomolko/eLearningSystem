@@ -9,7 +9,7 @@ class ManagerDashboardService < UserDashboardService
   def organization_courses_search
     @organization_courses = paginate_sort_courses(organization_courses) if sort_column_params?
 
-    @organization_courses = paginate_found_courses(organization_users) if search_params?
+    @organization_courses = paginate_found_courses(organization_courses) if search_params?
 
     @organization_courses
   end

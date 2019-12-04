@@ -3,8 +3,9 @@
   <div class="answer-field">
     <a class="answer">add answer</a>
     <div id ="q-text-form" class="add-from">
+
       <%= form_tag '/user_answers/create', method: :post, remote: true,  class: 'render-form' do %>
-        <% if answered?(question) %>
+        <% if question.answered?(current_user) %>
           <%= submit_tag 'Question answered!',  class: 'button is-small is-info is-dis' %>
         <% else %>
           <p><%= label_tag 'answer'%> <%= text_field_tag :answer, nil, required: true %></p>
@@ -14,6 +15,7 @@
           <%= submit_tag 'Answer on question', class: 'button is-small is-primary' %>
         <% end %>
       <% end %>
+
     <a class="hide-answer" style="">hide</a>
     </div>
   </div>

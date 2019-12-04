@@ -8,7 +8,7 @@ module UserCourseHelper
     if answer.answer
       answer.answer
     else
-      answer.answers.select { |k,v| v == "true" }.keys.join(", ")
+      answer.answers.select { |possible_answer, option| option == "true" }.keys.join(", ")
     end
   end
 
@@ -22,10 +22,9 @@ module UserCourseHelper
   end
 
   def user_certificate(user_course)
-    if user_course.certificate_path
-      link_to(certificate_url(user_course.certificate_path)) do
-        content_tag(:span, content_tag(:i, "", class: "fa fa-file-pdf-o")).html_safe
-      end
+    return unless user_course.certificate_path
+    link_to(certificate_url(user_course.certificate_path)) do
+      content_tag(:span, content_tag(:i, "", class: "fa fa-file-pdf-o")).html_safe
     end
   end
 end

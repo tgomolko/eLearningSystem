@@ -2,8 +2,6 @@ class ManagerDashboardController < ApplicationController
   before_action :authenticate_user!, :ensure_access_to_manager_dashboard!, :set_manager_dashboard_service
   helper_method :sort_column, :sort_direction, :sort_user_column, :sort_direction
 
-  def dashboard ; end
-
   def organization_courses
     @organization_courses = @manager_dashboard_service.organization_courses_search
   end

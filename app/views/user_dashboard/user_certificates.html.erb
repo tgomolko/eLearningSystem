@@ -18,7 +18,7 @@
        <tbody>
         <% @user_certificates.each do |certificate| %>
           <tr>
-            <th><%= link_to get_course(certificate).title, course_path(get_course(certificate)) %></th>
+            <th><%= link_to certificate.course.title, course_path(certificate.course) %></th>
             <th><%= certificate.created_at.strftime("%B %e, %Y") %></th>
             <th><%= certificate.result %></th>
             <th>
@@ -33,12 +33,6 @@
   </div>
 </div>
 
-<div class="section">
-  <div class="container">
-    <div class="columns is-centered">
-      <%= will_paginate @user_certificates, renderer: BulmaPagination::Rails %>
-    </div>
-    </br>
-    <%= link_to 'Back', user_dashboard_path, { class: "button  is-small is-black"} %>
-  </div>
-</div>
+<%= paginate(@user_certificates)%>
+
+<%= link_to 'Back', user_dashboard_path, { class: "button  is-small is-black"} %>

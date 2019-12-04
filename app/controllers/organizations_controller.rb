@@ -14,8 +14,6 @@ class OrganizationsController < ApplicationController
     @organization = current_user.build_organization
   end
 
-  def edit ; end
-
   def create
     @organization = current_user.build_organization(organization_params)
     if @organization.save
