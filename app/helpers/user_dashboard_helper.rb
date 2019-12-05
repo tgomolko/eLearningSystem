@@ -15,9 +15,9 @@ module UserDashboardHelper
   end
 
   def search_form(path)
-    form_tag path, method: :get, class: "search-form" do
-      (text_field_tag :q, params[:q], class: "string required input search") +
-      (submit_tag "Search", class: "button is-info is-rounded")
+    form_tag path, method: :get, class: "field has-addons" do
+      (text_field_tag :q, params[:q], class: "input is-search") +
+      (submit_tag "Search", class: "button is-info is-search")
     end
   end
 end

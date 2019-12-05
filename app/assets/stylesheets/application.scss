@@ -496,3 +496,26 @@ table{
   box-shadow: -2px 8px 22px 0 rgba(0,0,0,.15);
   margin-right: 10px;
 }
+
+.title.is-course-index{
+  color: #293352;
+  text-align: center;
+  font-weight: 600;
+  font-size: 55px;
+}
+
+.input.is-search{
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.is-search{
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0
+}
+
+.field.has-addons{
+  max-width: 555px;
+  margin: 0 auto;
+  padding-top: 20px;
+}

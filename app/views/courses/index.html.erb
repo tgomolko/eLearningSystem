@@ -1,6 +1,9 @@
+<h1 class="title is-course-index">All Courses</h1>
+
+<%= search_form(courses_path) %>
+
 <section class="hero is-courses">
-  <h1 class="title is-welcome" style="color: #293352">All Courses</h1>
-  <div class="columns is-multiline is-mobile">
+  <div class="columns is-multiline is-centered">
     <% @courses.each do |course| %>
       <div class="column is-one-fifth">
       <%= link_to course_path(course)  do %>
@@ -16,3 +19,4 @@
   </div>
 </section>
 
+<%= paginate(@courses)%>

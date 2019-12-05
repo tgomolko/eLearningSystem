@@ -4,7 +4,7 @@ class CoursesController < ApplicationController
   before_action :ensure_course_access, only: :edit
 
   def index
-    @courses = Course.ready.includes(:user)
+    @courses = SearchCourse.new(params).call
   end
 
   def show
