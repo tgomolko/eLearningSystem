@@ -37,19 +37,12 @@ class OrganizationsController < ApplicationController
   end
 
   def approve
-    if OrganizationApproveService.new(@organization).approve
-      redirect_to admin_pending_org_path, notice: t(:org_aproved_successfully)
-    else
-      redirect_to admin_pending_org_path, alert: t(:org_already_approved)
-    end
+    ApproveOrganization.new(@organization).call
+    redirect_to admin_pending_org_path, notice: t(:org_aproved_successfully)
   end
 
   def reject
-    if OrganizationApproveService.new(@organization).reject
-      redirect_to admin_pending_org_path, notice: t(:org_rejected_successfully)
-    else
-      redirect_to admin_pending_org_path, alert: t(:org_already_rejected)
-    end
+    redirect_to admin_pending_org_path, notice: t(:org_rejected_successfully) if @organization.reject!
   end
 
   private

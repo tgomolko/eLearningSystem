@@ -1,4 +1,4 @@
-class CancelCourseService
+class CancelCourse
   attr_reader :course, :user
 
   def initialize(course, user)

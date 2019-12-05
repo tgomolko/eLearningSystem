@@ -16,7 +16,7 @@ class SearchCourse
   private
 
   def courses
-    couses ||= Course.ready
+    couses ||= Course.ready.not_organizations
   end
 
   def paginate_found_courses(courses)

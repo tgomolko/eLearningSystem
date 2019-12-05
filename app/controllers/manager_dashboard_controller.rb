@@ -1,5 +1,5 @@
 class ManagerDashboardController < ApplicationController
-  before_action :authenticate_user!, :ensure_access_to_manager_dashboard!, :set_manager_dashboard_service
+  before_action :authenticate_user!, :ensure_access_to_manager_dashboard!, :initialize_manager_dashboard_service
   helper_method :sort_column, :sort_direction, :sort_user_column, :sort_direction
 
   def organization_courses
@@ -12,7 +12,7 @@ class ManagerDashboardController < ApplicationController
 
   private
 
-  def set_manager_dashboard_service
+  def initialize_manager_dashboard_service
     @manager_dashboard_service = ManagerDashboardService.new(current_user, params)
   end
 

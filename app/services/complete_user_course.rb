@@ -1,4 +1,4 @@
-class UserCourseCompleteService
+class CompleteUserCourse
   attr_reader :user, :user_course, :course, :result_counter
 
   def initialize(course, user, user_course, result_counter)
@@ -8,10 +8,10 @@ class UserCourseCompleteService
     @result_counter = result_counter
   end
 
-  def complete
+  def call
     user.unfollow(@course)
     set_user_course_params
-    PdfCertificateGenerator.new(course, user, user_course, PdfFormFiller.new(user, course)).call if user_course.result >= 90
+    GeneratePdfCertificate.new(course, user, user_course, PdfFormFiller.new(user, course)).call if user_course.result >= 90
     user_course
   end
 

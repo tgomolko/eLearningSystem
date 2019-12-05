@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
 
   def add
     @question = @page.questions.build(question_params)
-    QuestionService.new(@question, params).set_answer
+    BuildQuestionAnswer.new(@question, params).call
 
     if @question.save
       redirect_to edit_course_page_path(@course, @page), notice: t(:question_added)
@@ -16,7 +16,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.permit(:content, :question_type, :page_id, :answer, :answers)
+    params.permit(:content, :question_type, :page_id, :answer, :answers, :questions)
   end
 
   def set_course

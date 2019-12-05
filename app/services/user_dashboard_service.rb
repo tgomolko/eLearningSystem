@@ -32,7 +32,7 @@ class UserDashboardService
   end
 
   def completed_courses_search
-    @completed_courses =  paginate_sort_courses(completed_courses) if sort_column_params?
+    @completed_courses = paginate_sort_courses(completed_courses) if sort_column_params?
 
     @completed_courses = paginate_found_courses(completed_courses) if search_params?
 
@@ -40,7 +40,7 @@ class UserDashboardService
   end
 
   def recomendation_courses_search
-    @recomendations  = paginate_sort_courses(highest_rate_courses) if sort_column_params?
+    @recomendations = paginate_sort_courses(highest_rate_courses) if sort_column_params?
 
     @recomendations = paginate_found_courses(highest_rate_courses) if search_params?
 

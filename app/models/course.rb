@@ -9,6 +9,7 @@ class Course < ApplicationRecord
   scope :not_organizations, -> { where(organization_id: nil) }
 
   belongs_to :user
+  belongs_to :organization
   has_many :pages, dependent: :destroy
   has_many :user_answers, dependent: :destroy
   has_many :user_courses, dependent: :destroy

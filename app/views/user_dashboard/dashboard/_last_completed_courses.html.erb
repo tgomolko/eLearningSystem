@@ -14,7 +14,7 @@
             <th><%= link_to course.title, course_path(course) %></th>
             <th><%= course.user.name %></th>
           </tr>
-        <% end %>   
+        <% end %>
       </tbody>
       <tr>
         <td colspan="2" style="text-align: center;">&nbsp;<%= link_to "show more", user_dashboard_last_completed_path, class: "button is-link"%></td>

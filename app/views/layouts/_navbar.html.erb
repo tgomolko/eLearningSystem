@@ -22,15 +22,15 @@
         </p>
 
         <p class="control">
-          <%= link_to "My Dashboard", user_dashboard_path, class: "button is-warning is-rounded" %>
+          <%= link_to "User Dashboard", user_dashboard_path, class: "button is-warning is-rounded" %>
         </p>
 
         <p class="control">
-          <%= link_to "Manager Dashboard", manager_dashboard_path, class: "button is-danger is-rounded" if current_user.org_admin? %>
+          <%= link_to "Manage Oraganization", manager_dashboard_path, class: "button is-danger is-rounded" if current_user.org_admin? %>
         </p>
 
         <p class="control">
-          <%= link_to "Dashboard", admin_dashboard_path, class: "button is-danger is-rounded" if current_user.admin? %>
+          <%= link_to "Admin Dashboard", admin_dashboard_path, class: "button is-danger is-rounded" if current_user.admin? %>
         </p>
 
         <p class="control">
