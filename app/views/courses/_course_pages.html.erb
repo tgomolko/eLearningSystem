@@ -1,6 +1,5 @@
-<% if policy(@course).edit? %>
-  <% @pages.each_with_index do |page, start_page| %>
-      <% start_page += 1 %>
-    <%= link_to "Add questions for #{start_page}", edit_course_page_path(@course, page), { class: "pagination-next" } %>
-  <% end %>
+<% return unless policy(@course).edit? %>
+<% @pages.each_with_index do |page, start_page| %>
+    <% start_page += 1 %>
+  <%= link_to "Add questions for #{start_page}", edit_course_page_path(@course, page), { class: "pagination-next" } %>
 <% end %>

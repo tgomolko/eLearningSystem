@@ -1,7 +1,2 @@
-<% if user_signed_in?  %>
-  <% if @course.favorite?(current_user) %>
-    <%= render 'bookmarks/destroy_bookmark' %>
-  <% else %>
-    <%= render 'bookmarks/create_bookmark' %>
-  <% end %>
-<% end %>
+<% return unless user_signed_in? %>
+<%= bookmark_form(@course)%>
