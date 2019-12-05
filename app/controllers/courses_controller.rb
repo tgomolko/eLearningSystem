@@ -17,7 +17,8 @@ class CoursesController < ApplicationController
   end
 
   def create
-    @course = current_user.courses.build(build_course_params)
+    @course = current_user.courses.build(course_params)
+    binding.pry
 
     if @course.save
       redirect_to @course, notice: t(:course_created_successfully)
@@ -27,7 +28,7 @@ class CoursesController < ApplicationController
   end
 
   def update
-    if @course.update(build_course_params)
+    if @course.update(course_params)
       redirect_to @course, notice: t(:course_updated_successfully)
     else
       render :edit
