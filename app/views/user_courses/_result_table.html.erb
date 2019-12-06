@@ -1,0 +1,19 @@
+<h1 class="title is-2">Right Answers and You Answers</h1>
+<table id="current-tb" class="table is-bordered is-hoverable is-striped">
+  <thead>
+    <tr class="is-selected">
+      <th><%= "Question" %></th>
+      <th><%= "Right answer" %></th>
+      <th><%= "You Answer" %></th>
+    </tr>
+  </thead>
+   <tbody>
+    <% @course_questions.each do |question| %>
+        <tr>
+          <th><%= question.content %></th>
+          <th><%= question_answer(question) %></th>
+          <th><%= user_answer(question)%></th>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

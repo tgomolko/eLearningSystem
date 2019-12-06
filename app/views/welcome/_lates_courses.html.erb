@@ -1,0 +1,18 @@
+<section class="hero is-courses">
+  <h1 class="title is-welcome" style="color: #293352">Latest courses</h1>
+  <div class="columns is-centered">
+    <% @courses.each do |course| %>
+      <div class="column is-mobile">
+      <%= link_to course_path(course)  do %>
+          <figure class="image is-5">
+            <%= course_image(course) %>
+          </figure>
+          <h1 class="title is-4"><%= course.title %></h1>
+          <div style="min-height: 100px;"><%= course.description[0...120]... %></div>
+          <div class="review-rating" data-score="<%= course.avg_rate %>"></div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</section>
+

@@ -1,0 +1,28 @@
+<div id="progressbar"></div>
+<div class="columns is-centered">
+  <div class="column is-6">
+    <h1 class="title is-2"><%= @page.title %></h1>
+    <%= @page.content.html_safe %></br>
+    <div class="question-wrapper"><h3 class="title is-4"><%= "Questions" if @page.questions %></h3>
+      <% @page.questions.each do |question| %>
+        <%= render 'questions/textbox_question', question: question %>
+        <%= render 'questions/checkbox_question', question: question %>
+        <%= render 'questions/radio_question', question: question %>
+      <% end %>
+      </br>
+        <%= render 'user_pages/user_page_form' unless @page.course.draft? %>
+       </br>
+     </div>
+      <%= link_to 'Edit', edit_course_page_path(@course, @page) , { class: "button is-link is-small"} if policy(@page).edit? %>
+      <%= link_to 'Back', course_path(@course),{ class: "button  is-small is-black"}  %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#progressbar').progressbar({
+      value: <%= @course.percent_of_progess(current_user) %>
+    });
+  });
+</script>
+<%= tinymce %>

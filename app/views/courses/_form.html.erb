@@ -1,0 +1,67 @@
+<%= simple_form_for @course, html: { multipart: true } do |f| %>
+  <%= f.error_notification %>
+    <div class="field">
+      <div class="control">
+      <%= f.input :title, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, placeholder: "Ruby on Rails" %>
+      </div>
+    </div>
+
+    <div class="control">
+      <label class="label">Course State</label>
+      <div class="control has-icons-left">
+        <span class="select">
+          <% if current_user.org_member? %>
+            <%= f.input_field :access_state, collection: Course::ACCESS_STATE_FOR_ORG_USERS, selected: f.object.access_state || 1,  prompt: "Select access state" %>
+          <% else%>
+            <%= f.input_field :access_state, collection: Course::ACCESS_STATE, selected: f.object.access_state || 1,  prompt: "Select access state" %>
+          <% end%>
+        </span>
+        <span class="icon is-small is-left">
+          <i class="fa fa-tag"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <%= f.input :description, input_html: { class: "textarea is-info" }, wrapper: false, label_html: { class: "label" }, placeholder: "Course description" %>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <%= f.input :requirements, input_html: { class: "textarea is-info" }, wrapper: false, label_html: { class: "label" }, placeholder: "Describe basic skills" %>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <label class="label">Add images</label>
+          <div class="file">
+          <label class="file-label">
+            <%= f.input :image, as: :file, input_html: { class:"file-input course-image" }, label: false, wrapper: false %>
+              <span class="file-cta">
+                <span class="file-icon"><i class="fa fa-upload"></i></span>
+                <span class="file-label">Choose a file…</span>
+              </span>
+          </label>
+          </div>
+        </div>
+      </div>
+      <output id="list"></output>
+    <hr/>
+
+    <div class="field">
+      <div class="control">
+        <label class="label">Add Certificate template</label>
+          <div class="file">
+            <label class="file-label">
+              <%= f.input :attachment_pdf, as: :file, input_html: { class: "pdf-btn" }, label: false, wrapper: false %>
+            </label>
+          </div>
+        </label>
+      </div>
+    </div>
+    <hr/>
+  <%= f.button :submit, class: "button is-primary is-large is-rounded is-centered mv4" %>
+<% end %>

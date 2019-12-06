@@ -1,0 +1,18 @@
+<div class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+      <h1 class="title is-2">You results for <%= @course.title %> course</h1>
+      <div class="subtitle is-4">Answered correctly <%= @user_course.answered_correctly %></div>
+      <div class="subtitle is-4">Course passed on <%= @user_course.result %> %</div>
+
+      <%= course_raiting_form(@course) %>
+    </br>
+      <%= user_certificate(@user_course)%>
+      <hr/>
+    </br>
+    </div>
+  </div>
+</div>
+<%= render "result_table", course_questions: @course_questions %>
+<%= link_to 'Back', course_path(@course), { class: "button is-small is-black"} %>

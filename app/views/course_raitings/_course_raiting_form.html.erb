@@ -1,0 +1,8 @@
+<%= form_tag course_raitings_path, method: :post, remote: true, class: 'render-form' do %>
+  <%= hidden_field_tag(:course_id, @course.id) %>
+  <div id = 'rating-form'>
+    <label class="subtitle is-5">Rate, please</label>
+  </div>
+  <%= submit_tag 'Rate', class: 'button is-small is-info is-rounded', id: "rate-bnt" %>
+<% end %>
+

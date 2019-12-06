@@ -1,0 +1,10 @@
+toolbar:
+  - styleselect | bold italic | undo redo
+  - uploadimage | image | link | preview
+menubar:
+  - views
+plugins:
+  - uploadimage
+  - image
+  - link
+  - preview

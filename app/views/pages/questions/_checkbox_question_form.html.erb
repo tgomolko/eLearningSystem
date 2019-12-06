@@ -1,0 +1,25 @@
+<div class ="checkbox-form" style="display: none">
+  <%= form_tag '/questions/add', method: :post, remote: true, class: 'render-form' do %>
+    <a class="checkbox"><i class="fa fa-plus" aria-hidden="true"></i></a>
+    <%= label_tag 'Question'%> <%= text_field_tag :content %>
+    <%= hidden_field_tag(:question_type, params["question_type"] = "checkbox") %>
+    <%= hidden_field_tag(:page_id, @page.id) %>
+    <%= hidden_field_tag(:course_id, @course.id) %>
+    <a class="close-form" title="close form"><i class="fa fa-close" style="color:red"></i></i></a>
+    <div class="cont"></div>
+    <%= submit_tag 'Create checkbox question', class: 'button is-small is-primary quest' %>
+  <% end %>
+
+  <div class="box" style="display: none">
+    <div class="ff">
+      <%= hidden_field_tag "questions[content][]", false, class: "hid-f" %>
+      <%= check_box_tag "questions[content][]", true, false, class: "chp" %>
+      <%= label_tag 'answer'%> <%= text_field_tag "answers[]" %>
+      <a class="rm" title="remove answer input"><i class="fa fa-close"></i></a>
+    </div>
+  </div>
+
+  <div id="box1" style="display: none">
+     <%= hidden_field_tag "questions[content][]", false, class: "hid-f" %>
+  </div>
+</div>

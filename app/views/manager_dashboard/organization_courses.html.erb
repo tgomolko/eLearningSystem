@@ -1,0 +1,38 @@
+<div class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <h1 class="title is-2">Organization Courses</h1>
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <%= search_form(manager_dashboard_organization_courses_path) %>
+
+    <table id="current-tb" class="table is-bordered is-hoverable is-striped">
+      <thead>
+        <tr class="is-selected">
+          <th><%= sortable "title" %></th>
+          <th><%= "Access Status"%></th>
+          <th><%= link_to "Raiting" %></th>
+          <th><%= sortable "created_at", "Created"%></th>
+        </tr>
+      </thead>
+       <tbody>
+        <% @organization_courses.each do |course| %>
+          <tr>
+            <th><%= link_to course.title, course_path(course) %></th>
+            <th><%= course.access_state %>
+            <th><div class="review-rating" data-score="<%= course.avg_rate %>"></div></th>
+            <th><%= course.created_at.strftime("%B %e, %Y") %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%= paginate(@organization_courses)%>
+
+<%= link_to 'Back', manager_dashboard_path, { class: "button  is-small is-black"} %>
+

@@ -1,0 +1,6 @@
+<%= form_tag user_pages_path, method: :post, class: 'render-form' do %>
+  <%= hidden_field_tag(:page_id, @page.id) %>
+  <%= hidden_field_tag(:course_id, @course.id) %>
+  <%= hidden_field_tag(:completed, true) %>
+  <%= submit_page(@page, @last_page) %>
+<% end %>

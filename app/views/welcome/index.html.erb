@@ -1,2 +1,27 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="welcome">
+  <div class="is-pulled-right"><%#= search_form(courses_path) %></div>
+  <div class="header-title">
+    <h1 class="title is-header">Learn on your schedule</h1>
+    <h2 class="subtitle is-header">Anywhere, anytime. Enjoy and develope youself.</h2>
+  </div>
+</div>
+
+<section class="hero is-welcome">
+  <h1 class="title is-welcome">It’s time to start investing </br> in yourself</h1>
+  <h2 class="subtitle is-welcome"> Because learning something new the easiest way to change your life</h2>
+  <%= link_to 'Get Started', new_user_registration_path, class: "button is-link is-outlined is-medium is-rounded mainbnt" %>
+</section>
+
+<%= render "lates_courses" %>
+
+<footer class="footer">
+  <div class="navbar-brand">
+    <%= link_to root_path, class: "navbar-item" do %>
+      <h1 class="title is-6" id="logo-name">eLearningSystem</h1>
+    <% end %>
+  </div>
+    <div class="content has-text-centered">
+      <div class="author">by Timofey Gomolko</div>
+    </div>
+</footer>
+

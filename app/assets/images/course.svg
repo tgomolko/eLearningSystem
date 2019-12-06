@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="393px" height="208px" viewBox="0 0 393 208" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>AnalyzeFinancialDataWithPython</title>
+    <desc>Created with Sketch.</desc>
+    <g id="AnalyzeFinancialDataWithPython" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Analyze-Financial-Data-with-Python@3x" fill-rule="nonzero">
+            <rect id="Rectangle-Copy-115" fill="#6437CC" x="0" y="0" width="393" height="208"></rect>
+            <rect id="Rectangle-Copy-29" fill="#4B2999" x="45" y="31" width="147" height="10" rx="2"></rect>
+            <rect id="Rectangle-Copy-30" fill="#4B2999" x="45" y="62" width="147" height="10" rx="2"></rect>
+            <rect id="Rectangle-Copy-31" fill="#4B2999" x="45" y="93" width="147" height="10" rx="2"></rect>
+            <path d="M116.579013,90.4156088 L130.941622,110.729238 C131.579307,111.631142 132.827391,111.845334 133.729295,111.207649 C133.898224,111.088209 134.047597,110.943281 134.172085,110.778038 L153.328004,85.3506918 C153.89602,84.5967133 154.913889,84.342564 155.769659,84.7410405 L172.388114,92.4791719 C173.389452,92.9454296 174.579173,92.5116615 175.045431,91.5103237 C175.058823,91.4815637 175.071528,91.4524892 175.083537,91.4231248 L190.553236,53.5948832 C190.971335,52.5725003 192.139076,52.0826315 193.161459,52.5007307 C193.466952,52.6256608 193.736779,52.8242532 193.946877,53.0787972 L210.990729,73.7283142 L224.754552,56.7937807 L238.689362,76.4558101 L281.255213,28.9473845 C281.623754,28.53605 282.255968,28.5013591 282.667302,28.8699 C282.879019,29.0595907 283,29.3304219 283,29.6146775 L283,166 C283,167.104569 282.104569,168 281,168 L63.8009886,168 C62.6964191,168 61.8009886,167.104569 61.8009886,166 C61.8009886,165.595571 61.9235984,165.200645 62.1526413,164.867326 L113.297623,90.4375654 C113.923182,89.5272084 115.168288,89.2963338 116.078645,89.9218926 C116.273274,90.0556335 116.442679,90.2227868 116.579013,90.4156088 Z" id="Path-11-Copy-28" fill="#917EF2"></path>
+            <g id="Group-35-Copy-46" transform="translate(261.000000, 62.000000)" fill="#4B2999">
+                <ellipse id="Oval-Copy-47" cx="25" cy="10" rx="25" ry="10"></ellipse>
+                <ellipse id="Oval-Copy-52" cx="25" cy="101" rx="25" ry="10"></ellipse>
+                <rect id="Rectangle" x="0" y="10" width="50" height="91"></rect>
+            </g>
+            <g id="Group-35-Copy-47" transform="translate(299.000000, 83.000000)" fill="#7C5CE6">
+                <ellipse id="Oval-Copy-47" cx="25" cy="10" rx="25" ry="10"></ellipse>
+                <ellipse id="Oval-Copy-52" cx="25" cy="75" rx="25" ry="10"></ellipse>
+                <rect id="Rectangle" x="0" y="10" width="50" height="65"></rect>
+            </g>
+            <g id="Group-35-Copy-48" transform="translate(274.000000, 114.000000)" fill="#381F73">
+                <ellipse id="Oval-Copy-47" cx="25" cy="10" rx="25" ry="10"></ellipse>
+                <ellipse id="Oval-Copy-52" cx="25" cy="64" rx="25" ry="10"></ellipse>
+                <rect id="Rectangle" x="0" y="10" width="50" height="54"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

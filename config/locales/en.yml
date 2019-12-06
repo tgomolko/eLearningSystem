@@ -1,33 +1,44 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  org_created_successfully: "Organization was successfully created."
+  org_updated_successfully: "Organization was successfully updated."
+  org_destroyed_successfully: "Organization was successfully destroyed."
+  org_aproved_successfully: "Organization was successfully approved!"
+  org_rejected_successfully: "Organization was successfully rejected"
+  org_already_approved: "Organization is already approved"
+  org_already_rejected: "Organization is already rejected"
+  course_created_successfully: "Course was successfully created."
+  course_updated_successfully: "Course was successfully updated."
+  course_destroyed_successfully: "Course was successfully destroyed."
+  page_created_successfully: "Page was successfully created."
+  page_updated_successfully: "Page was successfully updated."
+  page_passed: "You have already passed that page"
+  start_follow_course: "Start follow course before"
+  question_added: "Question was added"
+  something_wrong: "Something was wrong("
+  start_course: "You started course"
+  cancel_course: "Course was canceled"
+  answer_accepted: "You answer was accepted"
+  course_passed: "You passed course"
+  course_already_completed: "Course have already completed"
+  passed_all_pages: "You passed all pages and answered on all questions"
+  should_answer_all_questions: "You should answer all questions!!!"
+  welcome_back: "Welcome back"
+  added_bookmark: "Added to bookmarks"
+  removed_from_bookmarks: "Course was removed from favorites"
+  rated_course: "You rated course, thanks"
+  moved_to_trash: "The conversation was moved to trash"
+  reply_sent: "Reply sent"
+  conversation_restored: "The conversation was restored"
+  trash_cleaned: "Your trash was cleaned!"
+  mark_as_read: "The conversation was marked as read"
+  message_sent: "Message has been sent!"
+  access_manager_disable: "Access disable, only for Manager users"
+  access_admin_disable: "Access disable, only for Admin users"
+  access_disable: "Access disable"
+  invitations_sending_in_progress: "Invitations sending in progress"
+  file_no_chosen: "File no chosen"
+  file_is_not_csv: "File is not CSV format"
+  only_one_organization: "User can create only one organization"
+  course_already_passed: "You have already passed that course"
+  course_status_changed_on_ready: "Course status changed on ready"
+  course_status_changed_on_draft: "Course status changed on draft"

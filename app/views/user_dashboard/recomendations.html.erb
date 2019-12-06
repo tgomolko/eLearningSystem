@@ -1,0 +1,38 @@
+<div class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <h1 class="title is-2">Recomendations</h1>
+  </div>
+</div>
+<div class="columns">
+  <div class="column">
+    <%= search_form(user_dashboard_recomendations_path) %>
+
+    <table id="current-tb" class="table is-bordered is-hoverable is-striped">
+      <thead>
+        <tr class="is-selected">
+          <th><%= sortable "title" %></th>
+          <th><%= sortable "created_at", "Created"%></th>
+          <th><%= sortable "user_id", "Author"%></th>
+          <th><%= sortable "access_state", "Access Status"%></th>
+          <th><%= link_to "Raiting" %></th>
+        </tr>
+      </thead>
+       <tbody>
+        <% @highest_rate_courses.each do |course| %>
+          <tr>
+            <th><%= link_to course.title, course_path(course) %></th>
+            <th><%= course.created_at.strftime("%B %e, %Y") %>
+            <th><%= course.user.name %>
+            <th><%= course.access_state %>
+            <th><div class="review-rating" data-score="<%= course.avg_rate %>"></div></th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%= paginate(@highest_rate_courses)%>
+
+<%= link_to 'Back', user_dashboard_path, { class: "button  is-small is-black"} %>

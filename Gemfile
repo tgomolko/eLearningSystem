@@ -26,12 +26,29 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'simple_form'
-gem 'gravatar_image_tag'
-gem 'devise'
-gem 'bootstrap-sass'
-gem 'bulma-rails'
-gem "pundit"
+gem 'simple_form', '~> 5.0'
+gem 'gravatar_image_tag', '~> 1.2'
+gem 'devise', '~> 4.7'
+gem 'bootstrap-sass', '~> 3.4'
+gem 'bulma-rails', '~> 0.8.0'
+gem "pundit", '~> 2.1'
+gem 'aasm', '~> 5.0'
+gem 'jquery-rails', '~> 4.3'
+gem 'jquery-ui-rails','~> 6.0.1'
+gem 'carrierwave', '~> 2.0'
+gem 'mini_magick', '>= 4.9.5'
+gem "paperclip", '~> 6.1'
+gem 'paperclip-ghostscript', '~> 0.1.0'
+gem 'pdftk', '~> 0.0.4'
+gem 'pdf-forms', '~> 1.2'
+gem 'will_paginate', '~> 3.2'
+gem 'will_paginate-bulma', '~> 1.0'
+gem 'mailboxer', '~> 0.15.1'
+gem 'chosen-rails', '~> 1.9'
+gem 'jquery-turbolinks', '~> 2.1'
+gem 'sidekiq', '~> 6.0.3'
+gem 'tinymce-rails', '~> 4.0'
+gem 'tinymce-rails-imageupload', '~> 4.0'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -44,6 +61,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 3.9'
+  gem 'factory_bot_rails', '~> 5.1'
 end
 
 group :development do
@@ -57,6 +76,8 @@ group :development do
   gem 'guard'
   gem 'guard-livereload'
   gem 'pry'
+  gem 'bullet'
+  gem "letter_opener"
 end
 
 group :test do

@@ -1,0 +1,56 @@
+<div class="columns is-centered">
+
+  <div class="bookmark"><span class="is-pulled-left">
+    <%= render "bookmarks/bookmark_form", course: @course %>
+  </div>
+
+  <div class="column is-6">
+
+    <h1 class="title is-2 center">
+      <%= @course.title %>
+    </h1>
+
+    <h1 class="title is-5">
+
+      <span class="tag is-primary is-medium">
+        Access <%= @course.access_state %>
+      </span>
+
+      <p class="control is-pulled-right" >
+        <%= link_to "Add page to course", new_course_page_path(@course), class: "button is-success is-rounded" if @course.draft? && policy(@course).edit? %>
+      </p>
+
+      <span class="is-pulled-right">
+        <%= render "states", course: @course if user_signed_in? && policy(@course).edit? %>
+      </span>
+
+    </h1>
+
+    <div class="review-rating" data-score="<%= @course.avg_rate %>"></div>
+
+    <h1 class="title is-3">Description:</h1>
+    <%= @course.description %>
+
+    <h1 class="title is-3">Requirements:</h1>
+    <%= @course.requirements %>
+
+    <%= main_course_image(@course)%>
+
+    <hr/>
+
+    <%= certificate_template(@course) %>
+
+    <%= created_by(@course) %>
+
+    </br></br>
+
+    <%= course_action_buttons(@course)  %>
+
+    <%= render 'course_pages', pages: @pages if @course.draft? %>
+
+    </br>
+
+    <%= link_to 'Edit', edit_course_path(@course), { class: "button is-link is-small"} if user_signed_in? && policy(@course).edit? %>
+    <%= link_to 'Back', courses_path,{ class: "button is-small is-black"}  %>
+  </div>
+</div>

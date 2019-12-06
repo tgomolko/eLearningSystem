@@ -1,0 +1,12 @@
+<article class="media is-custom">
+  <figure class="media-left">
+    <p class="image is-64x64"><%= image_tag(('user.ico'), class: "image-custom" ) %></p>
+  </figure>
+  <div class="card-content">
+    <strong><%= link_to conversation.subject, conversation_path(conversation) %></strong>
+    <div class="message-text"><%= conversation.last_message.body %></div>
+    <time class="time"><%= conversation.last_message.created_at.strftime("%-d %B %Y, %H:%M:%S") %></time>
+    <p><%= render "conversation_buttons", conversation: conversation %></p>
+  </div>
+</article>
+

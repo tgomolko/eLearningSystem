@@ -1,0 +1,38 @@
+<div class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <h1 class="title is-2">My certificates</h1>
+  </div>
+</div>
+<div class="columns">
+  <div class="column">
+    <table id="current-tb" class="table is-bordered is-hoverable is-striped">
+      <thead>
+        <tr class="is-selected">
+          <th>Course name</th>
+          <th>Passed(date)</th>
+          <th>Result</th>
+          <th>Certificate</th>
+        </tr>
+      </thead>
+       <tbody>
+        <% @user_certificates.each do |certificate| %>
+          <tr>
+            <th><%= link_to certificate.course.title, course_path(certificate.course) %></th>
+            <th><%= certificate.created_at.strftime("%B %e, %Y") %></th>
+            <th><%= certificate.result %></th>
+            <th>
+              <div class="is-pulled-right"><%= link_to certificate_url(certificate.certificate_path), target: "_blank" do %>
+                <span class=""><i class="fa fa-file-pdf-o" aria-hidden="true"></i></span></div>
+              <% end %>
+            </th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%= paginate(@user_certificates)%>
+
+<%= link_to 'Back', user_dashboard_path, { class: "button  is-small is-black"} %>
