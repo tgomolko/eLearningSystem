@@ -6,6 +6,7 @@
 
       <%= simple_form_for @page, url: course_pages_path, html: { multipart: true } do |f| %>
         <%= f.error_notification %>
+
         <div class="field">
           <div class="control">
           <%= f.input :title, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, placeholder: "Page title" %>
@@ -17,6 +18,7 @@
             <%= f.input :content, input_html: {  class: "tinymce", rows: 40, cols: 120 }, wrapper: false, label_html: { class: "label" }, placeholder: "Page content" %>
           </div>
         </div>
+
         <%= f.button :submit, class: "button is-primary is-large is-rounded mv4" %>
       <% end %></br>
 
