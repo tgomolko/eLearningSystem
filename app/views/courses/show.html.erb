@@ -4,53 +4,64 @@
     <%= render "bookmarks/bookmark_form", course: @course %>
   </div>
 
-  <div class="column is-6">
+  <div class="column is-9">
 
     <h1 class="title is-2 center">
       <%= @course.title %>
     </h1>
 
-    <h1 class="title is-5">
+    <div class="review-rating" data-score="<%= @course.avg_rate %>"></div>
 
+    <div>
       <span class="tag is-primary is-medium">
         Access <%= @course.access_state %>
       </span>
 
-      <p class="control is-pulled-right" >
-        <%= link_to "Add page to course", new_course_page_path(@course), class: "button is-success is-rounded" if @course.draft? && policy(@course).edit? %>
-      </p>
+      <% if user_signed_in? && policy(@course).edit? %>
 
-      <span class="is-pulled-right">
-        <%= render "states", course: @course if user_signed_in? && policy(@course).edit? %>
-      </span>
+        <div class="dropdown is-pulled-right">
+          <div class="dropdown-trigger">
+            <button class="button is-primary" aria-haspopup="true" aria-controls="dropdown-menu">
+              <span>Actions</span>
+              <span class="icon is-small">
+                <i class="fa fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </button>
+          </div>
 
-    </h1>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+                <%= link_to 'Edit', edit_course_path(@course), { class: "dropdown-item"} %>
 
-    <div class="review-rating" data-score="<%= @course.avg_rate %>"></div>
+                <%= link_to "Add page to course", new_course_page_path(@course), class: "dropdown-item" if @course.draft? %>
+              <div>
+                <%= render "states", course: @course %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </h2>
+    <% end %>
 
-    <h1 class="title is-3">Description:</h1>
-    <%= @course.description %>
+    <%= created_at(@course) %>
 
-    <h1 class="title is-3">Requirements:</h1>
-    <%= @course.requirements %>
-
-    <%= main_course_image(@course)%>
+    <h2 class="title is-4">Description:</h2>
+    <p><%= @course.description %></p>
 
     <hr/>
 
-    <%= certificate_template(@course) %>
+    <% if @course.requirements.blank? %>
+      <h2 class="title is-4">Requirements:</h2>
+      <p><%= @course.requirements %></p>
+      <hr/>
+    <% end %>
 
-    <%= created_by(@course) %>
-
-    </br></br>
-
-    <%= course_action_buttons(@course)  %>
-
-    <%= render 'course_pages', pages: @pages if @course.draft? %>
-
+    <%= main_course_image(@course)%>
     </br>
-
-    <%= link_to 'Edit', edit_course_path(@course), { class: "button is-link is-small"} if user_signed_in? && policy(@course).edit? %>
-    <%= link_to 'Back', courses_path,{ class: "button is-small is-black"}  %>
+    <%= certificate_template(@course) %>
+    </br>
+    <%= course_action_buttons(@course)  %>
+    <hr/>
+    <%= render 'course_pages', pages: @pages if @course.draft? && user_signed_in? %>
   </div>
 </div>
