@@ -1,4 +1,4 @@
-<div id ="q-text-form" class="add-from">
+<div id="q-text-form" class="add-from">
   <%= form_tag '/questions/add', method: :post, remote: true,  class: 'render-form' do %>
     <%= label_tag 'Question'%> <%= text_field_tag :content, nil, class: "" %>
     <a class="hide-q"><i class="fa fa-close" style="color:red"></i></a>

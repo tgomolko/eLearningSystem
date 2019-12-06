@@ -7,9 +7,9 @@ class QuestionsController < ApplicationController
     BuildQuestionAnswer.new(@question, params).call
 
     if @question.save
-      redirect_to edit_course_page_path(@course, @page), notice: t(:question_added)
+      redirect_to course_page_path(@course, @page), notice: t(:question_added)
     else
-      redirect_to edit_course_page_path(@course, @page), alert: t(:something_wrong)
+      redirect_to course_page_path(@course, @page), alert: t(:something_wrong)
     end
   end
 

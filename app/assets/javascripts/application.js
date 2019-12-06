@@ -77,8 +77,10 @@ $(document).ready (function () {
     path: '/assets/'
   });
 
-  $(document).on("click","#add-q", function() {
+  $(document).on("click","#add-qt", function() {
+    debugger
     $(".main").append($(".add-from").html());
+    //$(this).parent().find(".main").append($(".add-from").html());
   });
 
   $(document).on("click","#add-checkbox-form", function() {
@@ -118,6 +120,7 @@ $(document).ready (function () {
   });
 
   $(document).on ("click", ".answer", function () {
+    debugger
     $(this).parent().find('.add-from').show();
     $(this).hide();
   });
@@ -132,7 +135,7 @@ $(document).ready (function () {
       $(this).parent().find('.hid-f').remove();
     }
     if (this.checked == false){
-      $('#box1').find('.hid-f').clone().prependTo($(this).parent());
+      $('.box-ch').children().first().clone().prependTo($(this).parent());
    }
   });
 
