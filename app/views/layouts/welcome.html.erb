@@ -11,8 +11,6 @@
   </head>
 
   <body>
-    <%= render "layouts/notice"%>
-
     <nav class="navbar is-info" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <%= link_to root_path, class: "navbar-item" do %>
@@ -23,6 +21,6 @@
         <%= render "layouts/navbar"%>
       </div>
     </nav>
-    <div class="container"><%= yield %></div>
+    <%= yield %>
   </body>
 </html>

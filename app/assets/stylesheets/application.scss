@@ -24,7 +24,7 @@
 }
 
 .navbar-brand{
-  margin-left: 10%;
+  margin-left: 1%;
 }
 
 .fa.fa-check-circle.fa-2x{
@@ -518,4 +518,9 @@ table{
   max-width: 555px;
   margin: 0 auto;
   padding-top: 20px;
+}
+
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
 }
