@@ -27,6 +27,9 @@
   margin-left: 1%;
 }
 
+.navbar-item{
+  margin-right: 37px;
+}
 .fa.fa-check-circle.fa-2x{
   margin-right: 10px;
   margin-top: 2px;
@@ -178,7 +181,6 @@
 }
 
 #current-tb{
-  width: 50%;
   margin: 0 auto;
   margin-top: 2%;
 }
@@ -523,4 +525,12 @@ table{
 .container{
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.dropdown-content{
+  max-width: 150px;
+}
+
+.tabs{
+  margin-top: 50px;
 }

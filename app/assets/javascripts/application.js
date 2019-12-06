@@ -136,6 +136,10 @@ $(document).ready (function () {
    }
   });
 
+  $(document).on("click", ".dropdown", function(){
+    $(this).toggleClass("is-active");
+  });
+
   $(document).on('change','.rd', function(e){
     var active = $('.radio-cont').find(".active");
     if (active.length > 0) {
