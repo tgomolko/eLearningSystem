@@ -1,4 +1,4 @@
-class AssignParticipantsService
+class AssignParticipants
   attr_reader :organization, :user
 
   def initialize(organization, user)
