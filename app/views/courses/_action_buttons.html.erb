@@ -1,3 +1,7 @@
+<div class="columns">
+  <div class="column is-3"></div>
+</div>
+
 <%= render 'user_courses/complete_course_form' %>
 
 <% if current_user.following?(@course) && !current_user.completed_all_course_pages?(@course) %>
