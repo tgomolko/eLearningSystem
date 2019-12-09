@@ -137,7 +137,7 @@ $(document).ready (function () {
    }
   });
 
-  $(document).on("click", ".dropdown", function(){
+  $(document).on("click", ".dropdown", function(e){
     $(this).toggleClass("is-active");
   });
 
