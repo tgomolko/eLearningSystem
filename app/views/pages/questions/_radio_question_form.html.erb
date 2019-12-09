@@ -5,9 +5,9 @@
       <%= hidden_field_tag(:question_type, params["question_type"] = "radio") %>
       <%= hidden_field_tag(:page_id, @page.id) %>
       <%= hidden_field_tag(:course_id, @course.id) %>
-      <a class="close-form-rq" title="close form"><i class="fa fa-minus-square" style="color:red"></i></a>
+      <a class="close-form-rq" title="close form"><i class="fa fa-close" style="color:red"></i></a>
     <div class="radio-cont"></div>
-    <%= submit_tag 'Create radio question', class: 'button is-small is-danger rquest' %>
+    <%= submit_tag 'Create radio question', class: 'button is-small is-info rquest' %>
   <% end %>
 
   <div class="radio-box" style="display: none">

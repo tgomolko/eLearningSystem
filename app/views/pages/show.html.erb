@@ -2,6 +2,7 @@
 <div class="columns is-centered">
   <div class="column is-6">
     <h1 class="title is-2"><%= @page.title %></h1>
+      <%= link_to 'Edit', edit_course_page_path(@course, @page) , { class: "button is-link is-small is-pulled-right"} if policy(@page).edit? %>
     <%= @page.content.html_safe %></br>
     <div class="question-wrapper"><h3 class="title is-4"><%= "Questions" if @page.questions %></h3>
       <% @page.questions.each do |question| %>
@@ -14,7 +15,6 @@
        </br>
      </div>
       <div><%= render "add_questions" %></div>
-      <%= link_to 'Edit', edit_course_page_path(@course, @page) , { class: "button is-link is-small"} if policy(@page).edit? %>
   </div>
 </div>
 

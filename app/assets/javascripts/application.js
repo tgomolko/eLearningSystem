@@ -78,9 +78,7 @@ $(document).ready (function () {
   });
 
   $(document).on("click","#add-qt", function() {
-    debugger
-    $(".main").append($(".add-from").html());
-    //$(this).parent().find(".main").append($(".add-from").html());
+     $(".main").append($(".add-from-text-q").html());
   });
 
   $(document).on("click","#add-checkbox-form", function() {

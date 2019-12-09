@@ -27,7 +27,7 @@ class CoursesController < ApplicationController
   end
 
   def update
-    if @course.update(cbuild_course_params)
+    if @course.update(build_course_params)
       redirect_to @course, notice: t(:course_updated_successfully)
     else
       render :edit
