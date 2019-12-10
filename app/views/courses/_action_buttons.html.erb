@@ -1,16 +1,14 @@
-<div class="columns">
-  <div class="column is-3"></div>
-</div>
+<% if user_signed_in?%>
+  <%= render 'user_courses/complete_course_form' %>
 
-<%= render 'user_courses/complete_course_form' %>
-
-<% if current_user.following?(@course) && !current_user.completed_all_course_pages?(@course) %>
-  <%= form_tag '/user_pages/continue', method: :post, remote: true,  class: 'render-form' do %>
-    <%= hidden_field_tag(:user_id, current_user.id) %>
-    <%= hidden_field_tag(:course_id, @course.id) %>
-    <%= submit_tag "Continue course", class: "button is-info is-rounded is-large is-centered" %>
+  <% if current_user.following?(@course) && !current_user.completed_all_course_pages?(@course) %>
+    <%= form_tag '/user_pages/continue', method: :post, remote: true,  class: 'render-form' do %>
+      <%= hidden_field_tag(:user_id, current_user.id) %>
+      <%= hidden_field_tag(:course_id, @course.id) %>
+      <%= submit_tag "Continue course", class: "button is-info is-rounded" %>
+    <% end %>
   <% end %>
-<% end %>
 
-</br>
-<%= link_to "View Results", result_user_course_path(@course), class: "button is-large is-info is-fullwidth" if current_user.completed_course?(@course) %>
+  </br>
+  <%= link_to "View Results", result_user_course_path(@course), class: "button is-large is-info is-fullwidth" if current_user.completed_course?(@course) %>
+<% end %>

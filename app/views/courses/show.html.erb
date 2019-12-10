@@ -1,18 +1,20 @@
-<div class="bookmark">
-  <%= render "bookmarks/bookmark_form", course: @course %>
-</div>
 
-<div class="columns">
-
-  <div class="column is-10">
-    <h1 class="title is-2 center">
-      <%= @course.title %>
-    </h1>
-    <span class="review-rating" data-score="<%= @course.avg_rate %>"></span>
+  <div class="bookmark">
+    <%= render "bookmarks/bookmark_form", course: @course %>
   </div>
 
-  <div class="column is-2">
-    <%= render :partial => 'courses/course/actions' %>
+  <div class="columns">
+
+    <div class="column is-10">
+      <h1 class="title is-2 center">
+        <%= @course.title %>
+      </h1>
+      <span class="review-rating" data-score="<%= @course.avg_rate %>"></span>
+    </div>
+
+    <div class="column is-2">
+      <%= render 'courses/course/actions' %>
+    </div>
   </div>
 
   <div class="columns">
@@ -37,7 +39,6 @@
         <hr/>
       <% end %>
     </div>
-
   </div>
 
   <div class="columns">
@@ -49,5 +50,18 @@
       <%= render 'course_pages', pages: @pages if @course.draft? && user_signed_in? %>
     </div>
   </div>
-    <%= course_action_buttons(@course) %>
-</div>
+
+  <div class="columns">
+    <div class="column is-4">
+  </div>
+
+  <div class="columns">
+    <div class="column is-9">
+      <%= render "action_buttons" if @course.draft? %>
+    </div>
+    <div class="column is-3">
+       <%= course_action_buttons(@course) %>
+    </div>
+  </div>
+
+  </div>
