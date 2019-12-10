@@ -212,12 +212,6 @@ table{
 #mailbox{
   width: 300px;
   box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);
-  position: relative;
-  left: 88px;
-}
-
-.mg{
-  margin-top: 89px;
 }
 
 .media.is-custom{
@@ -243,13 +237,6 @@ table{
   padding-right: 7px;
   border: 1px solid #dee2e6;
   box-shadow: 4px 2px 11px -4px rgba(1,0,0,1);
-}
-
-.wrapper{
-  width: 810px;
-  margin: 0 auto;
-  position: relative;
-  bottom: 450px;
 }
 
 .import-form{
@@ -544,4 +531,10 @@ a.list-item{
 .question-content{
   font-style: italic;
   font-weight: bold;
+}
+
+.fa.fa-trash.email{
+  position: relative;
+  bottom: 30px;
+  left: 62px;
 }

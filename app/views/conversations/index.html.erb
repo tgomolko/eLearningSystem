@@ -1,21 +1,27 @@
-<h1 class="title is-2 is-centered" style="margin-top: 50px">MailBox</h1>
-<aside class="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile" id="mailbox">
-  <p class="menu-label is-hidden-touch">Emailbox</p>
-  <ul class="menu-list">
-      <span class="icon"></span><%= mailbox_section 'inbox', @box %>
-      <span class="icon"></span><%= mailbox_section 'sent', @box %>
-      <span class="icon"></span><%= mailbox_section 'trash', @box %>
-  </ul>
-  <%= link_to 'Start conversation', new_message_path, class: 'button is-info is-rounded' %>
-</aside>
-<div class="mg"></div>
+<h1 class="title is-2" style="margin-top: 30px">Messages</h1>
 
-<div class="wrapper">
-  <%= render partial: 'conversations/conversation', collection: @conversations %>
+<div class="columns">
+  <div class="column is-4">
+    <aside class="is-narrow-mobile is-fullheight section is-hidden-mobile" id="mailbox">
+      <p class="menu-label is-hidden-touch">Emailbox</p>
+      <ul class="menu-list">
+          <%= mailbox_section 'inbox', @box %>
+          <%= mailbox_section 'sent', @box %>
+          <%= mailbox_section 'trash', @box %>
+      </ul>
+
+      <% if @box == 'trash' %>
+        <%= link_to empty_trash_conversations_path, method: :delete, data: {confirm: 'Are you sure?'} do %>
+        <span class=""><i class="fa fa-trash email" aria-hidden="true"></i></span>
+        <% end %>
+      <% end %>
+
+      <%= link_to 'Start conversation', new_message_path, class: 'button is-info is-rounded' %>
+    </aside>
+  </div>
+
+  <div class="column is-8">
+    <%= render partial: 'conversations/conversation', collection: @conversations %>
+  </div>
 </div>
-
-<% if @box == 'trash' %>
-  <p><%= link_to 'Empty trash', empty_trash_conversations_path, class: 'button is-danger trash', method: :delete, data: {confirm: 'Are you sure?'} %></p>
-<% end %>
-
 <%= paginate(@conversations)%>
