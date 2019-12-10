@@ -500,7 +500,7 @@ table{
 }
 
 .is-board{
-  width: 370px;
+  min-width: 370px;
 }
 
 a.list-item{
@@ -525,4 +525,9 @@ a.list-item{
 
 .title.is-welcome{
   text-align: center;
+}
+
+.empty{
+  border: 1px dashed #dbdbdb;
+  height: 251px
 }

@@ -1,23 +1,29 @@
 <div class="dashboard">
   <h1 class="title is-3 is-board">Courses in organization</h1>
-  <% return unless @org_courses.any? %>
-  <table class="table is-bordered is-hoverable is-striped is-board">
-    <thead>
-      <tr class="is-selected">
-        <th>Course name</th>
-        <th>Author</th>
-      </tr>
-    </thead>
-     <tbody>
-      <% @org_courses.each do |course| %>
-        <tr>
-          <th><%= link_to course.title, course_path(course) %></th>
-          <th><%= link_to course.user.name %></th>
+  <% if @org_courses.any? %>
+
+    <table class="table is-bordered is-hoverable is-striped is-board">
+      <thead>
+        <tr class="is-selected">
+          <th>Course name</th>
+          <th>Author</th>
         </tr>
-      <% end %>
-    </tbody>
-    <tr>
-      <td colspan="2">&nbsp;<%= link_to "show more", user_dashboard_org_courses_path, class: "button is-small is-link"%></td>
-    </tr>
-  </table>
+      </thead>
+       <tbody>
+        <% @org_courses.each do |course| %>
+          <tr>
+            <th><%= link_to course.title, course_path(course) %></th>
+            <th><%= link_to course.user.name %></th>
+          </tr>
+        <% end %>
+      </tbody>
+      <tr>
+        <td colspan="2">&nbsp;<%= link_to "show more", user_dashboard_org_courses_path, class: "button is-small is-link"%></td>
+      </tr>
+    </table>
+
+  <% else %>
+
+   <div class="empty"></div>
+  <% end %>
 </div>
