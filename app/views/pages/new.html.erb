@@ -19,11 +19,15 @@
           </div>
         </div>
 
-        <%= f.button :submit, class: "button is-primary is-large is-rounded mv4" %>
-      <% end %></br>
-
-      <%= link_to 'Back', course_path(@course), { class: "button  is-small is-black"} %>
-     </br>
+        <div class="columns">
+          <div class="column is-6">
+            <%= f.button :submit, class: "button is-primary is-rounded" %>
+          </div>
+          <div class="column is-6">
+            <%= link_to 'Cancel', :back, { class: "button is-info is-outlined is-pulled-right" } %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

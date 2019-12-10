@@ -14,10 +14,16 @@
         </div>
       </div>
 
-      <%= f.button :submit, 'Save changes', class: 'button is-link is-medium is-rounded mv4' %>
+      <div class="columns">
+        <div class="column is-6">
+          <%= f.button :submit, 'Save changes', class: 'button is-primary is-rounded"' %>
+        </div>
+        <div class="column is-6">
+          <%= link_to 'Cancel', :back, { class: "button is-info is-outlined is-pulled-right" } %>
+        </div>
+      </div>
     <% end %>
-    </br>
-    </br>
+
   </div>
 </div>
 <%= tinymce(uploadimage_form_url: course_tinymce_images_path(@course)) %>

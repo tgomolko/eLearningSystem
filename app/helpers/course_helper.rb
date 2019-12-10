@@ -20,7 +20,7 @@ module CourseHelper
     content_tag(:div, image_tag(course.image_url(:default)), class: "feature-image") if @course.image_url
   end
 
-  def course_action_buttons(course)
+  def course_follow_form(course)
     return unless user_signed_in? && course.ready?
     render('follow_form')
   end

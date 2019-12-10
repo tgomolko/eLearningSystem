@@ -3,6 +3,8 @@ class CoursesController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :ensure_course_access, only: :edit
 
+  layout "welcome", only: :index
+
   def index
     @courses = SearchCourse.new(params).call
   end

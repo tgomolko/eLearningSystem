@@ -84,11 +84,6 @@
   opacity: .5;
 }
 
-#new_relationship{
-  width: 128px;
-  margin: 0 auto;
-}
-
 .edit_relationship{
   width: 128px;
   margin: 0 auto;
@@ -394,13 +389,8 @@ table{
 }
 
 .courses-index{
-  text-align: left;
-  float: left;
-  margin-left:  20px;
-  margin-bottom: 2%;
-  box-shadow: -2px 8px 22px 0 rgba(0,0,0,.15);
-  width: 15%;
-  min-height: 195px;
+ box-shadow: -2px 8px 22px 0 rgba(0,0,0,.15);
+  margin-right: 10px;
 }
 
 .title.is-2{
@@ -415,14 +405,9 @@ table{
   text-align: center;
 }
 
-.trash{
-  position: relative;
-  left: 89px;
-  bottom: 65px;
-}
-
 .render-form{
   margin-bottom: 22px;
+  text-align: center;
 }
 
 .column.is-mobile{
@@ -457,7 +442,6 @@ table{
 
 .hero.is-courses{
   background-color: #fff;
-  text-align: center;
   padding: 20px;
 }
 
@@ -537,4 +521,8 @@ a.list-item{
   position: relative;
   bottom: 30px;
   left: 62px;
+}
+
+.title.is-welcome{
+  text-align: center;
 }

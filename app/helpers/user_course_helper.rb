@@ -16,7 +16,6 @@ module UserCourseHelper
     if current_user.rated_course?(course)
       content_tag(:div, "", class: "review-rating", "data-score" => course.avg_rate)
     else
-      content_tag(:h2, "Rate this course", class: "subtitle is-3")
       render partial: 'course_raitings/course_raiting_form'
     end
   end
