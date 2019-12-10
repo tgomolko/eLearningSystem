@@ -169,6 +169,7 @@ $(document).ready (function () {
     $(this).parent().find('.hid-field').remove();
   });
 
+
   $('#rating-form').find('img').on('click', function() {
     $('#rate-bnt').show();
   });
