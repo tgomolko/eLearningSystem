@@ -1,14 +1,8 @@
 class OrganizationsController < ApplicationController
-  before_action :set_organization, except: [:index, :new, :create]
+  before_action :set_organization, except: [:new, :create]
   before_action :authenticate_user!, except: :show
   before_action :ensure_create_organization_more_then_one, only: :new
   before_action :ensure_organiuzation_access, only: :edit
-
-  def index
-    @organizations = Organization.all
-  end
-
-  def show ; end
 
   def new
     @organization = current_user.build_organization

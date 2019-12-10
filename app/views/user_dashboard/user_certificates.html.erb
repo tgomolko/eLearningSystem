@@ -18,6 +18,7 @@
           </tr>
         </thead>
          <tbody>
+
           <% @user_certificates.each do |certificate| %>
             <tr>
               <th><%= link_to certificate.course.title, course_path(certificate.course) %></th>
@@ -30,6 +31,7 @@
               </th>
             </tr>
           <% end %>
+
         </tbody>
       </table>
 

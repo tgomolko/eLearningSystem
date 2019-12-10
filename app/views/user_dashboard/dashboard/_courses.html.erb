@@ -10,12 +10,14 @@
         </tr>
       </thead>
        <tbody>
+
         <% @not_org_courses.each do |course| %>
           <tr>
             <th><%= link_to course.title, course_path(course) %></th>
             <th><%= course.user.name %></th>
           </tr>
         <% end %>
+
       </tbody>
       <tr>
         <td colspan="2">&nbsp;<%= link_to "show more", user_dashboard_courses_path, class: "button is-small is-link"%></td>

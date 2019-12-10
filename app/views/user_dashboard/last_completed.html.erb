@@ -19,6 +19,7 @@
           </tr>
         </thead>
          <tbody>
+
           <% @completed_courses.each do |course| %>
             <tr>
               <th><%= link_to course.title, course_path(course) %></th>
@@ -27,6 +28,7 @@
               <th><%= course.access_state %>
             </tr>
           <% end %>
+
         </tbody>
       </table>
 

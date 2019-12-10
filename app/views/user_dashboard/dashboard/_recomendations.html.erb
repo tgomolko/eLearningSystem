@@ -10,13 +10,14 @@
         </tr>
       </thead>
        <tbody>
+
         <% @highest_rate_courses.each do |course| %>
           <tr>
             <th><%= link_to course.title, course_path(course) %></th>
-
             <th><div class="review-rating" data-score="<%= course.avg_rate %>"></div></th>
           </tr>
         <% end %>
+
       </tbody>
       <tr>
         <td colspan="2">&nbsp;<%= link_to "show more", user_dashboard_recomendations_path, class: "button is-small is-link"%></td>

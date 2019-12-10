@@ -19,6 +19,7 @@
           </tr>
         </thead>
          <tbody>
+
           <% @org_courses.each do |course| %>
             <tr>
               <th><%= link_to course.title, course_path(course) %></th>
@@ -27,6 +28,7 @@
               <th><%= course.access_state %></th>
             </tr>
           <% end %>
+
         </tbody>
       </table>
 

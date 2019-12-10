@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :pages, except: :index
   end
 
-  resources :organizations do
+  resources :organizations, except: :index do
     member do
       patch :approve
       patch :reject
