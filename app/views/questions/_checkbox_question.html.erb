@@ -1,5 +1,5 @@
 <% if question.checkbox? %>
-  <p class="title is-5"><%= question.content%></p>
+  <p class="question-content"><%= question.content%></p>
 
   <%= form_tag '/user_answers/create', method: :post, remote: true, class: 'render-form' do %>
     <% question.answers.each do |possible_answer, options| %>

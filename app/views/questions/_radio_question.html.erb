@@ -1,5 +1,5 @@
 <% if question.radio? %>
-  <p><%= question.content%></p>
+  <p class="question-content"><%= question.content%></p>
 
   <%= form_tag '/user_answers/create', method: :post, remote: true, class: 'render-form' do %>
     <div class="radio-cont">
