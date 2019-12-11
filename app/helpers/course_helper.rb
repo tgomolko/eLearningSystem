@@ -22,6 +22,9 @@ module CourseHelper
 
   def course_follow_form(course)
     return unless user_signed_in? && course.ready?
-    render('follow_form')
+
+    unless course.access_state == "Private" && (course.organization_id != (current_user.participant_org_id || current_user.organization_id))
+      render('follow_form')
+    end
   end
 end
