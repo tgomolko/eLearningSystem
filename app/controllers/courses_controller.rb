@@ -38,7 +38,7 @@ class CoursesController < ApplicationController
 
   def destroy
     @course.destroy
-    redirect_to courses_url, notice: t(:course_destroyed_successfully)
+    redirect_to user_dashboard_my_courses_path, notice: t(:course_destroyed_successfully)
   end
 
   def ready

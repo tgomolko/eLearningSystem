@@ -8,31 +8,31 @@
 <div class="columns">
   <div class="column">
     <%= search_form(manager_dashboard_organization_users_path) %>
+    <% if @organization_users.any? %>
 
-    <table id="current-tb" class="table is-bordered is-hoverable is-striped">
-      <thead>
-        <tr class="is-selected">
-          <th><%= sortable_user "name", "Name" %></th>
-          <th><%= sortable_user "username", "Username"%></th>
-          <th><%= sortable_user "email", "Email"%></th>
-        </tr>
-      </thead>
-       <tbody>
-
-        <% @organization_users.each do |user| %>
-          <tr>
-            <th><%= user.name %></th>
-            <th><%= user.username %>
-            <th><%= user.email %>
+      <table id="current-tb" class="table is-bordered is-hoverable is-striped">
+        <thead>
+          <tr class="is-selected">
+            <th><%= sortable_user "name", "Name" %></th>
+            <th><%= sortable_user "username", "Username"%></th>
+            <th><%= sortable_user "email", "Email"%></th>
           </tr>
-        <% end %>
+        </thead>
+         <tbody>
 
-      </tbody>
-    </table>
+          <% @organization_users.each do |user| %>
+            <tr>
+              <th><%= user.name %></th>
+              <th><%= user.username %>
+              <th><%= user.email %>
+            </tr>
+          <% end %>
 
+        </tbody>
+      </table>
+
+    <% end %>
   </div>
 </div>
 
 <%= paginate(@organization_users)%>
-
-<%= link_to 'Back', manager_dashboard_path, { class: "button is-small is-black"} %>

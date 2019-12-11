@@ -62,8 +62,8 @@
   margin-right: 20px;
 }
 
-#q-text-form{
-  display: none;
+#answer{
+  margin-bottom: 3px;
 }
 
 #checkbox-from{
@@ -176,6 +176,7 @@
 #current-tb{
   margin: 0 auto;
   margin-top: 2%;
+  min-width: 750px;
 }
 
 table{
@@ -530,4 +531,8 @@ a.list-item{
 .empty{
   border: 1px dashed #dbdbdb;
   height: 251px
+}
+
+#progressbar{
+  margin-top:  15px;
 }
