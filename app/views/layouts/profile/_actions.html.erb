@@ -1,4 +1,4 @@
-<div class="dropdown">
+<div class="dropdown is-right">
 
   <div class="dropdown-trigger">
     <button class="button is-primary" aria-haspopup="true" aria-controls="dropdown-menu">
@@ -14,6 +14,17 @@
       <p class="dropdown-item">
         signed in as <strong><%= current_user.name %></strong>
       </p>
+
+      <% if current_user.organization %>
+        <hr class="dropdown-divider">
+
+        <p class="dropdown-item"> You are manager of: </br>
+          <strong>
+            <%= link_to current_user.organization.company_name, current_user.organization %>
+          </strong>
+        </p>
+      <% end %>
+
       <hr class="dropdown-divider">
 
       <%= link_to "Change profile", edit_user_registration_path, class: "dropdown-item" %>

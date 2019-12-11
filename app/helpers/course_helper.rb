@@ -17,7 +17,11 @@ module CourseHelper
   end
 
   def main_course_image(course)
-    content_tag(:div, image_tag(course.image_url(:default)), class: "feature-image") if @course.image_url
+    if @course.image_url
+      content_tag(:div, image_tag(course.image_url(:default)), class: "feature-image")
+    else
+      image_tag('course.svg')
+    end
   end
 
   def course_follow_form(course)
