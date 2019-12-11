@@ -19,12 +19,12 @@
 <div class="columns">
   <div class="column is-2">
     <%= form_tag import_emails_path, multipart: true, class: "attachmetn" do  %>
-    <%= file_field_tag :file %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "Import", class: "button is-success is-rounded is-import"%>
+    <% end %>
   </div>
 
   <div class="column">
-    <%= submit_tag "Import", class: "button is-success is-rounded is-import"%>
-    <% end %>
   </div>
 </div>
 
