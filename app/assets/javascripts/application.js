@@ -124,7 +124,7 @@ $(document).ready (function () {
 
   $(document).on ("click", ".hide-answer", function () {
     $(this).parent().hide();
-    $(this).parent().parent().find('.answer').show()
+    $(this).parent().parent().find('.answer').show();
   });
 
   $(document).on('change','.chp', function(){
@@ -168,7 +168,6 @@ $(document).ready (function () {
     $(this).parent().addClass("active");
     $(this).parent().find('.hid-field').remove();
   });
-
 
   $('#rating-form').find('img').on('click', function() {
     $('#rate-bnt').show();
