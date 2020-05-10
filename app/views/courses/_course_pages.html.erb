@@ -1,5 +1,8 @@
 <% return unless policy(@course).edit? %>
+<h2 class="title is-5">Pages<h2>
+  <div class="list is-hoverable">
 <% @pages.each_with_index do |page, start_page| %>
     <% start_page += 1 %>
-  <%= link_to "Add questions for #{start_page}", edit_course_page_path(@course, page), { class: "pagination-next" } %>
+  <%= link_to "#{page.title}", course_page_path(@course, page), { class: "list-item" } %>
 <% end %>
+</div>

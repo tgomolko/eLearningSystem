@@ -1,7 +1,7 @@
 <div class="navbar-end">
   <div class="navbar-item">
     <div class="field is-grouped">
-
+<% if user_signed_in? %>
       <p class="control">
         <%= link_to "Create Organization", new_organization_path, class: "button is-success is-rounded" unless current_user.organization %>
       </p>
@@ -45,3 +45,4 @@
     </div>
   </div>
 </div>
+<% end %>
