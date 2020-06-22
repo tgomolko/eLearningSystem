@@ -1,5 +1,5 @@
 <div class="columns is-centered">
-  <div class="column is-4">
+  <div class="column is-6">
     <h1 class="title is-2">Editing Courses Page</h1>
     <%= simple_form_for(@page, url: "/courses/#{@course.id}/pages/#{@page.id}", method: :patch) do |f| %>
       <div class="field">
@@ -14,11 +14,16 @@
         </div>
       </div>
 
-      <%= f.button :submit, 'Save changes', class: 'button is-link is-medium is-rounded mv4' %>
+      <div class="columns">
+        <div class="column is-6">
+          <%= f.button :submit, 'Save changes', class: 'button is-primary is-rounded"' %>
+        </div>
+        <div class="column is-6">
+          <%= link_to 'Cancel', :back, { class: "button is-info is-outlined is-pulled-right" } %>
+        </div>
+      </div>
     <% end %>
-    </br>
-    </br>
-    <%= render "add_questions" %>
+
   </div>
 </div>
 <%= tinymce(uploadimage_form_url: course_tinymce_images_path(@course)) %>

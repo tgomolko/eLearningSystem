@@ -1,9 +1,12 @@
-<div class="bookmark">
-  <%= render "bookmarks/bookmark_form", course: @course %>
+<div class="columns">
+  <div class="column is-4">
+    <div class="bookmark">
+      <%= render "bookmarks/bookmark_form", course: @course %>
+    </div>
+  </div>
 </div>
 
 <div class="columns">
-
   <div class="column is-10">
     <h1 class="title is-2 center">
       <%= @course.title %>
@@ -12,42 +15,52 @@
   </div>
 
   <div class="column is-2">
-    <%= render :partial => 'courses/course/actions' %>
+    <%= render 'courses/course/actions' %>
   </div>
-
-  <div class="columns">
-    <div class="column is-4">
-      <%= main_course_image(@course) %>
-    </div>
-
-    <div class="column is-8">
-      <span class="tag is-primary is-medium">
-        Access <%= @course.access_state %>
-      </span>
-
-      <%= created_at(@course) %>
-
-      <h2 class="title is-4">Description:</h2>
-      <p><%= @course.description %></p>
-      <hr/>
-
-      <% unless @course.requirements.blank? %>
-        <h2 class="title is-4">Requirements:</h2>
-        <p><%= @course.requirements %></p>
-        <hr/>
-      <% end %>
-    </div>
-
-  </div>
-
-  <div class="columns">
-    <div class="column is-4">
-      <%= certificate_template(@course) %>
-    </div>
-
-    <div class="column is-8">
-      <%= render 'course_pages', pages: @pages if @course.draft? && user_signed_in? %>
-    </div>
-  </div>
-    <%= course_action_buttons(@course) %>
 </div>
+
+<div class="columns">
+  <div class="column is-4">
+    <%= main_course_image(@course) %>
+  </div>
+
+  <div class="column is-8">
+    <span class="tag is-primary is-medium">
+      Access <%= @course.access_state %>
+    </span>
+
+    <%= created_at(@course) %>
+
+    <h2 class="title is-4">Description:</h2>
+    <p><%= @course.description %></p>
+    <hr/>
+
+    <% unless @course.requirements.blank? %>
+      <h2 class="title is-4">Requirements:</h2>
+      <p><%= @course.requirements %></p>
+      <hr/>
+    <% end %>
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column is-4">
+  </div>
+
+  <div class="column is-8">
+    <%= render 'course_pages', pages: @pages if @course.draft? && user_signed_in? %>
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column is-4"></div>
+
+  <div class="column is-3">
+    <%= render "action_buttons" unless  @course.draft? %>
+  </div>
+  <div class="column is-8">
+    <%= course_follow_form(@course) %>
+  </div>
+</div>
+
+

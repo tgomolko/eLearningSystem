@@ -7,30 +7,40 @@
 <div class="columns">
   <div class="column">
     <%= search_form(user_dashboard_last_completed_path) %>
+    <% if @completed_courses.any? %>
 
-    <table id="current-tb" class="table is-bordered is-hoverable is-striped">
-      <thead>
-        <tr class="is-selected">
-          <th><%= sortable "title" %></th>
-          <th><%= sortable "created_at", "Created"%></th>
-          <th><%= sortable "user_id", "Author"%></th>
-          <th><%= sortable "access_state", "Access Status"%></th>
-        </tr>
-      </thead>
-       <tbody>
-        <% @completed_courses.each do |course| %>
-          <tr>
-            <th><%= link_to course.title, course_path(course) %></th>
-            <th><%= course.created_at.strftime("%B %e, %Y") %>
-            <th><%= course.user.name %>
-            <th><%= course.access_state %>
+      <table id="current-tb" class="table is-bordered is-hoverable is-striped">
+        <thead>
+          <tr class="is-selected">
+            <th><%= sortable "title" %></th>
+            <th><%= sortable "created_at", "Created"%></th>
+            <th><%= sortable "user_id", "Author"%></th>
+            <th><%= sortable "access_state", "Access Status"%></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+         <tbody>
+
+          <% @completed_courses.each do |course| %>
+            <tr>
+              <th><%= link_to course.title, course_path(course) %></th>
+              <th><%= course.created_at.strftime("%B %e, %Y") %>
+              <th><%= course.user.name %>
+              <th><%= course.access_state %>
+            </tr>
+          <% end %>
+
+        </tbody>
+      </table>
+
+    <% else %>
+
+      <div class="section">
+        <div class="columns is-centered">
+        </div>
+      </div>
+
+    <% end %>
   </div>
 </div>
 
 <%= paginate(@completed_courses)%>
-
-<%= link_to 'Back', user_dashboard_path, { class: "button  is-small is-black"} %>

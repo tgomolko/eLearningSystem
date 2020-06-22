@@ -7,7 +7,7 @@
     <%= hidden_field_tag(:course_id, @course.id) %>
     <a class="close-form" title="close form"><i class="fa fa-close" style="color:red"></i></i></a>
     <div class="cont"></div>
-    <%= submit_tag 'Create checkbox question', class: 'button is-small is-primary quest' %>
+    <%= submit_tag 'Create checkbox question', class: 'button is-small is-info quest' %>
   <% end %>
 
   <div class="box" style="display: none">
@@ -19,7 +19,7 @@
     </div>
   </div>
 
-  <div id="box1" style="display: none">
+  <div class="hid-f-box" style="display: none">
      <%= hidden_field_tag "questions[content][]", false, class: "hid-f" %>
   </div>
 </div>

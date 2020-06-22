@@ -2,19 +2,38 @@
 <div class="columns is-centered">
   <div class="column is-6">
     <h1 class="title is-2"><%= @page.title %></h1>
-    <%= @page.content.html_safe %></br>
-    <div class="question-wrapper"><h3 class="title is-4"><%= "Questions" if @page.questions %></h3>
-      <% @page.questions.each do |question| %>
-        <%= render 'questions/textbox_question', question: question %>
-        <%= render 'questions/checkbox_question', question: question %>
-        <%= render 'questions/radio_question', question: question %>
+
+    <% if policy(@page).edit? && @page.course.draft? %>
+      <%= link_to edit_course_page_path(@course, @page) do %>
+        <span class="is-pulled-right"><i class="fa fa-pencil" aria-hidden="true"></i></span>
       <% end %>
-      </br>
-        <%= render 'user_pages/user_page_form' unless @page.course.draft? %>
-       </br>
-     </div>
-      <%= link_to 'Edit', edit_course_page_path(@course, @page) , { class: "button is-link is-small"} if policy(@page).edit? %>
-      <%= link_to 'Back', course_path(@course),{ class: "button  is-small is-black"}  %>
+    <% end %>
+
+    <%= @page.content.html_safe %></br>
+
+    <% if @page.questions.any? %>
+      <div class="question-wrapper">
+        <h3 class="subtitle is-4">Questions</h3>
+
+        <% @page.questions.each do |question| %>
+          <%= render 'questions/textbox_question', question: question %>
+          <%= render 'questions/checkbox_question', question: question %>
+          <%= render 'questions/radio_question', question: question %>
+        <% end %>
+
+        </br>
+      </div>
+    <% end %>
+    <%= render 'user_pages/user_page_form' if @page.course.ready? %>
+    </br>
+
+    <% if policy(@page).edit? && @page.course.draft? %>
+      <div style="text-align: center;">
+        <%= render "add_questions"%>
+      </div>
+      <%= link_to 'Back', @course, { class: "button is-info is-outlined is-small is-pulled-right" } %>
+    <% end %>
+
   </div>
 </div>
 

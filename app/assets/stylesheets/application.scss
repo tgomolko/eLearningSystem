@@ -62,8 +62,8 @@
   margin-right: 20px;
 }
 
-#q-text-form{
-  display: none;
+#answer{
+  margin-bottom: 3px;
 }
 
 #checkbox-from{
@@ -82,11 +82,6 @@
   pointer-events: none;
   cursor: wait;
   opacity: .5;
-}
-
-#new_relationship{
-  width: 128px;
-  margin: 0 auto;
 }
 
 .edit_relationship{
@@ -111,7 +106,7 @@
   width: 163px;
 }
 
-.button.is-small.is-primary.quest{
+.button.is-small.is-info.quest{
   margin-left: 105px;
   margin-top: 5px;
 }
@@ -120,7 +115,7 @@
   margin-left: 45px;
 }
 
-.button.is-small.is-danger.rquest{
+.button.is-info.is-danger.rquest{
   margin-left: 103px;
   margin-top: 5px;
 }
@@ -181,6 +176,7 @@
 #current-tb{
   margin: 0 auto;
   margin-top: 2%;
+  min-width: 750px;
 }
 
 table{
@@ -212,12 +208,6 @@ table{
 #mailbox{
   width: 300px;
   box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);
-  position: relative;
-  left: 88px;
-}
-
-.mg{
-  margin-top: 89px;
 }
 
 .media.is-custom{
@@ -243,13 +233,6 @@ table{
   padding-right: 7px;
   border: 1px solid #dee2e6;
   box-shadow: 4px 2px 11px -4px rgba(1,0,0,1);
-}
-
-.wrapper{
-  width: 810px;
-  margin: 0 auto;
-  position: relative;
-  bottom: 450px;
 }
 
 .import-form{
@@ -394,7 +377,6 @@ table{
 .author{
   color: #fff;
   font-size: 18px;
-  margin-top: -34px;
 }
 
 .title.is-2{
@@ -407,13 +389,8 @@ table{
 }
 
 .courses-index{
-  text-align: left;
-  float: left;
-  margin-left:  20px;
-  margin-bottom: 2%;
-  box-shadow: -2px 8px 22px 0 rgba(0,0,0,.15);
-  width: 15%;
-  min-height: 195px;
+ box-shadow: -2px 8px 22px 0 rgba(0,0,0,.15);
+  margin-right: 10px;
 }
 
 .title.is-2{
@@ -428,14 +405,9 @@ table{
   text-align: center;
 }
 
-.trash{
-  position: relative;
-  left: 89px;
-  bottom: 65px;
-}
-
 .render-form{
   margin-bottom: 22px;
+  text-align: center;
 }
 
 .column.is-mobile{
@@ -470,7 +442,6 @@ table{
 
 .hero.is-courses{
   background-color: #fff;
-  text-align: center;
   padding: 20px;
 }
 
@@ -539,4 +510,37 @@ table{
 
 a.list-item{
   background-color: #fff;
+}
+
+.container{
+  margin: 0 auto;
+  width: 1200px;
+}
+
+.add-from-text-q{
+  display: none;
+}
+
+.question-content{
+  font-style: italic;
+  font-weight: bold;
+}
+
+.fa.fa-trash.email{
+  position: relative;
+  bottom: 30px;
+  left: 62px;
+}
+
+.title.is-welcome{
+  text-align: center;
+}
+
+.empty{
+  border: 1px dashed #dbdbdb;
+  height: 293px;
+}
+
+#progressbar{
+  margin-top:  15px;
 }

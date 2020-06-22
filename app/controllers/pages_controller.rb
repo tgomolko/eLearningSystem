@@ -16,7 +16,7 @@ class PagesController < ApplicationController
   def create
     @page = @course.pages.build(page_params)
     if @page.save
-      redirect_to course_path(@course), notice: t(:page_created_successully)
+      redirect_to course_page_path(@course, @page), notice: t(:page_created_successully)
     else
       render :new
     end

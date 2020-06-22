@@ -2,7 +2,8 @@
 
 <%= search_form(courses_path) %>
 
-<section class="hero is-courses">
+<div class="hero is-courses">
+
   <div class="columns is-multiline is-centered">
     <% @courses.each do |course| %>
       <div class="column is-one-fifth">
@@ -16,7 +17,8 @@
         </div>
       <% end %>
     <% end %>
+    </div>
   </div>
-</section>
+</div>
 
 <%= paginate(@courses)%>

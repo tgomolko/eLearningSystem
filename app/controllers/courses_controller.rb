@@ -3,6 +3,8 @@ class CoursesController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :ensure_course_access, only: :edit
 
+  layout "welcome", only: :index
+
   def index
     @courses = SearchCourse.new(params).call
   end
@@ -27,7 +29,7 @@ class CoursesController < ApplicationController
   end
 
   def update
-    if @course.update(cbuild_course_params)
+    if @course.update(build_course_params)
       redirect_to @course, notice: t(:course_updated_successfully)
     else
       render :edit
@@ -36,7 +38,7 @@ class CoursesController < ApplicationController
 
   def destroy
     @course.destroy
-    redirect_to courses_url, notice: t(:course_destroyed_successfully)
+    redirect_to user_dashboard_my_courses_path, notice: t(:course_destroyed_successfully)
   end
 
   def ready

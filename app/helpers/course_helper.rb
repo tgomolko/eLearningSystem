@@ -17,11 +17,18 @@ module CourseHelper
   end
 
   def main_course_image(course)
-    content_tag(:div, image_tag(course.image_url(:default)), class: "feature-image") if @course.image_url
+    if @course.image_url
+      content_tag(:div, image_tag(course.image_url(:default)), class: "feature-image")
+    else
+      image_tag('course.svg')
+    end
   end
 
-  def course_action_buttons(course)
+  def course_follow_form(course)
     return unless user_signed_in? && course.ready?
-    render('follow_form') + render('action_buttons')
+
+    unless course.access_state == "Private" && (course.organization_id != (current_user.participant_org_id || current_user.organization_id))
+      render('follow_form')
+    end
   end
 end

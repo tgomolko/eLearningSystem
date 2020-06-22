@@ -1,11 +1,11 @@
 <% if question.checkbox? %>
-  <p class="title is-5"><%= question.content%></p>
+  <p class="question-content"><%= question.content%></p>
 
   <%= form_tag '/user_answers/create', method: :post, remote: true, class: 'render-form' do %>
     <% question.answers.each do |possible_answer, options| %>
       <div>
-        <%= hidden_field_tag "user[answers][]", false, class: "hid-f" %>
-        <%= check_box_tag "user[answers][]", true, false, class: "chp" %>
+        <%= hidden_field_tag "user[answers][]", false, class: "hidf" %>
+        <%= check_box_tag "user[answers][]", true, false, class: "checkbox" %>
         <%= possible_answer %>
         <%= hidden_field_tag "answer_keys[]", possible_answer %>
       </div>
@@ -16,7 +16,7 @@
     <%= submit_question_tag(question) %>
   <% end %>
 
-  <div id="box1" style="display: none">
-    <%= hidden_field_tag "user[answers][]", false, class: "hid-f" %>
+  <div class="hidf-box" style="display: none">
+    <%= hidden_field_tag "user[answers][]", false, class: "hidf" %>
   </div>
 <% end %>

@@ -1,4 +1,4 @@
-<div id ="q-text-form" class="add-from">
+<div id="q-text-form" class="add-from-text-q">
   <%= form_tag '/questions/add', method: :post, remote: true,  class: 'render-form' do %>
     <%= label_tag 'Question'%> <%= text_field_tag :content, nil, class: "" %>
     <a class="hide-q"><i class="fa fa-close" style="color:red"></i></a>
@@ -6,6 +6,6 @@
     <%= hidden_field_tag(:question_type, params["question_type"] = "textbox") %>
     <%= hidden_field_tag(:page_id, @page.id) %>
     <%= hidden_field_tag(:course_id, @course.id) %>
-    <%= submit_tag 'Create text question', class: 'button is-small is-primary quest' %>
+    <%= submit_tag 'Create text question', class: 'button is-small is-info quest' %>
   <% end %>
 </div>

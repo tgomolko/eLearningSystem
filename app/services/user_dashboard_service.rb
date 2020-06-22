@@ -82,7 +82,7 @@ class UserDashboardService
   end
 
   def highest_rate_courses
-    higest_rate_courses ||= Course.higest_rated
+    higest_rate_courses ||= Course.ready.higest_rated
   end
 
   def completed_courses

@@ -1,12 +1,12 @@
 <% if question.radio? %>
-  <p><%= question.content%></p>
+  <p class="question-content"><%= question.content%></p>
 
   <%= form_tag '/user_answers/create', method: :post, remote: true, class: 'render-form' do %>
-    <div id="radio-cont">
+    <div class="radio-cont">
       <%= hidden_field_tag(:question_id, question.id) %>
       <% question.answers.each do |possible_answer, options|%>
         <div>
-          <%= hidden_field_tag "user[answers][]", false, class: "hid-f" %>
+          <%= hidden_field_tag "user[answers][]", false, class: "hid-field" %>
           <%= radio_button_tag "user[answers][]", true, false, class: "rd" %>
           <%= possible_answer %>
           <%= hidden_field_tag "answer_keys[]", possible_answer %>
@@ -19,7 +19,7 @@
   <% end %>
 
   <div id="box3" style="display: none">
-     <%= hidden_field_tag "user[answers][]", false, class: "hid-f" %>
+     <%= hidden_field_tag "user[answers][]", false, class: "hid-field" %>
   </div>
 <% end %>
 

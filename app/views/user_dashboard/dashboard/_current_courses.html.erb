@@ -1,23 +1,32 @@
 <div class="dashboard">
   <h1 class="title is-3 is-board">Current Courses</h1>
-  <% return unless @uncompleted_courses.any? %>
-  <table class="table is-bordered is-hoverable is-striped is-board">
-    <thead>
-      <tr class="is-selected">
-        <th>Course name</th>
-        <th>Percent of passing %</th>
-      </tr>
-    </thead>
-     <tbody>
-      <% @uncompleted_courses.each do |course| %>
-        <tr>
-          <th><%= link_to course.title, course_path(course) %></th>
-          <th><%= course.percent_of_progess(current_user) %></th>
+  <% if @uncompleted_courses.any? %>
+
+    <table class="table is-bordered is-hoverable is-striped is-board">
+      <thead>
+        <tr class="is-selected">
+          <th>Course name</th>
+          <th>Percent of passing %</th>
         </tr>
-      <% end %>
-    </tbody>
-    <tr>
-      <td colspan="2">&nbsp;<%= link_to "Show more", user_dashboard_current_courses_path, class: "button is-small is-link"%></td>
-    </tr>
-  </table>
+      </thead>
+       <tbody>
+
+        <% @uncompleted_courses.each do |course| %>
+          <tr>
+            <th><%= link_to course.title, course_path(course) %></th>
+            <th><%= course.percent_of_progess(current_user) %></th>
+          </tr>
+        <% end %>
+
+      </tbody>
+      <tr>
+        <td colspan="2">&nbsp;<%= link_to "Show more", user_dashboard_current_courses_path, class: "button is-small is-link"%></td>
+      </tr>
+    </table>
+
+  <% else %>
+
+    <div class="column is-12 empty"></div>
+
+  <% end %>
 </div>

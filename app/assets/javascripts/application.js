@@ -77,8 +77,8 @@ $(document).ready (function () {
     path: '/assets/'
   });
 
-  $(document).on("click","#add-q", function() {
-    $(".main").append($(".add-from").html());
+  $(document).on("click","#add-qt", function() {
+     $(".main").append($(".add-from-text-q").html());
   });
 
   $(document).on("click","#add-checkbox-form", function() {
@@ -124,15 +124,24 @@ $(document).ready (function () {
 
   $(document).on ("click", ".hide-answer", function () {
     $(this).parent().hide();
-    $(this).parent().parent().find('.answer').show()
+    $(this).parent().parent().find('.answer').show();
   });
 
-  $(document).on('change','.chp', function(e){
+  $(document).on('change','.chp', function(){
     if (this.checked) {
       $(this).parent().find('.hid-f').remove();
     }
     if (this.checked == false){
-      $('#box1').find('.hid-f').clone().prependTo($(this).parent());
+      $('.hid-f-box').first().find('.hid-f').clone().prependTo($(this).parent());
+   }
+  });
+
+  $(document).on('change','.checkbox', function(){
+    if (this.checked) {
+      $(this).parent().find('.hidf').remove();
+    }
+    if (this.checked == false){
+      $('.hidf-box').first().find('.hidf').clone().prependTo($(this).parent());
    }
   });
 
@@ -144,10 +153,20 @@ $(document).ready (function () {
     var active = $('.radio-cont').find(".active");
     if (active.length > 0) {
       active.removeClass("active");
-      $('#box3').find('.hid-f').clone().prependTo(active);
+      $('#box3').find('.hid-field').clone().prependTo(active);
     }
     $(this).parent().addClass("active");
-    $(this).parent().find('.hid-f').remove();
+    $(this).parent().find('.hid-field').remove();
+  });
+
+  $(document).on('change','.radio-point', function(){
+    var active = $('.radio-cont').find(".active");
+    if (active.length > 0) {
+      active.removeClass("active");
+      $('.hfbox').find('.hid-field').first().clone().prependTo(active);
+    }
+    $(this).parent().addClass("active");
+    $(this).parent().find('.hid-field').remove();
   });
 
   $('#rating-form').find('img').on('click', function() {

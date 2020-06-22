@@ -62,6 +62,13 @@
         </label>
       </div>
     </div>
-    <hr/>
-  <%= f.button :submit, class: "button is-primary is-large is-rounded is-centered mv4" %>
+
+    <div class="columns">
+      <div class="column is-6">
+        <%= f.button :submit, class: "button is-primary is-rounded" %>
+      </div>
+      <div class="column is-6">
+        <%= link_to 'Cancel', :back, { class: "button is-info is-outlined is-pulled-right" } %>
+      </div>
+    </div>
 <% end %>

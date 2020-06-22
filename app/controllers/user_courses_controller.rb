@@ -4,8 +4,6 @@ class UserCoursesController < ApplicationController
   before_action :set_user_course, only: :result
   before_action :authenticate_user!
 
-  include CourseHelper
-
   def complete
     @user_course = current_user.user_courses.build(user_course_params)
     CompleteUserCourse.new(@course, current_user, @user_course, UserCourseResultCounterService.new(@course, current_user)).call
